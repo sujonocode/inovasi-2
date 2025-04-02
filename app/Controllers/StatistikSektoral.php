@@ -5,7 +5,7 @@ namespace App\Controllers;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\JadwalStatistikSektoral;
-use App\Models\KontakModel;
+use App\Models\Kontak;
 use DateTime;
 use DateTimeZone;
 use IntlDateFormatter;
@@ -27,7 +27,7 @@ class Humas extends BaseController
         $data['title'] = ucfirst($page);
         $data['jadwalKontens'] = $model->findAll();
 
-        $contactModel = new KontakModel();
+        $contactModel = new Kontak();
         $contactList = $contactModel->findAll();
 
         $contacts = [];
@@ -49,7 +49,7 @@ class Humas extends BaseController
         $data['title'] = ucfirst($page);
         $data['jadwalKontens'] = $model->findAll();
 
-        $contactModel = new KontakModel();
+        $contactModel = new Kontak();
         $contactList = $contactModel->findAll();
 
         $contacts = [];
@@ -68,9 +68,9 @@ class Humas extends BaseController
     {
         $data['title'] = ucfirst($page);
 
-        $kontakModel = new KontakModel();
+        $kontak = new Kontak();
 
-        $data['contacts'] = $kontakModel->getContacts();
+        $data['contacts'] = $kontak->getContacts();
 
         return view('templates/header', $data)
             . view('humas/create', $data)
@@ -857,8 +857,8 @@ class Humas extends BaseController
         $currentUsername = session()->get('username');
 
         if (session()->get('role') === 'admin') {
-            $kontakModel = new KontakModel();
-            $data['contacts'] = $kontakModel->getContacts();
+            $kontak = new Kontak();
+            $data['contacts'] = $kontak->getContacts();
 
             return view('templates/header', $data)
                 . view('humas/edit', $data)
@@ -869,8 +869,8 @@ class Humas extends BaseController
             }
         }
 
-        $kontakModel = new KontakModel();
-        $data['contacts'] = $kontakModel->getContacts();
+        $kontak = new Kontak();
+        $data['contacts'] = $kontak->getContacts();
 
         return view('templates/header', $data)
             . view('humas/edit', $data)
