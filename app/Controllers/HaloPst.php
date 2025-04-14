@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-class StatistikSektoral extends BaseController
+class HaloPst extends BaseController
 {
-    public function index(string $page = 'Statistik Sektoral')
+    public function index(string $page = 'Halo PST')
     {
         $data['title'] = ucfirst($page);
 
         return view('templates/header', $data)
-            . view('statistiksektoral/index')
+            . view('halopst/index')
             . view('templates/footer');
     }
 }

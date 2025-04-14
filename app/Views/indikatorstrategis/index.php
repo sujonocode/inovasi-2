@@ -1,1 +1,1 @@
-Dashboard Indikator Strategis
+Indikator Strategis

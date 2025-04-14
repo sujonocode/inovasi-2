@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-class StatistikSektoral extends BaseController
+class Admin extends BaseController
 {
-    public function index(string $page = 'Statistik Sektoral')
+    public function index(string $page = 'Admin')
     {
         $data['title'] = ucfirst($page);
 
         return view('templates/header', $data)
-            . view('statistiksektoral/index')
+            . view('admin/index')
             . view('templates/footer');
     }
 }
