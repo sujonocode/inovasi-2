@@ -2,14 +2,593 @@
 
 namespace App\Controllers;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use App\Models\JadwalStatistikSektoral;
+use App\Models\Kontak;
+use App\Models\Tim;
+use DateTime;
+use DateTimeZone;
+use IntlDateFormatter;
+
 class StatistikSektoral extends BaseController
 {
-    public function index(string $page = 'Statistik Sektoral')
+    protected $db;
+
+    public function __construct()
+    {
+        $this->db = \Config\Database::connect();
+    }
+
+    public function index(string $page = 'Pembinaan Statistik Sektoral')
+    {
+        $model = new JadwalStatistikSektoral();
+
+        $data['title'] = ucfirst($page);
+        $data['jadwalStatistikSektorals'] = $model->findAll();
+
+        $contactModel = new Kontak();
+        $contactList = $contactModel->findAll();
+
+        $contacts = [];
+        foreach ($contactList as $contact) {
+            $contacts[(string) $contact['nomor']] = $contact['nama'];
+        }
+
+        $data['contacts'] = $contacts;
+
+        return view('templates/header', $data)
+            . view('statistiksektoral/index', $data)
+            . view('templates/footer');
+    }
+
+    public function manage(string $page = 'Pembinaan Statistik Sektoral | Manage')
+    {
+        $model = new JadwalStatistikSektoral();
+
+        $data['title'] = ucfirst($page);
+        $data['jadwalStatistikSektorals'] = $model->findAll();
+
+        $contactModel = new Kontak();
+        $contactList = $contactModel->findAll();
+
+        $contacts = [];
+        foreach ($contactList as $contact) {
+            $contacts[(string) $contact['nomor']] = $contact['nama'];
+        }
+
+        $data['contacts'] = $contacts;
+        return view('templates/header', $data)
+            . view('statistiksektoral/manage_jadwal', $data)
+            . view('templates/footer');
+    }
+
+    public function create(string $page = 'Pembinaan Statistik Sektoral | Create')
+    {
+        $data['title'] = ucfirst($page);
+
+        $kontak = new Kontak();
+
+        $data['contacts'] = $kontak->getContacts();
+
+        return view('templates/header', $data)
+            . view('statistiksektoral/create_jadwal', $data)
+            . view('templates/footer');
+    }
+
+    public function store()
+    {
+        $model = new JadwalStatistikSektoral();
+        $timModel = new Tim();
+
+        // $username = session()->get('username');
+        $username = 'sulistyohadi';
+
+        // $pengingat = $this->request->getPost('pengingat[]');
+        $pengingat = ["H-1"];
+        // if (!$pengingat) {
+        //     $pengingat = [];
+        // }
+
+        $pengingatJson = json_encode($pengingat);
+
+        $kontak = $this->request->getPost('kontak[]');
+        $kontakString = implode(',', $kontak);
+
+        $opd = $this->request->getPost('opd');
+        $timData = $timModel->where('opd', $opd)->first();
+
+        $data = [
+            'ketua_tim' => $this->request->getPost('ketua_tim'),
+            'opd' => $opd,
+            'tempat' => $this->request->getPost('tempat'),
+            'topik' => $this->request->getPost('topik'),
+            'tanggal' => $this->request->getPost('tanggal'),
+            'waktu_start' => $this->request->getPost('waktu_start'),
+            'waktu_end' => $this->request->getPost('waktu_end'),
+            'kontak_ketua_tim' => $timData['kontak_ketua_tim'],
+            'kontak_narahubung' => $timData['kontak_narahubung'],
+            'pengingat' => $pengingatJson,
+            'kontak' => $kontakString,
+            'catatan' => $this->request->getPost('catatan'),
+            'status' => 'Belum Terlaksana',
+            'created_by' => $username,
+        ];
+
+        if ($model->save($data)) {
+            // Send to Fonnte
+            // $this->sendNotification();
+            return redirect()->to(base_url('/statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil dibuat');
+        }
+
+        // Handle failure case
+        return redirect()->back()->withInput()->with('error', 'Gagal membuat jadwal pembinaan');
+    }
+
+    function unixToHuman($unixTimestamp)
+    {
+        $timezone = new DateTimeZone('Asia/Jakarta');
+        $date = new DateTime('@' . $unixTimestamp);
+        $date->setTimezone($timezone);
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    function humanToUnix($humanDate)
+    {
+        $timezone = new DateTimeZone('Asia/Jakarta');
+        $date = new DateTime($humanDate, $timezone);
+        return $date->getTimestamp();
+    }
+
+    private function sendNotification()
+    {
+        $pengingat = ["H-1"];
+        $pengingatJson = json_encode($pengingat);
+
+        $data = [
+            'tempat' => $this->request->getPost('tempat'),
+            'topik' => $this->request->getPost('topik'),
+            'opd' => $this->request->getPost('opd'),
+            'tanggal' => $this->request->getPost('tanggal'),
+            'waktu_start' => $this->request->getPost('waktu_start'),
+            'waktu_end' => $this->request->getPost('waktu_end'),
+            'kontak' => $this->request->getPost('kontak'),
+            'pengingat' => $pengingatJson,
+            'catatan' => $this->request->getPost('catatan'),
+        ];
+
+        $kontakString = implode(',', $data['kontak']);
+
+        $dateHuman = $data['tanggal'] . ' ' . $data['waktu_start'];
+        $hariH0 = $this->humanToUnix($dateHuman);
+        $hariHm1 = strtotime('-1 days', $hariH0);
+
+        $formatter = new IntlDateFormatter(
+            'id_ID',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::NONE,
+            'Asia/Jakarta',
+            IntlDateFormatter::GREGORIAN,
+            'EEEE, dd MMMM yyyy'
+        );
+
+        $dayIndo = $formatter->format(new DateTime($data['tanggal']));
+
+        $time = date('H:i', strtotime($data['waktu_start'])) . " s.d. " . date('H:i', strtotime($data['waktu_end']));
+        $hour = (int) date('H', strtotime($data['waktu_start']));
+
+        if ($hour < 10) {
+            $period = 'pagi';
+        } elseif ($hour < 15) {
+            $period = 'siang';
+        } elseif ($hour < 18) {
+            $period = 'sore';
+        } else {
+            $period = 'malam';
+        }
+
+        if ($pengingatJson == '["H-1"]') {
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+                CURLOPT_URL => 'https://api.fonnte.com/send',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => [
+                    'target' => $kontakString,
+                    'message' =>
+                    "📢 Pembinaan Statistik Sektoral {$data['opd']}\n" .
+                        "```" .
+                        "--------------------------\n" .
+                        "📌 Topik   : {$data['topik']}\n" .
+                        "🏢 Tempat  : {$data['tempat']}\n" .
+                        "📅 Tanggal : {$dayIndo}\n" .
+                        "🕒 Waktu   : {$time} ({$period})\n" .
+                        "📝 Catatan : {$data['catatan']}\n" .
+                        "--------------------------" .
+                        "```",
+                    'schedule' => $hariHm1,
+                    'countryCode' => '62',
+                ],
+                CURLOPT_HTTPHEADER => [
+                    'Authorization: CczZN35pLJ6yvpDA9GFH',
+                ],
+            ]);
+
+            $response = curl_exec($curl);
+            $error = curl_error($curl);
+
+            curl_close($curl);
+        };
+    }
+
+    private function sendEditNotification($oldData)
+    {
+        $pengingat = ["H-1"];
+        $pengingatJson = json_encode($pengingat);
+
+        $newData = [
+            'tempat' => $this->request->getPost('tempat'),
+            'topik' => $this->request->getPost('topik'),
+            'opd' => $this->request->getPost('opd'),
+            'tanggal' => $this->request->getPost('tanggal'),
+            'waktu_start' => $this->request->getPost('waktu_start'),
+            'waktu_end' => $this->request->getPost('waktu_end'),
+            'kontak' => $this->request->getPost('kontak'),
+            'pengingat' => $pengingatJson,
+            'catatan' => $this->request->getPost('catatan'),
+        ];
+
+        $oldData['catatan'] = ltrim($oldData['catatan']);
+        $kontakString = is_array($newData['kontak']) ? implode(',', $newData['kontak']) : $newData['kontak'];
+        $kontakNumbers = explode(',', $kontakString);
+        $newData['kontak'] = $kontakString;
+
+        $dateHuman = date('Y-m-d H:i:s', strtotime('+1 minute'));
+        $dateUnix = strtotime($dateHuman);
+
+        $changedFields = [];
+        foreach ($newData as $key => $value) {
+            if ($oldData[$key] !== $value) {
+                $changedFields[] = ucfirst($key);
+            }
+        }
+        $ket = !empty($changedFields) ? implode(', ', $changedFields) : 'Tidak ada perubahan';
+
+        $kontakNames = [];
+        foreach ($kontakNumbers as $nomor) {
+            $kontakNames[] = $this->getNamaByNomor($nomor);
+        }
+
+        $formatter = new IntlDateFormatter(
+            'id_ID',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::NONE,
+            'Asia/Jakarta',
+            IntlDateFormatter::GREGORIAN,
+            'EEEE, dd MMMM yyyy'
+        );
+
+        $dayIndo = $formatter->format(new DateTime($newData['tanggal']));
+
+        $time = date('H:i', strtotime($newData['waktu_start'])) . " s.d. " . date('H:i', strtotime($newData['waktu_end']));
+        $hour = (int) date('H', strtotime($newData['waktu_start']));
+
+        if ($hour < 10) {
+            $period = 'pagi';
+        } elseif ($hour < 15) {
+            $period = 'siang';
+        } elseif ($hour < 18) {
+            $period = 'sore';
+        } else {
+            $period = 'malam';
+        }
+
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => [
+                'target' => '085334813264',
+                'message' =>
+                "⚠️ Notifikasi EDIT reminder\n" .
+                    "```" .
+                    "--------------------------\n" .
+                    "📌 Topik   : {$newData['topik']}\n" .
+                    "🏢 Tempat  : {$newData['tempat']}\n" .
+                    "📅 Tanggal : {$dayIndo}\n" .
+                    "🕒 Waktu   : {$time} ({$period})\n" .
+                    "📝 Catatan : {$newData['catatan']}\n" .
+                    "🗒️ Ket.     : {$ket}\n" .
+                    "--------------------------" .
+                    "```",
+                'schedule' => $dateUnix,
+                'countryCode' => '62',
+            ],
+            CURLOPT_HTTPHEADER => [
+                'Authorization: CczZN35pLJ6yvpDA9GFH',
+            ],
+        ]);
+
+        curl_exec($curl);
+        curl_close($curl);
+    }
+
+    private function sendDeleteNotification($oldData)
+    {
+        $pengingat = ["H-1"];
+        $pengingatJson = json_encode($pengingat);
+
+        $newData = [
+            'tempat' => $this->request->getPost('tempat'),
+            'topik' => $this->request->getPost('topik'),
+            'opd' => $this->request->getPost('opd'),
+            'tanggal' => $this->request->getPost('tanggal'),
+            'waktu_start' => $this->request->getPost('waktu_start'),
+            'waktu_end' => $this->request->getPost('waktu_end'),
+            'kontak' => $this->request->getPost('kontak'),
+            'pengingat' => $pengingatJson,
+            'catatan' => $this->request->getPost('catatan'),
+        ];
+
+        $dateHuman = date('Y-m-d H:i:s', strtotime('+1 minute'));
+        $dateUnix = strtotime($dateHuman);
+
+        $kontakString = is_array($newData['kontak']) ? implode(',', $newData['kontak']) : $newData['kontak'];
+        $kontakNumbers = explode(',', $kontakString);
+        $kontakNames = [];
+        foreach ($kontakNumbers as $nomor) {
+            $kontakNames[] = $this->getNamaByNomor($nomor);
+        }
+
+        $formatter = new IntlDateFormatter(
+            'id_ID',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::NONE,
+            'Asia/Jakarta',
+            IntlDateFormatter::GREGORIAN,
+            'EEEE, dd MMMM yyyy'
+        );
+
+        $dayIndo = $formatter->format(new DateTime($newData['tanggal']));
+
+        $time = date('H:i', strtotime($newData['waktu_start'])) . " s.d. " . date('H:i', strtotime($newData['waktu_end']));
+        $hour = (int) date('H', strtotime($newData['waktu_start']));
+
+        if ($hour < 10) {
+            $period = 'pagi';
+        } elseif ($hour < 15) {
+            $period = 'siang';
+        } elseif ($hour < 18) {
+            $period = 'sore';
+        } else {
+            $period = 'malam';
+        }
+
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => [
+                'target' => '085334813264',
+                'message' =>
+                "⚠️ Notifikasi HAPUS reminder\n" .
+                    "```" .
+                    "--------------------------\n" .
+                    "📌 Topik   : {$newData['topik']}\n" .
+                    "🏢 Tempat  : {$newData['tempat']}\n" .
+                    "📅 Tanggal : {$dayIndo}\n" .
+                    "🕒 Waktu   : {$time} ({$period})\n" .
+                    "📝 Catatan : {$newData['catatan']}\n" .
+                    "--------------------------" .
+                    "```",
+                'schedule' => $dateUnix,
+                'countryCode' => '62',
+            ],
+            CURLOPT_HTTPHEADER => ['Authorization: CczZN35pLJ6yvpDA9GFH'],
+        ]);
+
+        curl_exec($curl);
+        curl_close($curl);
+    }
+
+    public function update($id)
+    {
+        $model = new JadwalStatistikSektoral();
+        $timModel = new Tim();
+
+        $oldData = $model->find($id);
+
+        $pengingat = $this->request->getPost('pengingat[]') ?? [];
+        $pengingatJson = json_encode($pengingat);
+
+        $kontak = $this->request->getPost('kontak[]');
+        $kontakString = implode(',', $kontak);
+
+        $opd = $this->request->getPost('opd');
+        $timData = $timModel->where('opd', $opd)->first();
+
+        $updateSuccessful = $model->update($id, [
+            'ketua_tim' => $this->request->getPost('ketua_tim'),
+            'opd' => $opd,
+            'kontak' => $kontakString,
+            'pengingat' => $pengingatJson,
+            'tempat' => $this->request->getPost('tempat'),
+            'topik' => $this->request->getPost('topik'),
+            'tanggal' => $this->request->getPost('tanggal'),
+            'waktu_start' => $this->request->getPost('waktu_start'),
+            'waktu_end' => $this->request->getPost('waktu_end'),
+            'kontak_ketua_tim' => $timData['kontak_ketua_tim'],
+            'kontak_narahubung' => $timData['kontak_narahubung'],
+            'catatan' => $this->request->getPost('catatan'),
+            'status' => $this->request->getPost('status'),
+        ]);
+
+        if ($updateSuccessful) {
+            // $this->sendEditNotification($oldData);
+            return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil diupdate');
+        } else {
+            return redirect()->to(base_url('statistik_sektoral/manage'))->with('error', 'Gagal mengupdate jadwal pembinaan');
+        }
+    }
+
+    private function getNamaByNomor($nomor)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('kontak')->select('nama')->where('nomor', $nomor)->get();
+        $result = $query->getRow();
+        return $result ? $result->nama : $nomor;
+    }
+
+    public function edit($id, string $page = 'Statistik Sektoral | Edit')
+    {
+        $model = new JadwalStatistikSektoral();
+        $jadwalStatistikSektoral = $model->find($id);
+
+        if (!$jadwalStatistikSektoral) {
+            session()->setFlashdata('error', 'Jadwal pembinaan tidak ditemukan.');
+            return redirect()->to(base_url('statistik_sektoral/manage'));
+        }
+
+        if (!empty($jadwalStatistikSektoral['kontak'])) {
+            $jadwalStatistikSektoral['kontak'] = explode(',', $jadwalStatistikSektoral['kontak']);
+        } else {
+            $jadwalStatistikSektoral['kontak'] = [];
+        }
+
+        $data = [
+            'jadwalStatistikSektoral' => $jadwalStatistikSektoral,
+            'title' => ucfirst($page),
+        ];
+
+        // $currentUsername = session()->get('username');
+        $currentUsername = 'imam.sujono';
+
+        // if (session()->get('role') === 'admin') {
+        $role = 'admin';
+        if ($role === 'admin') {
+            $kontak = new Kontak();
+            $data['contacts'] = $kontak->getContacts();
+
+            return view('templates/header', $data)
+                . view('statistiksektoral/edit_jadwal', $data)
+                . view('templates/footer');
+        } else {
+            if ($jadwalStatistikSektoral['created_by'] !== $currentUsername) {
+                return redirect()->back()->with('limited', 'Jadwal pembinaan hanya bisa diubah oleh orang yang membuatnya atau admin.');
+            }
+        }
+
+        $kontak = new Kontak();
+        $data['contacts'] = $kontak->getContacts();
+
+        return view('templates/header', $data)
+            . view('statistiksektoral/edit_jadwal', $data)
+            . view('templates/footer');
+    }
+
+    public function delete($id)
+    {
+        $model = new JadwalStatistikSektoral();
+
+        $jadwalStatistikSektoral = $model->find($id);
+
+        if (!$jadwalStatistikSektoral) {
+            return redirect()->to(base_url('statistik_sektoral/manage'))->with('error', 'Jadwal pembinaan tidak ditemukan');
+        }
+
+        $role = 'admin';
+        $username = 'imam.sujono';
+        // if (session()->get('role') === 'admin') {
+        if ($role === 'admin') {
+            $model->delete($id);
+            // $this->sendDeleteNotification($jadwalStatistikSektoral);
+            return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil dihapus');
+        } else {
+            if ($username !== $jadwalStatistikSektoral['created_by']) {
+                return redirect()->back()->with('limited', 'Jadwal pembinaan hanya bisa dihapus oleh orang yang membuatnya atau admin');
+            }
+        }
+
+        $deleteSuccessful = $model->delete($id);
+
+        if ($deleteSuccessful) {
+            // $this->sendDeleteNotification($jadwalStatistikSektoral);
+            return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Data reminder berhasil dihapus');
+        } else {
+            return redirect()->to(base_url('statistik_sektoral/manage'))->with('error', 'Gagal menghapus data reminder');
+        }
+    }
+
+    public function exportExcel()
+    {
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM jadwal_statistik_sektoral");
+        $data = $query->getResultArray();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Add column headers
+        $columns = array_keys($data[0]); // Get column names from the first row
+        $colIndex = 'A';
+        foreach ($columns as $column) {
+            $sheet->setCellValue($colIndex . '1', $column);
+            $colIndex++;
+        }
+
+        // Add rows
+        $rowNumber = 2;
+        foreach ($data as $row) {
+            $colIndex = 'A';
+            foreach ($row as $cell) {
+                $sheet->setCellValue($colIndex . $rowNumber, $cell);
+                $colIndex++;
+            }
+            $rowNumber++;
+        }
+
+        // Create Excel file
+        $writer = new Xlsx($spreadsheet);
+
+        // Set headers for download
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="jadwal_konten.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit;
+    }
+
+    public function getEvents()
+    {
+        $model = new JadwalStatistikSektoral();
+
+        $jadwalKontens = $model->findAll();
+
+        return view('templates/header')
+            . view('statistiksektoral/index', ['jadwalStatistikSektprals' => $jadwalKontens])
+            . view('templates/footer');
+    }
+
+    public function maintenance(string $page = 'Statistik Sektoral | Maintenance')
     {
         $data['title'] = ucfirst($page);
 
         return view('templates/header', $data)
-            . view('statistiksektoral/index')
+            . view('pages/maintenance', $data)
             . view('templates/footer');
     }
 }

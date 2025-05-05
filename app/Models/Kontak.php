@@ -9,4 +9,9 @@ class Kontak extends Model
     protected $table = 'kontak';
     protected $primaryKey = 'id';
     protected $allowedFields = ['nama', 'tanggal', 'waktu', 'kontak', 'pengingat', 'catatan', 'created_by'];
+
+    public function getContacts()
+    {
+        return $this->findAll();
+    }
 }

@@ -326,25 +326,26 @@ footer a:hover {
 .card-flip {
     perspective: 1000px;
     width: 100%;
-    height: auto;
+    height: 350px;
     position: relative;
+    margin: auto;
+    transition: transform 0.3s ease;
+}
+
+.card-flip:hover {
+    transform: rotateX(2deg) rotateY(2deg);
 }
 
 .card-inner {
     width: 100%;
-    min-height: 350px;
+    height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s;
+    transition: transform 0.8s cubic-bezier(0.25, 1.25, 0.5, 1.25);
 }
 
-/* Desktop hover */
+.card-flip.flipped .card-inner,
 .card-flip:hover .card-inner {
-    transform: rotateY(180deg);
-}
-
-/* Mobile tap */
-.card-flip.flipped .card-inner {
     transform: rotateY(180deg);
 }
 
@@ -354,27 +355,163 @@ footer a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 350px;
-    padding: 1.5rem;
-    border-radius: 12px;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    /* border: 2px solid transparent; */
+    background-clip: padding-box;
 }
 
+/* FRONT STYLES */
 .card-front {
-    background-color: #fff;
     z-index: 2;
 }
 
-.card-back {
-    background-color: #343a40;
+.card-blue {
+    background: linear-gradient(135deg, #0070be, #3399ff);
     color: white;
-    transform: rotateY(180deg);
-    z-index: 1;
-    pointer-events: none;
+    border-image: linear-gradient(135deg, #0070be, #3399ff) 1;
 }
+
+.card-green {
+    background: linear-gradient(135deg, #33ac4b, #6dd47e);
+    color: white;
+    border-image: linear-gradient(135deg, #33ac4b, #6dd47e) 1;
+}
+
+.card-orange {
+    background: linear-gradient(135deg, #ff8c00, #ffb347);
+    color: white;
+    border-image: linear-gradient(135deg, #ff8c00, #ffb347) 1;
+}
+
+/* BACK STYLES */
+.card-back {
+    transform: rotateY(180deg);
+    color: white;
+}
+
+.card-blue-back {
+    background: linear-gradient(135deg, #005a9c, #1a8cff);
+    color: white;
+    border-image: linear-gradient(135deg, #005a9c, #1a8cff) 1;
+}
+
+.card-green-back {
+    background: linear-gradient(135deg, #2d8a3e, #58d68d);
+    color: white;
+    border-image: linear-gradient(135deg, #2d8a3e, #58d68d) 1;
+}
+
+.card-orange-back {
+    background: linear-gradient(135deg, #cc7000, #ff9933);
+    color: white;
+    border-image: linear-gradient(135deg, #cc7000, #ff9933) 1;
+}
+
+/* ICONS + TEXT STYLING */
+.card-front i,
+.card-back i {
+    margin-bottom: 1rem;
+}
+
+.card-front h4,
+.card-back h4 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-front p,
+.card-back p {
+    font-size: 0.95rem;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-front p {
+    color: #f0f0f0;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: white;
+}
+
+/* BUTTONS */
+.card-back .btn {
+    margin-top: 1rem;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border: 2px solid #fff;
+}
+
+.btn-blue {
+    background-color: #ffffff;
+    color: #0070be;
+}
+
+.btn-blue:hover {
+    background-color: #0070be;
+    color: white;
+}
+
+.btn-green {
+    background-color: #ffffff;
+    color: #33ac4b;
+}
+
+.btn-green:hover {
+    background-color: #33ac4b;
+    color: white;
+}
+
+.btn-orange {
+    background-color: #ffffff;
+    color: #ff8c00;
+}
+
+.btn-orange:hover {
+    background-color: #ff8c00;
+    color: white;
+}
+
+/* GLOW ON HOVER */
+.card-blue:hover {
+    box-shadow: 0 0 20px rgba(0, 112, 190, 0.5);
+}
+
+.card-green:hover {
+    box-shadow: 0 0 20px rgba(51, 172, 75, 0.5);
+}
+
+.card-orange:hover {
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .card-flip {
+        height: 300px;
+    }
+}
+
+                .card {
+                    border: none;
+                    border-radius: 16px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                }

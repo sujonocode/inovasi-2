@@ -2,21 +2,21 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center flex-wrap">
-                <h1 class="mb-3 mb-md-0">Daftar Reminder BRS dan Publikasi</h1>
+                <h1 class="mb-3 mb-md-0">Jadwal Pembinaan Statistik Sektoral</h1>
                 <div class="d-flex gap-2 flex-wrap">
-                    <a href="<?= base_url('publikasi/create') ?>"
+                    <a href="<?= base_url('statistik_sektoral/create') ?>"
                         class="btn btn-primary btn-sm flex-fill text-center"
                         style="min-width: 120px;"
                         title="Tambah Reminder Baru">
                         <i class="fa-solid fa-plus me-1"></i> Tambah
                     </a>
-                    <a href="<?= base_url('publikasi/export_xlsx') ?>"
+                    <a href="<?= base_url('statistik_sektoral/export_xlsx') ?>"
                         class="btn btn-success btn-sm flex-fill text-center"
                         style="min-width: 120px;"
                         title="Download Data Reminder">
                         <i class="fa-solid fa-download me-1"></i> Download
                     </a>
-                    <a href="<?= base_url('publikasi') ?>"
+                    <a href="<?= base_url('statistik_sektoral') ?>"
                         class="btn btn-secondary btn-sm flex-fill text-center"
                         style="min-width: 120px;"
                         title="Kalender Data Reminder">
@@ -28,65 +28,74 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example" class="table table-striped table-hover">
+                    <?php $isAdmin = 'admin' === 'admin'; ?>
                     <thead>
                         <tr>
-                            <th>Judul Reminder</th>
-                            <th>Tanggal/Waktu</th>
-                            <th>Kontak</th>
-                            <th>Pengingat</th>
+                            <th>Tanggal dan Waktu</th>
+                            <th>Tim</th>
+                            <th>Topik</th>
+                            <th>Narahubung Ketua Tim</th>
+                            <th>Narahubung Dinas</th>
                             <th>Catatan</th>
                             <th>PIC</th>
-                            <?php if (session()->get('role') === 'admin'): ?>
-                                <th>Actions</th>
+                            <?php if ($isAdmin): ?>
+                                <th>Aksi</th>
                             <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($jadwalKontens)): ?>
-                            <?php foreach ($jadwalKontens as $jadwalKonten): ?>
+                        <?php if (!empty($jadwalStatistikSektorals)): ?>
+                            <?php foreach ($jadwalStatistikSektorals as $jadwalStatistikSektoral): ?>
                                 <tr>
-                                    <td><?= $jadwalKonten['nama'] ?></td>
-                                    <td><?= $jadwalKonten['tanggal'] . " " . $jadwalKonten['waktu'] ?></td>
-                                    <!-- <td>< ?= $jadwalKonten['kontak'] ?></td> -->
-                                    <!-- <td>< ?= str_replace(',', ' | ', $jadwalKonten['kontak']) ?></td> -->
-                                    <?php
-                                    $kontakArray = explode(',', $jadwalKonten['kontak']); // Split numbers into an array
-                                    $kontakNames = array_map(function ($number) use ($contacts) {
-                                        return $contacts[$number] ?? $number; // Replace with name if found, otherwise keep the number
-                                    }, $kontakArray);
-                                    ?>
-
-                                    <td><?= implode(' | ', $kontakNames) ?></td>
-
-                                    <!-- Decode the "Pengingat" JSON string into an array -->
-                                    <td>
-                                        <?php
-                                        // Decode the "pengingat" JSON string into an array
-                                        $pengingat = json_decode($jadwalKonten['pengingat'], true);
-
-                                        // If there are any values, display them
-                                        if ($pengingat) {
-                                            echo implode(", ", $pengingat);
-                                        } else {
-                                            echo "No Pengingat selected";
-                                        }
-                                        ?>
-                                    </td>
-                                    <!-- <td>< ?= $jadwalKonten['kategori'] ?></td> -->
-                                    <td><?= $jadwalKonten['catatan'] ?></td>
-                                    <td><?= $jadwalKonten['created_by'] ?></td>
-                                    <?php if (session()->get('role') === 'admin'): ?>
+                                    <td><?= $jadwalStatistikSektoral['tanggal'] . " " . date("H:i", strtotime($jadwalStatistikSektoral['waktu_start'])) . " s.d. " . date("H:i", strtotime($jadwalStatistikSektoral['waktu_end'])) . " WIB" ?></td>
+                                    <td><?= $jadwalStatistikSektoral['opd'] ?></td>
+                                    <td><?= $jadwalStatistikSektoral['topik'] ?></td>
+                                    <td><?= $jadwalStatistikSektoral['kontak_ketua_tim'] ?></td>
+                                    <td><?= $jadwalStatistikSektoral['kontak_narahubung'] ?></td>
+                                    <td><?= $jadwalStatistikSektoral['catatan'] ?></td>
+                                    <td><?= $jadwalStatistikSektoral['created_by'] ?></td>
+                                    <?php if ($isAdmin): ?>
                                         <td>
-                                            <a href="/publikasi/edit/<?= $jadwalKonten['id'] ?>"><i class="fa-solid fa-pen-to-square" title="Edit"></i></a>
-                                            <a href="#" onclick="openDeleteModal(<?= $jadwalKonten['id'] ?>)"><i class="fa-solid fa-trash" title="Hapus"></i></a>
+                                            <?php if ($jadwalStatistikSektoral['status'] === 'Dibatalkan'): ?>
+                                                <i class="fa-solid fa-flag" style="color: rgb(253, 20, 20);" title="Dibatalkan"></i>
+                                            <?php elseif ($jadwalStatistikSektoral['status'] === 'Belum Terlaksana'): ?>
+                                                <i class="fa-solid fa-flag" style="color: rgb(253, 199, 20);" title="Belum Terlaksana"></i>
+                                            <?php elseif ($jadwalStatistikSektoral['status'] === 'Terlaksana'): ?>
+                                                <i class="fa-solid fa-flag" style="color: rgb(0, 190, 32);" title="Terlaksana"></i>
+                                            <?php endif; ?>
+                                            <!-- <a href="#" onclick="handleLinkClick('< ?= $jadwalStatistikSektoral['url'] ?>'); return false;"><i class="fa-solid fa-eye" title="Lihat"></i></a> -->
+                                            <a href="/statistik_sektoral/edit/<?= $jadwalStatistikSektoral['id'] ?>"><i class="fa-solid fa-pen-to-square" title="Edit"></i></a>
+                                            <a href="#" onclick="openDeleteModal(<?= $jadwalStatistikSektoral['id'] ?>)"><i class="fa-solid fa-trash" title="Hapus"></i></a>
                                         </td>
                                     <?php endif; ?>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <tr>
-                                <td colspan="7" style="text-align: center; font-weight: bold;">Reminder belum tersedia</td>
-                            </tr>
+                            <!-- <tr>
+                                <td colspan="7" style="text-align: center; font-weight: bold;">Belum ada data surat masuk</td>
+                            </tr> -->
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <?php if ($isAdmin): ?>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    <?php else: ?>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    <?php endif; ?>
+                                </tr>
+                            <?php endfor; ?>
                         <?php endif; ?>
                     </tbody>
                 </table>
@@ -141,7 +150,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin ingin menghapus reminder ini?
+                Apakah Anda yakin ingin menghapus data surat ini?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -206,9 +215,9 @@
 
 <script>
     // Open the modal and set the delete URL dynamically
-    function openDeleteModal(skId) {
+    function openDeleteModal(suratId) {
         // Set the delete ID in a custom attribute, or store it globally
-        const deleteUrl = "<?= base_url() ?>" + "publikasi/delete/" + skId;
+        const deleteUrl = "<?= base_url() ?>" + "statistik_sektoral/delete/" + suratId;
 
         // Store the URL in the delete button as a data attribute
         document.getElementById('confirmDeleteBtn').setAttribute('data-delete-url', deleteUrl);
@@ -233,16 +242,21 @@
 
 <script>
     $(document).ready(function() {
-        var columnDefs = [{
-            orderable: true,
-            targets: [0, 1, 2, 3, 4, 5]
-        }];
-
-        <?php if (session()->get('role') === 'admin'): ?>
-            columnDefs.push({
-                orderable: false,
-                targets: [6]
-            });
+        <?php if ($isAdmin): ?>
+            var columnDefs = [{
+                    orderable: true,
+                    targets: [0, 1, 2, 3, 4, 5, 6]
+                },
+                {
+                    orderable: false,
+                    targets: [7] // 'Actions' column
+                }
+            ];
+        <?php else: ?>
+            var columnDefs = [{
+                orderable: true,
+                targets: [0, 1, 2, 3, 4, 5, 6]
+            }];
         <?php endif; ?>
 
         $('#example').DataTable({
@@ -256,8 +270,8 @@
             lengthMenu: [5, 10, 15, 20],
             columnDefs: columnDefs,
             order: [
-                [1, 'desc']
-            ]
+                [0, 'desc']
+            ],
         });
     });
 
@@ -272,9 +286,15 @@
             var successModal = new bootstrap.Modal(document.getElementById('successModal'));
             successModal.show();
         <?php endif; ?>
+
         <?php if (session()->getFlashdata('limited')): ?>
             var limitedModal = new bootstrap.Modal(document.getElementById('limitedModal'));
             limitedModal.show();
         <?php endif; ?>
     }
 </script>
+
+<!-- <script>
+    const contacts = < ?= json_encode($jadwalStatistikSektoral); ?>;
+    console.log("Contacts:", contacts);
+</script> -->

@@ -47,6 +47,8 @@
     <!-- Add jQuery and Select2 scripts -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @media (max-width: 768px) {
             .fc-toolbar {

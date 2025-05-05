@@ -2,99 +2,55 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="form-section">
-                <h2 class="text-center mb-4">Formulir Data Reminder BRS dan Publikasi</h2>
-                <form onsubmit="return validateCheckboxes()" action="/publikasi/store" method="post">
+                <h2 class="text-center mb-4">Formulir Jadwal Pembinaan Statistik Sektoral</h2>
+                <form onsubmit="return validateCheckboxes()" action="/statistik_sektoral/store" method="post">
                     <?= csrf_field() ?>
-
-                    <!-- Nama Konten -->
                     <div class="row form-group align-items-center flex-column flex-md-row">
-                        <label for="nama" class="col-md-3 form-label">Judul:</label>
+                        <label for="ketua" class="col-md-3 form-label">Ketua Tim:</label>
                         <div class="col-md-9">
-                            <input id="nama" type="text" name="nama" class="form-control"
-                                placeholder="Masukkan judul reminder" required>
+                            <input id="ketua_tim" type="text" name="ketua_tim" class="form-control"
+                                <?php $user['ketua_tim'] = 'Sulistyo Hadi'; ?>;
+                                placeholder="" value="<?= $user['ketua_tim'] ?>" required readonly>
                         </div>
                     </div>
-
-                    <!-- Tanggal Unggah -->
                     <div class="row form-group align-items-center flex-column flex-md-row">
-                        <label for="tanggal" class="col-md-3 form-label">Tanggal Reminder:</label>
+                        <label for="opd" class="col-md-3 form-label">OPD:</label>
+                        <div class="col-md-9">
+                            <input id="opd" type="text" name="opd" class="form-control"
+                                <?php $user['opd'] = 'Dinas Ketahanan Pangan, Tanaman Pangan, dan Hortikultura Kabupaten Tanggamus'; ?>;
+                                placeholder="" value="<?= $user['opd'] ?>" required readonly>
+                        </div>
+                    </div>
+                    <div class="row form-group align-items-center flex-column flex-md-row">
+                        <label for="topik" class="col-md-3 form-label">Topik:</label>
+                        <div class="col-md-9">
+                            <input id="topik" type="text" name="topik" class="form-control"
+                                placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row form-group align-items-center flex-column flex-md-row">
+                        <label for="tempat" class="col-md-3 form-label">Tempat:</label>
+                        <div class="col-md-9">
+                            <input id="tempat" type="text" name="tempat" class="form-control"
+                                placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row form-group align-items-center flex-column flex-md-row">
+                        <label for="tanggal" class="col-md-3 form-label">Tanggal:</label>
                         <div class="col-md-9">
                             <input id="tanggal" type="date" name="tanggal" class="form-control" required>
                         </div>
                     </div>
-
-                    <!-- Waktu Unggah -->
                     <div class="row form-group align-items-center flex-column flex-md-row">
-                        <label for="waktu" class="col-md-3 form-label">Waktu Reminder:</label>
+                        <label for="waktu_start" class="col-md-3 form-label">Waktu Mulai:</label>
                         <div class="col-md-9">
-                            <input id="waktu" type="time" name="waktu" class="form-control" step="1" value="08:00:00" required>
+                            <input id="waktu_start" type="time" name="waktu_start" class="form-control" step="1" value="08:00:00" required>
                         </div>
                     </div>
-
-                    <!-- Kategori -->
-                    <!-- <div class="row form-group align-items-center flex-column flex-md-row">
-                        <label class="col-md-3 form-label">Kategori:</label>
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input type="radio" id="kegiatan_rutin" name="kategori"
-                                            value="Kegiatan Rutin" class="form-check-input">
-                                        <label for="kegiatan_rutin" class="form-check-label">Kegiatan Rutin</label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input type="radio" id="dokumetasi_lapangan" name="kategori"
-                                            value="Dokumentasi Lapangan" class="form-check-input">
-                                        <label for="dokumetasi_lapangan" class="form-check-label">Dokumentasi Lapangan</label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input type="radio" id="publikasi" name="kategori" value="Publikasi"
-                                            class="form-check-input">
-                                        <label for="publikasi" class="form-check-label">Publikasi</label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input type="radio" id="lainnya" name="kategori" value="Lainnya"
-                                            class="form-check-input">
-                                        <label for="lainnya" class="form-check-label">Lainnya</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- Pengingat -->
                     <div class="row form-group align-items-center flex-column flex-md-row">
-                        <label class="col-md-3 form-label">Pengingat:</label>
+                        <label for="waktu_end" class="col-md-3 form-label">Waktu Selesai:</label>
                         <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-check">
-                                        <input type="checkbox" id="pengingat1" name="pengingat[]" value="Hari H"
-                                            class="form-check-input">
-                                        <label for="pengingat1" class="form-check-label">Hari H</label>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-check">
-                                        <input type="checkbox" id="pengingat2" name="pengingat[]" value="H-3"
-                                            class="form-check-input">
-                                        <label for="pengingat2" class="form-check-label">H-3</label>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-check">
-                                        <input type="checkbox" id="pengingat3" name="pengingat[]" value="H-7"
-                                            class="form-check-input">
-                                        <label for="pengingat3" class="form-check-label">H-7</label>
-                                    </div>
-                                </div>
-                            </div>
+                            <input id="waktu_end" type="time" name="waktu_end" class="form-control" step="1" value="12:00:00" required>
                         </div>
                     </div>
                     <div class="row mb-3 align-items-center">
@@ -116,8 +72,9 @@
                                 placeholder="Tambahkan catatan" required></textarea>
                         </div>
                     </div>
+
                     <div class="d-flex justify-content-between mt-4">
-                        <a href="<?= base_url('publikasi/manage') ?>" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+                        <a href="<?= base_url('statistik_sektoral/manage') ?>" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
                         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
                         <!-- <button type="reset" class="btn btn-secondary"><i class="fa-solid fa-arrow-rotate-left"></i> Reset</button> -->
                     </div>
@@ -129,12 +86,12 @@
 
 <script>
     function validateCheckboxes() {
-        const checkboxes = document.querySelectorAll('input[name="pengingat[]"]');
-        const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-        if (!isChecked) {
-            alert('Silakan pilih minimal satu opsi pada "reminder"');
-            return false;
-        }
+        // const checkboxes = document.querySelectorAll('input[name="pengingat[]"]');
+        // const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        // if (!isChecked) {
+        //     alert('Silakan pilih minimal satu opsi pada "reminder"');
+        //     return false;
+        // }
         return true;
     }
 </script>
