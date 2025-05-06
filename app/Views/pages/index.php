@@ -1,103 +1,256 @@
-<!-- Hero Section -->
-<section class="hero">
-    <div class="container">
-        <h1>BPS Kabupaten Tanggamus</h1>
-        <p>Lembaga independen, terpercaya, dan berperan aktif dalam mendukung perumusan kebijakan berbasis data</p>
-        <a href="#features" class="btn btn-primary btn-lg">Jelajahi Fitur</a>
-    </div>
-</section>
+<!-- Main Hero Section -->
+<div class="main-content" style="
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+    text-align: center;
+">
 
-<!-- Features Section -->
-<section id="features" class="features py-5">
-    <div class="container">
-        <h2 class="section-title text-center mb-5">Fitur Kami</h2>
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-4">
-                <a href="/dokumen" class="text-decoration-none text-dark">
-                    <div class="icon-box text-center bg-light border h-100 d-flex flex-column justify-content-center align-items-center">
-                        <i class="fas fa-file-contract"></i>
-                        <h4 class="mt-3">Manajemen Dokumen</h4>
-                        <p>Manajemen dokumen, seperti surat keluar, surat masuk, surat keputusan (SK), dan kontrak</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <a href="/humas" class="text-decoration-none text-dark">
-                    <div class="icon-box text-center bg-light border h-100 d-flex flex-column justify-content-center align-items-center">
-                        <i class="fas fa-calendar-days"></i>
-                        <h4 class="mt-3">Reminder</h4>
-                        <p>Pengingat tugas terkait humas, quality gates, BRS dan publikasi, serta lainnya</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <a href="/humas" class="text-decoration-none text-dark">
-                    <div class="icon-box text-center bg-light border h-100 d-flex flex-column justify-content-center align-items-center">
-                        <i class="fas fa-calendar-days"></i>
-                        <h4 class="mt-3">Reminder</h4>
-                        <p>Pengingat tugas terkait humas, quality gates, BRS dan publikasi, serta lainnya</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- About Section -->
-<section id="about" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title text-center mb-4">Tentang Kami</h2>
-        <p class="text-center section-subtitle">
-            Assista adalah aplikasi website yang dikembangkan oleh Tim TI BPS Kabupaten Tanggamus, Provinsi Lampung. Aplikasi ini
-            menyediakan berbagai fitur inovatif yang mendukung kelancaran kegiatan administrasi serta meningkatkan efisiensi dalam
-            pengelolaan data dan informasi di lingkungan BPS Kabupaten Tanggamus.
+    <div style="max-width: 700px;">
+        <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: bold;">
+            📊 Selamat Datang di <span style="color: #FFD700;">EduStat</span>
+        </h1>
+        <p style="font-size: 1.25rem; line-height: 1.8;">
+            Platform edukatif yang menyajikan informasi statistik secara visual, interaktif, dan mudah dipahami untuk semua kalangan.
         </p>
+        <a href="#fitur" style="
+            margin-top: 40px;
+            display: inline-block;
+            background-color: #FFD700;
+            color: #1e3c72;
+            padding: 14px 30px;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+        " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#FFD700'; this.style.transform='scale(1)'">
+            Jelajahi Sekarang
+        </a>
     </div>
-</section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-5">
-    <div class="container">
-        <h2 class="section-title text-center mb-4">Hubungi Kami</h2>
-        <form id="waForm">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <input id="jk" name="jk" type="text" class="form-control" placeholder="Jenis kelamin" required>
-                </div>
-            </div>
-            <div class="mb-3">
-                <textarea id="pesan" name="pesan" class="form-control" rows="5" placeholder="Pesan" required></textarea>
-            </div>
-            <div class="text-center">
-                <button type="button" onclick="generateWhatsAppLink()" class="btn btn-primary">
-                    <i class="fa-brands fa-whatsapp"></i> Kirim Pesan
-                </button>
-            </div>
-        </form>
-    </div>
-</section>
-
-<!-- Flash Message Modal (Bootstrap) -->
-<div class="modal fade" id="flashMessageModal" tabindex="-1" aria-labelledby="flashMessageModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="flashMessageModalLabel">Pesan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- The flash message content will be injected here -->
-                <p id="flashMessageText"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
+    <!-- Wave Divider -->
+    <div style="position: absolute; bottom: 0; width: 100%; overflow: hidden; line-height: 0;">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100px; width: 100%;">
+            <path d="M0.00,49.98 C150.00,150.00 349.74,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                style="stroke: none; fill: white;"></path>
+        </svg>
     </div>
 </div>
+
+<!-- Feature Section -->
+<section id="fitur" style="
+    background: white;
+    color: #333;
+    padding: 80px 20px;
+    text-align: center;
+">
+    <h2 style="font-size: 2.8rem; margin-bottom: 50px; font-weight: bold;">
+        🔍 Fitur Unggulan
+    </h2>
+    <div style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+    ">
+        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">📈 Visualisasi Data</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                Grafik interaktif yang memudahkan pengguna memahami tren statistik.
+            </p>
+        </div>
+        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">🎓 Materi Edukatif</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                Pembelajaran statistik dasar hingga lanjutan dengan ilustrasi dan studi kasus.
+            </p>
+        </div>
+        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">🧠 Quiz & Latihan</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                Uji pemahaman dengan soal-soal latihan dan penilaian otomatis.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Section Statistik Mirip Gambar -->
+<section style="background: linear-gradient(to right, #0f4c81, #1e7bb8); padding: 60px 0; color: #fff;">
+    <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 40px;">📊 Statistik Terbaru</h2>
+
+    <div style="position: relative; max-width: 1000px; margin: auto; overflow: hidden;">
+        <!-- Slider wrapper -->
+        <div id="slider" style="
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      gap: 20px;
+    ">
+            <!-- CARD -->
+            <div class="card-stat">
+                <div class="icon">💰</div>
+                <div class="label">Gini<br>Rasio</div>
+                <div class="value">0,381</div>
+                <div class="unit"></div>
+                <div class="date">September 2024</div>
+            </div>
+
+            <div class="card-stat">
+                <div class="icon">🏠</div>
+                <div class="label">IPM<br>(UHH LF SP2020)</div>
+                <div class="value">75,02</div>
+                <div class="unit"></div>
+                <div class="date">2024</div>
+            </div>
+
+            <div class="card-stat">
+                <div class="icon">🌐</div>
+                <div class="label">Nilai<br>Ekspor</div>
+                <div class="value">23.247,3</div>
+                <div class="unit">Juta US$</div>
+                <div class="date">Maret 2025</div>
+            </div>
+
+            <div class="card-stat">
+                <div class="icon">📦</div>
+                <div class="label">Nilai<br>Impor</div>
+                <div class="value">18.920,1</div>
+                <div class="unit">Juta US$</div>
+                <div class="date">Maret 2025</div>
+            </div>
+
+            <div class="card-stat">
+                <div class="icon">💹</div>
+                <div class="label">Nilai Neraca<br>Perdagangan</div>
+                <div class="value">4.329,1</div>
+                <div class="unit">Juta US$</div>
+                <div class="date">Maret 2025</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination Dots -->
+    <div style="text-align: center; margin-top: 20px;">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</section>
+
+<style>
+    .card-stat {
+        background: #fff;
+        color: #333;
+        border-radius: 16px;
+        padding: 30px 20px;
+        text-align: center;
+        min-width: 220px;
+        flex-shrink: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+        font-size: 2rem;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    .label {
+        font-weight: bold;
+        font-size: 1rem;
+        color: #003366;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+
+    .value {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .unit {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    .date {
+        margin-top: 10px;
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+        background-color: #ddd;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s;
+    }
+
+    .dot.active {
+        background-color: #007bff;
+    }
+</style>
+
+<script>
+    const slider = document.getElementById('slider');
+    const dots = document.querySelectorAll('.dot');
+    let index = 0;
+
+    function showSlide(i) {
+        const cardWidth = 240; // Width + margin
+        slider.style.transform = `translateX(-${i * cardWidth}px)`;
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[i % dots.length].classList.add('active');
+    }
+
+    setInterval(() => {
+        index = (index + 1) % dots.length;
+        showSlide(index);
+    }, 3000);
+</script>
+
+<!-- Section Edukasi Statistik -->
+<section style="background-color: #f8f9fa; padding: 80px 20px; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: bold;">🎥 Edukasi Statistik</h2>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: auto;">
+        <div style="flex: 1; min-width: 300px; max-width: 500px;">
+            <iframe width="100%" height="280" src="https://www.youtube.com/embed/VIDEOLINK1" frameborder="0" allowfullscreen></iframe>
+            <p style="margin-top: 15px; font-weight: bold;">Apa itu Indeks Harga Konsumen?</p>
+        </div>
+        <div style="flex: 1; min-width: 300px; max-width: 500px;">
+            <iframe width="100%" height="280" src="https://www.youtube.com/embed/VIDEOLINK2" frameborder="0" allowfullscreen></iframe>
+            <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
+        </div>
+    </div>
+</section>
+<!-- Section Kalender Rilis -->
+<section style="background: white; padding: 80px 20px; text-align: center; color: #333;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 40px; font-weight: bold;">🗓️ Jadwal Rilis Data</h2>
+    <p style="max-width: 700px; margin: auto; margin-bottom: 40px;">Jangan lewatkan rilis resmi data statistik dari BPS. Berikut beberapa jadwal penting yang akan datang:</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        <div style="border-left: 4px solid #2a5298; background: #f1f3f5; padding: 20px; max-width: 400px; text-align: left; border-radius: 8px;">
+            <h4 style="margin-bottom: 10px;">15 Mei 2025</h4>
+            <p>Rilis Data Pertumbuhan Ekonomi Triwulan I-2025</p>
+        </div>
+        <div style="border-left: 4px solid #2a5298; background: #f1f3f5; padding: 20px; max-width: 400px; text-align: left; border-radius: 8px;">
+            <h4 style="margin-bottom: 10px;">1 Juni 2025</h4>
+            <p>Rilis Inflasi Nasional Mei 2025</p>
+        </div>
+    </div>
+</section>
+
 
 <script>
     function generateWhatsAppLink() {

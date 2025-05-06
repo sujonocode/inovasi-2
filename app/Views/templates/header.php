@@ -82,7 +82,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="<?= base_url('assets/image/sieduta.png') ?>" alt="Logo Assista"
+                <img src="<?= base_url('assets/image/sieduta.png') ?>" alt="Logo SIEDUTA"
                     style="width: 30px; height: 30px; margin-right: 10px;">
                 <span><strong>SIEDUTA</strong></span>
             </a>
