@@ -515,3 +515,17 @@ footer a:hover {
                     border-radius: 16px;
                     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
                 }
+
+                .dashboard-section { display: none; }
+
+                .active-section { display: block; }
+
+                .equal-height {
+                    height: 100%;
+                }
+
+                @media (min-width: 992px) {
+                    #mainChartCard {
+                        height: calc(100% + 12px); /* adjust this value if needed */
+                    }
+                }

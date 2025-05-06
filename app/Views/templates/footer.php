@@ -1,6 +1,6 @@
 </div>
 </body>
-<footer class="bg-dark text-light pt-5 pb-4 mt-5">
+<footer class="bg-dark text-light pt-5 pb-4">
     <div class="container">
         <div class="row">
 
@@ -22,9 +22,10 @@
                 <h6 class="fw-bold text-start">Navigasi Cepat</h6>
                 <ul class="list-unstyled text-start">
                     <li><a href="/" class="text-light text-decoration-none">Beranda</a></li>
-                    <li><a href="/dokumen" class="text-light text-decoration-none">Manajemen Dokumen</a></li>
-                    <li><a href="/humas" class="text-light text-decoration-none">Reminder</a></li>
-                    <li><a href="/kontak" class="text-light text-decoration-none">Kontak</a></li>
+                    <li><a href="/dokumen" class="text-light text-decoration-none">Indikator Strategis</a></li>
+                    <li><a href="/humas" class="text-light text-decoration-none">Statistik Sektoral</a></li>
+                    <li><a href="/kontak" class="text-light text-decoration-none">Desa Cantik</a></li>
+                    <li><a href="/kontak" class="text-light text-decoration-none">Halo PST</a></li>
                 </ul>
             </div>
 
