@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Website for BPS Kabupaten Tanggamus providing document management, reminders, tracking, and more.">
-    <link rel="shortcut icon" type="image/png" href="/assista.ico">
+    <link rel="shortcut icon" type="image/png" href="/sieduta.ico">
     <title><?= esc($title) ?></title>
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <script src="https://kit.fontawesome.com/33529d3488.js" crossorigin="anonymous"></script>
 
     <!-- Favicon -->
-    <link rel="icon" href=<?= base_url("assista.ico"); ?> type="image/x-icon">
+    <link rel="icon" href=<?= base_url("sieduta.ico"); ?> type="image/x-icon">
 
     <!-- FullCalendar CSS -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
@@ -82,9 +82,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="<?= base_url('assets/image/assista.png') ?>" alt="Logo Assista"
+                <img src="<?= base_url('assets/image/sieduta.png') ?>" alt="Logo Assista"
                     style="width: 30px; height: 30px; margin-right: 10px;">
-                <span>Assista</span>
+                <span><strong>SIEDUTA</strong></span>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,9 +99,6 @@
                     <li class="nav-item">
                         <a class="nav-link <?= (uri_string() == 'indikator_strategis') ? 'active' : '' ?>" href="<?= base_url('indikator_strategis') ?>">Indikator Strategis</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link < ?= (uri_string() == 'statistik_sektoral') ? 'active' : '' ?>" href="<?= base_url('statistik_sektoral') ?>">Statistik Sektoral</a>
-                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="<?= base_url('statistik_sektoral') ?>" id="statistik_sektoral" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik Sektoral</a>
                         <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
