@@ -83,66 +83,73 @@
     </div>
 </section>
 
-<!-- Section Statistik Mirip Gambar -->
+<!-- Carousel Slider -->
 <section style="background: linear-gradient(to right, #0f4c81, #1e7bb8); padding: 60px 0; color: #fff;">
     <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 40px;">📊 Statistik Terbaru</h2>
 
-    <div style="position: relative; max-width: 1000px; margin: auto; overflow: hidden;">
-        <!-- Slider wrapper -->
-        <div id="slider" style="
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      gap: 20px;
-    ">
-            <!-- CARD -->
-            <div class="card-stat">
-                <div class="icon">💰</div>
-                <div class="label">Gini<br>Rasio</div>
-                <div class="value">0,381</div>
-                <div class="unit"></div>
-                <div class="date">September 2024</div>
-            </div>
+    <!-- Outer Container with buttons outside -->
+    <div style="position: relative; width: 960px; margin: auto;">
 
-            <div class="card-stat">
-                <div class="icon">🏠</div>
-                <div class="label">IPM<br>(UHH LF SP2020)</div>
-                <div class="value">75,02</div>
-                <div class="unit"></div>
-                <div class="date">2024</div>
-            </div>
+        <!-- Left Button (outside slider) -->
+        <button id="prev" style="
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        ">&#10094;</button>
 
-            <div class="card-stat">
-                <div class="icon">🌐</div>
-                <div class="label">Nilai<br>Ekspor</div>
-                <div class="value">23.247,3</div>
-                <div class="unit">Juta US$</div>
-                <div class="date">Maret 2025</div>
-            </div>
-
-            <div class="card-stat">
-                <div class="icon">📦</div>
-                <div class="label">Nilai<br>Impor</div>
-                <div class="value">18.920,1</div>
-                <div class="unit">Juta US$</div>
-                <div class="date">Maret 2025</div>
-            </div>
-
-            <div class="card-stat">
-                <div class="icon">💹</div>
-                <div class="label">Nilai Neraca<br>Perdagangan</div>
-                <div class="value">4.329,1</div>
-                <div class="unit">Juta US$</div>
-                <div class="date">Maret 2025</div>
+        <!-- Slider Container -->
+        <div id="slider-container" style="
+            display: flex;
+            overflow: hidden;
+            width: 900px;
+            margin: auto;
+        ">
+            <div id="slider" style="
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+                gap: 20px;
+            ">
+                <!-- CARD -->
+                <div class="card-stat">💰<br>Gini Rasio<br><b>0,381</b><br><small>Sep 2024</small></div>
+                <div class="card-stat">🏠<br>IPM<br><b>75,02</b><br><small>2024</small></div>
+                <div class="card-stat">🌐<br>Nilai Ekspor<br><b>23.247,3</b><br><small>Mar 2025</small></div>
+                <div class="card-stat">📦<br>Nilai Impor<br><b>18.920,1</b><br><small>Mar 2025</small></div>
+                <div class="card-stat">💹<br>Neraca Dagang<br><b>4.329,1</b><br><small>Mar 2025</small></div>
+                <div class="card-stat">📦<br>Nilai Impor<br><b>18.920,1</b><br><small>Mar 2025</small></div>
+                <div class="card-stat">💹<br>Neraca Dagang<br><b>4.329,1</b><br><small>Mar 2025</small></div>
             </div>
         </div>
+
+        <!-- Right Button (outside slider) -->
+        <button id="next" style="
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        ">&#10095;</button>
     </div>
 
     <!-- Pagination Dots -->
-    <div style="text-align: center; margin-top: 20px;">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
+    <div id="dots-container" style="text-align: center; margin-top: 20px;"></div>
 </section>
 
 <style>
@@ -151,41 +158,20 @@
         color: #333;
         border-radius: 16px;
         padding: 30px 20px;
+        /* tambah padding vertikal */
         text-align: center;
-        min-width: 220px;
+        min-width: 210px;
+        max-width: 210px;
+        min-height: 180px;
+        /* tambahkan tinggi minimum */
         flex-shrink: 0;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .icon {
-        font-size: 2rem;
-        color: #007bff;
-        margin-bottom: 10px;
-    }
-
-    .label {
-        font-weight: bold;
         font-size: 1rem;
-        color: #003366;
-        margin-bottom: 10px;
-        line-height: 1.3;
+        /* sedikit diperbesar */
+        line-height: 1.6;
+        box-sizing: border-box;
     }
 
-    .value {
-        font-size: 1.8rem;
-        font-weight: bold;
-    }
-
-    .unit {
-        font-size: 0.9rem;
-        color: #777;
-    }
-
-    .date {
-        margin-top: 10px;
-        font-size: 0.85rem;
-        color: #888;
-    }
 
     .dot {
         height: 10px;
@@ -195,6 +181,7 @@
         border-radius: 50%;
         display: inline-block;
         transition: background-color 0.3s;
+        cursor: pointer;
     }
 
     .dot.active {
@@ -204,39 +191,324 @@
 
 <script>
     const slider = document.getElementById('slider');
-    const dots = document.querySelectorAll('.dot');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+    const dotsContainer = document.getElementById('dots-container');
+
+    const totalItems = slider.children.length;
+    const totalVisible = 4;
+    const cardWidth = 210 + 20;
+
     let index = 0;
+    let autoSlideInterval;
 
-    function showSlide(i) {
-        const cardWidth = 240; // Width + margin
-        slider.style.transform = `translateX(-${i * cardWidth}px)`;
-
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[i % dots.length].classList.add('active');
+    for (let i = 0; i < totalVisible; i++) {
+        const clone = slider.children[i].cloneNode(true);
+        slider.appendChild(clone);
     }
 
-    setInterval(() => {
-        index = (index + 1) % dots.length;
-        showSlide(index);
-    }, 3000);
+    const dots = [];
+    for (let i = 0; i < totalItems; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            index = i;
+            updateSlider();
+            resetAutoSlide();
+        });
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+    }
+
+    const updateDots = () => {
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index % totalItems);
+        });
+    };
+
+    const updateSlider = () => {
+        slider.style.transition = 'transform 0.5s ease-in-out';
+        slider.style.transform = `translateX(-${index * cardWidth}px)`;
+        updateDots();
+
+        if (index === totalItems) {
+            setTimeout(() => {
+                slider.style.transition = 'none';
+                index = 0;
+                slider.style.transform = `translateX(0)`;
+                updateDots();
+            }, 500);
+        }
+    };
+
+    const moveToNext = () => {
+        index++;
+        updateSlider();
+    };
+
+    const moveToPrev = () => {
+        if (index <= 0) {
+            index = totalItems;
+            slider.style.transition = 'none';
+            slider.style.transform = `translateX(-${index * cardWidth}px)`;
+
+            setTimeout(() => {
+                index--;
+                updateSlider();
+            }, 20);
+        } else {
+            index--;
+            updateSlider();
+        }
+    };
+
+    next.addEventListener('click', () => {
+        moveToNext();
+        resetAutoSlide();
+    });
+
+    prev.addEventListener('click', () => {
+        moveToPrev();
+        resetAutoSlide();
+    });
+
+    const startAutoSlide = () => {
+        autoSlideInterval = setInterval(moveToNext, 4000);
+    };
+
+    const resetAutoSlide = () => {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    };
+
+    startAutoSlide();
 </script>
 
+/////////
+<!-- Section Edukasi Statistik (Carousel Slider) -->
+<section style="background-color: #f8f9fa; padding: 80px 20px; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: bold;">🎥 Edukasi Statistik</h2>
+
+    <div style="position: relative; width: 100%; max-width: 860px; margin: auto;">
+
+        <!-- Left Button -->
+        <button id="prev-video" style="
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        ">&#10094;</button>
+
+        <!-- Slider Container -->
+        <div id="video-slider-container" style="
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        ">
+            <div id="video-slider" style="
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+                gap: 20px;
+            ">
+                <!-- Video Cards -->
+                <div class="video-card">
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Apa itu Indeks Harga Konsumen?</p>
+                </div>
+                <div class="video-card">
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/sAr29p2XMiU" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
+                </div>
+                <div class="video-card">
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/iBQWmQBtZ_w" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Apa itu Indeks Harga Konsumen?</p>
+                </div>
+                <div class="video-card">
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/L86LTnOeXQE" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Button -->
+        <button id="next-video" style="
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        ">&#10095;</button>
+    </div>
+
+    <!-- Dots -->
+    <div id="video-dots-container" style="text-align: center; margin-top: 20px;"></div>
+</section>
+
+<style>
+    .video-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        flex: 0 0 auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background-color: #007bff;
+    }
+
+    @media screen and (max-width: 900px) {
+        #video-slider-container {
+            max-width: 420px;
+            margin: auto;
+        }
+
+        .video-card {
+            max-width: 400px;
+        }
+    }
+</style>
+
+<script>
+    const videoSlider = document.getElementById('video-slider');
+    const nextVideo = document.getElementById('next-video');
+    const prevVideo = document.getElementById('prev-video');
+    const videoDotsContainer = document.getElementById('video-dots-container');
+
+    const videoItems = videoSlider.children.length;
+    const visibleVideoCount = 2;
+
+    // Clone first items for looping effect
+    for (let i = 0; i < visibleVideoCount; i++) {
+        const clone = videoSlider.children[i].cloneNode(true);
+        videoSlider.appendChild(clone);
+    }
+
+    // Handle dynamic width
+    function getVideoCardWidth() {
+        const screenWidth = window.innerWidth;
+        return screenWidth <= 900 ? 420 : (420 * 2);
+    }
+
+    let videoCardWidth = getVideoCardWidth();
+    let videoIndex = 0;
+
+    const videoDots = [];
+    for (let i = 0; i < videoItems; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            videoIndex = i;
+            updateVideoSlider();
+        });
+        videoDotsContainer.appendChild(dot);
+        videoDots.push(dot);
+    }
+
+    const updateVideoDots = () => {
+        videoDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === videoIndex % videoItems);
+        });
+    };
+
+    const updateVideoSlider = () => {
+        videoSlider.style.transition = 'transform 0.5s ease-in-out';
+        videoSlider.style.transform = `translateX(-${videoIndex * (videoCardWidth / visibleVideoCount)}px)`;
+        updateVideoDots();
+
+        if (videoIndex === videoItems) {
+            setTimeout(() => {
+                videoSlider.style.transition = 'none';
+                videoIndex = 0;
+                videoSlider.style.transform = `translateX(0)`;
+                updateVideoDots();
+            }, 500);
+        }
+    };
+
+    const moveNextVideo = () => {
+        videoIndex++;
+        updateVideoSlider();
+    };
+
+    const movePrevVideo = () => {
+        if (videoIndex <= 0) {
+            videoIndex = videoItems;
+            videoSlider.style.transition = 'none';
+            videoSlider.style.transform = `translateX(-${videoIndex * (videoCardWidth / visibleVideoCount)}px)`;
+
+            setTimeout(() => {
+                videoIndex--;
+                updateVideoSlider();
+            }, 20);
+        } else {
+            videoIndex--;
+            updateVideoSlider();
+        }
+    };
+
+    nextVideo.addEventListener('click', moveNextVideo);
+    prevVideo.addEventListener('click', movePrevVideo);
+    window.addEventListener('resize', () => {
+        videoCardWidth = getVideoCardWidth();
+        updateVideoSlider();
+    });
+
+    setInterval(moveNextVideo, 5000);
+</script>
+
+
+/////////
 <!-- Section Edukasi Statistik -->
 <section style="background-color: #f8f9fa; padding: 80px 20px; text-align: center;">
     <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: bold;">🎥 Edukasi Statistik</h2>
     <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: auto;">
         <div style="flex: 1; min-width: 300px; max-width: 500px;">
-            <iframe width="100%" height="280" src="https://www.youtube.com/embed/VIDEOLINK1" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU?si=6IyVses1axgwo6wL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <p style="margin-top: 15px; font-weight: bold;">Apa itu Indeks Harga Konsumen?</p>
         </div>
         <div style="flex: 1; min-width: 300px; max-width: 500px;">
-            <iframe width="100%" height="280" src="https://www.youtube.com/embed/VIDEOLINK2" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="280" src="https://www.youtube.com/embed/sAr29p2XMiU?si=BIx7vepOiwNPuzwJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
         </div>
     </div>
 </section>
+
 <!-- Section Kalender Rilis -->
-<section style="background: white; padding: 80px 20px; text-align: center; color: #333;">
+<!-- <section style="background: white; padding: 80px 20px; text-align: center; color: #333;">
     <h2 style="font-size: 2.5rem; margin-bottom: 40px; font-weight: bold;">🗓️ Jadwal Rilis Data</h2>
     <p style="max-width: 700px; margin: auto; margin-bottom: 40px;">Jangan lewatkan rilis resmi data statistik dari BPS. Berikut beberapa jadwal penting yang akan datang:</p>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
@@ -249,7 +521,7 @@
             <p>Rilis Inflasi Nasional Mei 2025</p>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <script>
