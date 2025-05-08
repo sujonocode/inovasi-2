@@ -1,21 +1,39 @@
-<div class="gate-hero-container">
-    <div class="gate-wrapper">
-        <img src="<?= base_url('assets/image/left-gate.svg') ?>" alt="Gerbang Kiri"
-            class="gate gate-left" id="gateLeft">
-        <img src="<?= base_url('assets/image/right-gate.svg') ?>" alt="Gerbang Kanan"
-            class="gate gate-right" id="gateRight">
-    </div>
+<div class="main-content" style="
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+    text-align: center;
+">
 
-    <div class="main-hero-text" id="heroContent">
-        <h1>
+    <div style="max-width: 700px;">
+        <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: bold;">
             📊 Selamat Datang di <span style="color: #FFD700;">SIEDUTA</span>
         </h1>
-        <p id="typedSubText"></p><span class="cursor"></span>
-        <br />
-        <a href="#fitur" class="hero-button">Jelajahi Sekarang</a>
+        <p style="font-size: 1.25rem; line-height: 1.8;">
+            Percepatan Pembangunan Tanggamus melalui Literasi Statistik
+        </p>
+        <a href="#fitur" style="
+            margin-top: 40px;
+            display: inline-block;
+            background-color: #FFD700;
+            color: #1e3c72;
+            padding: 14px 30px;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+        " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#FFD700'; this.style.transform='scale(1)'">
+            Jelajahi Sekarang
+        </a>
     </div>
-
-    <div class="wave-divider">
+    <div style="position: absolute; bottom: 0; width: 100%; overflow: hidden; line-height: 0;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100px; width: 100%;">
             <path d="M0.00,49.98 C150.00,150.00 349.74,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
                 style="stroke: none; fill: white;"></path>
@@ -23,107 +41,87 @@
     </div>
 </div>
 
-<style>
-    body {
-        margin: 0;
-    }
+<div class="gate-container">
+    <div class="gate-wrapper">
+        <img src="<?= base_url('assets/image/left-gate.svg') ?>" alt="Gerbang Kiri"
+            class="gate gate-left" id="gateLeft">
+        <img src="<?= base_url('assets/image/right-gate.svg') ?>" alt="Gerbang Kanan"
+            class="gate gate-right" id="gateRight">
+    </div>
+    <div class="welcome-text" id="mainText">
+        Selamat Datang di SIEDUTA
+    </div>
+    <div class="sub-text">
+        <span id="typedSubText"></span><span class="cursor"></span>
+    </div>
+</div>
 
-    .gate-hero-container {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to right, #1e3c72, #2a5298);
-        color: white;
-        min-height: 100vh;
-        position: relative;
-        overflow: hidden;
-        text-align: center;
+<style>
+    .gate-container {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100vh;
+        position: relative;
         flex-direction: column;
-        padding: 80px 20px 100px;
+        text-align: center;
     }
 
     .gate-wrapper {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         display: flex;
-        justify-content: space-between;
-        align-items: stretch;
+        position: relative;
         z-index: 2;
-        pointer-events: none;
+        max-width: 100%;
     }
 
     .gate {
-        width: 25vw;
-        max-width: 160px;
-        height: 100%;
-        object-fit: cover;
+        width: 50vw;
+        max-width: 200px;
+        height: auto;
         transition: transform 2s ease-in-out;
-        background-color: #1e3c72;
-        pointer-events: none;
     }
 
     .gate-left.open {
-        transform: translateX(-80%);
+        transform: translateX(-100%);
     }
 
     .gate-right.open {
-        transform: translateX(80%);
+        transform: translateX(100%);
     }
 
-    .main-hero-text {
-        z-index: 3;
-        max-width: 700px;
+    .welcome-text {
+        position: absolute;
+        top: 40%;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        z-index: 1;
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 1s ease-in, transform 1s ease-in;
+        transition: opacity 1s ease-in;
+        width: 90%;
+        margin: 0 auto;
+        word-wrap: break-word;
+        white-space: normal;
     }
 
-    .main-hero-text.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .main-hero-text h1 {
-        font-size: 3rem;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-
-    .main-hero-text p {
-        font-size: 1.25rem;
-        line-height: 1.8;
-        display: inline-block;
-    }
-
-    .hero-button {
-        margin-top: 30px;
-        display: inline-block;
-        background-color: #FFD700;
-        color: #1e3c72;
-        padding: 14px 30px;
-        font-weight: bold;
-        border-radius: 10px;
-        text-decoration: none;
-        transition: background 0.3s, transform 0.2s;
-    }
-
-    .hero-button:hover {
-        background-color: #e6c200;
-        transform: scale(1.05);
+    .sub-text {
+        position: absolute;
+        top: 50%;
+        font-size: 1rem;
+        color: #777;
+        z-index: 1;
+        width: 90%;
+        margin: 0 auto;
+        word-wrap: break-word;
+        white-space: normal;
     }
 
     .cursor {
         display: inline-block;
         width: 1px;
-        height: 1.2em;
-        background-color: white;
+        background-color: #333;
         animation: blink 0.8s step-end infinite;
         margin-left: 3px;
-        vertical-align: bottom;
     }
 
     @keyframes blink {
@@ -132,40 +130,37 @@
         }
     }
 
-    .wave-divider {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-        z-index: 1;
-    }
-
     @media (max-width: 768px) {
         .gate {
-            width: 35vw;
+            width: 70vw;
         }
 
-        .main-hero-text h1 {
-            font-size: 2rem;
+        .welcome-text {
+            font-size: 1.5rem;
+            top: 35%;
+            word-wrap: break-word;
         }
 
-        .main-hero-text p {
-            font-size: 1rem;
+        .sub-text {
+            font-size: 0.9rem;
+            top: 45%;
+            word-wrap: break-word;
         }
     }
 
     @media (max-width: 480px) {
         .gate {
-            width: 40vw;
+            width: 80vw;
         }
 
-        .main-hero-text h1 {
-            font-size: 1.6rem;
+        .welcome-text {
+            font-size: 1.2rem;
+            top: 30%;
         }
 
-        .main-hero-text p {
-            font-size: 0.9rem;
+        .sub-text {
+            font-size: 0.8rem;
+            top: 40%;
         }
     }
 </style>
@@ -190,13 +185,12 @@
         }, 1000);
 
         setTimeout(() => {
-            document.getElementById("heroContent").classList.add("show");
+            document.getElementById("mainText").style.opacity = 1;
         }, 2500);
 
         setTimeout(typeSubLetter, 3000);
     };
 </script>
-
 
 <!-- Feature Section -->
 <section id="fitur" style="
