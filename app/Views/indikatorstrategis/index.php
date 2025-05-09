@@ -1,3 +1,5 @@
+<script src="<?= base_url('assets/geojson/tanggamusKab_kab.js') ?>"></script>
+
 <div class="container my-5">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -37,11 +39,6 @@
                         <canvas id="chart1c" height="180"></canvas>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="container-fluid p-2">
-            <div class="row g-4">
                 <div class="col-md-4 col-sm-6">
                     <div class="card shadow-sm p-3">
                         <h6 class="text-center"></h6>
@@ -87,7 +84,7 @@
                 <div class="col-lg-8 d-flex">
                     <div class="card p-3 shadow-sm rounded w-100">
                         <h6 class="text-center">Main Chart</h6>
-                        <canvas id="chart1g" class="w-100" style="height: 100%; min-height: 330px;"></canvas>
+                        <div id="mainChart" class="w-100" style="height: 100%; min-height: 330px;"></div>
                     </div>
                 </div>
             </div>
@@ -105,6 +102,8 @@
                         <canvas id="mainChart" class="w-100" style="height: 100%; min-height: 330px;"></canvas>
                     </div>
                 </div>
+
+
 
                 <!-- RIGHT STACKED SMALL CHARTS -->
                 <div class="col-lg-4 d-flex flex-column gap-4">
@@ -166,37 +165,15 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Register Chart.js and boxplot plugin
-        // Chart.register(
-        //     Chart.BoxPlotController,
-        //     Chart.BoxAndWhiskers,
-        //     Chart.BoxPlotChart
-        // );
-
-        // Chart 1a - Pie Chart
-        new Chart(document.getElementById('chart1a'), {
-            type: 'pie',
-            data: {
-                labels: ['A', 'B', 'C', 'D'],
-                datasets: [{
-                    label: 'Population',
-                    data: [300, 50, 100, 75],
-                    backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0']
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-        // Chart 1b - Line Chart
-        new Chart(document.getElementById('chart1b'), {
+        <?= $this->include('indikatorstrategis/charts/jumlahPendudukJk.js') ?>
+        <?= $this->include('indikatorstrategis/charts/jumlahPendudukAgama.js') ?>
+        new Chart(document.getElementById('chart1c'), {
             type: 'line',
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+                labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
                 datasets: [{
-                    label: 'Growth',
-                    data: [10, 20, 15, 25],
+                    label: 'TPT',
+                    data: [3.91, 4.82, 4.76, 6.08, 3.24, 4.88, 4.60, 5.72, 5.08, 2.21, 2.96, 2.96, 2.93, 3.70, 3.35],
                     borderColor: '#42a5f5',
                     fill: false,
                     tension: 0.4
@@ -207,15 +184,16 @@
             }
         });
 
-        // Chart 1c - Bar Chart
-        new Chart(document.getElementById('chart1c'), {
-            type: 'bar',
+        new Chart(document.getElementById('chart1d'), {
+            type: 'line',
             data: {
-                labels: ['2019', '2020', '2021', '2022'],
+                labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
                 datasets: [{
-                    label: 'GDP',
-                    data: [500, 600, 700, 800],
-                    backgroundColor: '#66bb6a'
+                    label: 'TPAK',
+                    data: [68.71, 68.35, 68.55, 66.81, 71.18, 66.20, 71.34, 68.46, 65.91, 75.58, 68.78, 59.72, 68.76, 68.91, 70.60],
+                    borderColor: '#42a5f5',
+                    fill: false,
+                    tension: 0.4
                 }]
             },
             options: {
@@ -223,132 +201,28 @@
             }
         });
 
-        // Chart 1d - Scatter Plot
-        new Chart(document.getElementById('chart1d'), {
-            type: 'scatter',
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Chart(document.getElementById('chart1e'), {
+            type: 'line',
             data: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
                 datasets: [{
-                    label: 'Data Points',
-                    data: [{
-                        x: 10,
-                        y: 20
-                    }, {
-                        x: 15,
-                        y: 10
-                    }, {
-                        x: 20,
-                        y: 30
-                    }],
-                    backgroundColor: '#ef5350'
+                    label: 'HLS',
+                    data: [10.70, 10.86, 11.03, 11.29, 11.49, 11.92, 11.93, 12.14, 12.15, 12.17, 12.18, 12.19, 12.30, 12.31, 12.33],
+                    borderColor: '#42a5f5',
+                    fill: false,
+                    tension: 0.4
                 }]
             },
             options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        type: 'linear',
-                        position: 'bottom'
-                    }
-                }
+                responsive: true
             }
         });
 
-        const ctx = document.getElementById('chart1e').getContext('2d');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-                datasets: [{
-                        label: 'Line A',
-                        data: [10, 20, 15, 25, 22],
-                        borderColor: 'red',
-                        fill: false,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Line B',
-                        data: [30, 25, 35, 20, 40],
-                        borderColor: 'blue',
-                        fill: false,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Line C',
-                        data: [5, 10, 8, 15, 12],
-                        borderColor: 'green',
-                        fill: false,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Line D',
-                        data: [22, 18, 25, 30, 28],
-                        borderColor: 'orange',
-                        fill: false,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Line E',
-                        data: [12, 17, 10, 18, 20],
-                        borderColor: 'purple',
-                        fill: false,
-                        tension: 0.4
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    }
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Month'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Value'
-                        }
-                    }
-                }
-            }
-        });
-
-        // Chart 1f - Stacked Bar Chart
-        // new Chart(document.getElementById('chart1f'), {
-        //     type: 'bar',
-        //     data: {
-        //         labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-        //         datasets: [{
-        //                 label: 'Service',
-        //                 data: [120, 130, 100, 90],
-        //                 backgroundColor: '#29b6f6'
-        //             },
-        //             {
-        //                 label: 'Manufacturing',
-        //                 data: [80, 70, 60, 100],
-        //                 backgroundColor: '#ef5350'
-        //             }
-        //         ]
-        //     },
-        //     options: {
-        //         responsive: true,
-        //         scales: {
-        //             x: {
-        //                 stacked: true
-        //             },
-        //             y: {
-        //                 stacked: true
-        //             }
-        //         }
-        //     }
-        // });
     });
 </script>
 
@@ -358,16 +232,16 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                labels: ['Laki-laki', 'Perempuan'],
                 datasets: [{
-                        label: 'Service',
-                        data: [120, 130, 100, 90],
+                        label: 'Bekerja',
+                        data: [223354, 121366],
                         backgroundColor: '#29b6f6',
                         stack: 'Stack 0',
                     },
                     {
-                        label: 'Manufacturing',
-                        data: [80, 70, 60, 100],
+                        label: 'Pengangguran Terbuka',
+                        data: [5385, 5973],
                         backgroundColor: '#ef5350',
                         stack: 'Stack 0',
                     }
@@ -471,4 +345,51 @@
             }
         }
     });
+</script>
+
+<script>
+    // 1. Create the map
+    var map = L.map('mainChart').setView([-2.5, 117.5], 5); // Centered on Indonesia
+
+    // 2. Add OpenStreetMap base layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // 3. Sample GeoJSON (can be replaced with your own or loaded from server)
+    var sampleGeoJson = {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "properties": {
+                "name": "Example Area"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [117.0, -2.0],
+                        [118.0, -2.0],
+                        [118.0, -3.0],
+                        [117.0, -3.0],
+                        [117.0, -2.0]
+                    ]
+                ]
+            }
+        }]
+    };
+
+    // 4. Add GeoJSON to map
+    L.geoJSON(tanggamusGeoJSON, {
+        style: {
+            color: "#28a745",
+            weight: 2,
+            fillOpacity: 0.4
+        },
+        onEachFeature: function(feature, layer) {
+            if (feature.properties.name) {
+                layer.bindPopup("Kecamatan: " + feature.properties.name);
+            }
+        }
+    }).addTo(map);
 </script>
