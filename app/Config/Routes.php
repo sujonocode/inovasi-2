@@ -16,6 +16,8 @@ $routes->get('/statistik_sektoral/edit/(:num)', 'StatistikSektoral::edit/$1');
 $routes->post('/statistik_sektoral/update/(:num)', 'StatistikSektoral::update/$1');
 $routes->get('/statistik_sektoral/delete/(:num)', 'StatistikSektoral::delete/$1');
 $routes->get('/statistik_sektoral/export_xlsx', 'StatistikSektoral::exportExcel');
+$routes->get('/statistik_sektoral/pembinaan', 'StatistikSektoral::pembinaan');
+$routes->get('/statistik_sektoral/dokumen', 'StatistikSektoral::dokumen');
 
 $routes->get('/desa_cantik', 'DesaCantik::index');
 

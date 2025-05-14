@@ -6,7 +6,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\JadwalStatistikSektoral;
 use App\Models\Kontak;
-use App\Models\Tim;
+use App\Models\TimSektoral;
 use DateTime;
 use DateTimeZone;
 use IntlDateFormatter;
@@ -63,6 +63,57 @@ class StatistikSektoral extends BaseController
             . view('templates/footer');
     }
 
+    public function pembinaan(string $page = 'Pembinaan Statistik Sektoral | Pembinaan')
+    {
+        // $model = new JadwalStatistikSektoral();
+
+        $data['title'] = ucfirst($page);
+        // $data['jadwalStatistikSektorals'] = $model->findAll();
+
+        // $contactModel = new Kontak();
+        // $contactList = $contactModel->findAll();
+
+        // $contacts = [];
+        // foreach ($contactList as $contact) {
+        //     $contacts[(string) $contact['nomor']] = $contact['nama'];
+        // }
+
+        // $data['contacts'] = $contacts;
+
+        // return view('templates/header', $data)
+        //     . view('statistiksektoral/manage_jadwal', $data)
+        //     . view('templates/footer');
+
+        return view('templates/header', $data)
+            . view('statistiksektoral/pembinaan', $data)
+            . view('templates/footer');
+    }
+
+    public function dokumen(string $page = 'Pembinaan Statistik Sektoral | Dokumen')
+    {
+        // $model = new JadwalStatistikSektoral();
+
+        $data['title'] = ucfirst($page);
+        // $data['jadwalStatistikSektorals'] = $model->findAll();
+
+        // $contactModel = new Kontak();
+        // $contactList = $contactModel->findAll();
+
+        // $contacts = [];
+        // foreach ($contactList as $contact) {
+        //     $contacts[(string) $contact['nomor']] = $contact['nama'];
+        // }
+
+        // $data['contacts'] = $contacts;
+        // return view('templates/header', $data)
+        //     . view('statistiksektoral/manage_jadwal', $data)
+        //     . view('templates/footer');
+
+        return view('templates/header', $data)
+            . view('statistiksektoral/dokumen', $data)
+            . view('templates/footer');
+    }
+
     public function create(string $page = 'Pembinaan Statistik Sektoral | Create')
     {
         $data['title'] = ucfirst($page);
@@ -79,7 +130,7 @@ class StatistikSektoral extends BaseController
     public function store()
     {
         $model = new JadwalStatistikSektoral();
-        $timModel = new Tim();
+        $timModel = new TimSektoral();
 
         // $username = session()->get('username');
         $username = 'sulistyohadi';
@@ -407,7 +458,7 @@ class StatistikSektoral extends BaseController
     public function update($id)
     {
         $model = new JadwalStatistikSektoral();
-        $timModel = new Tim();
+        $timModel = new TimSektoral();
 
         $oldData = $model->find($id);
 

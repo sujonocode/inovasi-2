@@ -41,176 +41,25 @@
     </div>
 </div>
 
-<!-- <div class="gate-container">
-    <div class="gate-wrapper">
-        <img src="<?= base_url('assets/image/left-gate.svg') ?>" alt="Gerbang Kiri"
-            class="gate gate-left" id="gateLeft">
-        <img src="<?= base_url('assets/image/right-gate.svg') ?>" alt="Gerbang Kanan"
-            class="gate gate-right" id="gateRight">
-    </div>
-    <div class="welcome-text" id="mainText">
-        Selamat Datang di SIEDUTA
-    </div>
-    <div class="sub-text">
-        <span id="typedSubText"></span><span class="cursor"></span>
-    </div>
-</div>
-
-<style>
-    .gate-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        position: relative;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .gate-wrapper {
-        display: flex;
-        position: relative;
-        z-index: 2;
-        max-width: 100%;
-    }
-
-    .gate {
-        width: 50vw;
-        max-width: 200px;
-        height: auto;
-        transition: transform 2s ease-in-out;
-    }
-
-    .gate-left.open {
-        transform: translateX(-100%);
-    }
-
-    .gate-right.open {
-        transform: translateX(100%);
-    }
-
-    .welcome-text {
-        position: absolute;
-        top: 40%;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #333;
-        z-index: 1;
-        opacity: 0;
-        transition: opacity 1s ease-in;
-        width: 90%;
-        margin: 0 auto;
-        word-wrap: break-word;
-        white-space: normal;
-    }
-
-    .sub-text {
-        position: absolute;
-        top: 50%;
-        font-size: 1rem;
-        color: #777;
-        z-index: 1;
-        width: 90%;
-        margin: 0 auto;
-        word-wrap: break-word;
-        white-space: normal;
-    }
-
-    .cursor {
-        display: inline-block;
-        width: 1px;
-        background-color: #333;
-        animation: blink 0.8s step-end infinite;
-        margin-left: 3px;
-    }
-
-    @keyframes blink {
-        50% {
-            opacity: 0;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .gate {
-            width: 70vw;
-        }
-
-        .welcome-text {
-            font-size: 1.5rem;
-            top: 35%;
-            word-wrap: break-word;
-        }
-
-        .sub-text {
-            font-size: 0.9rem;
-            top: 45%;
-            word-wrap: break-word;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .gate {
-            width: 80vw;
-        }
-
-        .welcome-text {
-            font-size: 1.2rem;
-            top: 30%;
-        }
-
-        .sub-text {
-            font-size: 0.8rem;
-            top: 40%;
-        }
-    }
-</style>
-
-<script>
-    const subText = "Percepatan Pembangunan Tanggamus melalui Literasi Statistik";
-    const typedSubTextEl = document.getElementById("typedSubText");
-    let indexText = 0;
-
-    function typeSubLetter() {
-        if (indexText < subText.length) {
-            typedSubTextEl.textContent += subText[indexText];
-            indexText++;
-            setTimeout(typeSubLetter, 40);
-        }
-    }
-
-    window.onload = () => {
-        setTimeout(() => {
-            document.getElementById('gateLeft').classList.add('open');
-            document.getElementById('gateRight').classList.add('open');
-        }, 1000);
-
-        setTimeout(() => {
-            document.getElementById("mainText").style.opacity = 1;
-        }, 2500);
-
-        setTimeout(typeSubLetter, 3000);
-    };
-</script> -->
-
 <!-- Feature Section -->
 <section id="fitur">
     <h2>🔍 Fitur Unggulan</h2>
     <div class="fitur-container">
         <div class="fitur-box">
             <h3>📈 Indikator Strategis</h3>
-            <p>Grafik interaktif yang memudahkan pengguna memahami tren statistik.</p>
+            <p>Indikator strategis BPS arahkan pembangunan Tanggamus berbasis data akurat</p>
         </div>
         <div class="fitur-box">
             <h3>🏣 Statistik Sektoral</h3>
-            <p>Pembelajaran statistik dasar hingga lanjutan dengan ilustrasi dan studi kasus.</p>
+            <p>BPS membina dinas dan OPD hasilkan data statistik terstandar nasional</p>
         </div>
         <div class="fitur-box">
             <h3>🏅 Desa Cantik</h3>
-            <p>Uji pemahaman dengan soal-soal latihan dan penilaian otomatis.</p>
+            <p>Program Desa Cantik tingkatkan pemahaman desa terhadap proses bisnis statistik</p>
         </div>
         <div class="fitur-box">
             <h3>📞 Halo PST</h3>
-            <p>Uji pemahaman dengan soal-soal latihan dan penilaian otomatis.</p>
+            <p>Pelayanan Statistik Terpadu BPS permudah akses data bagi seluruh masyarakat</p>
         </div>
     </div>
 </section>
@@ -267,7 +116,6 @@
     }
 </style>
 
-
 <!-- Carousel Slider -->
 <section style="background: linear-gradient(to right, #0f4c81, #1e7bb8); padding: 60px 0; color: #fff;">
     <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 40px;">📊 Statistik Terbaru</h2>
@@ -304,14 +152,17 @@
                 transition: transform 0.5s ease-in-out;
                 gap: 20px;
             ">
-                <!-- CARD -->
-                <div class="card-stat">💰<br>Gini Rasio<br><b>0,381</b><br><small>Sep 2024</small></div>
-                <div class="card-stat">🏠<br>IPM<br><b>75,02</b><br><small>2024</small></div>
-                <div class="card-stat">🌐<br>Nilai Ekspor<br><b>23.247,3</b><br><small>Mar 2025</small></div>
-                <div class="card-stat">📦<br>Nilai Impor<br><b>18.920,1</b><br><small>Mar 2025</small></div>
-                <div class="card-stat">💹<br>Neraca Dagang<br><b>4.329,1</b><br><small>Mar 2025</small></div>
-                <div class="card-stat">📦<br>Nilai Impor<br><b>18.920,1</b><br><small>Mar 2025</small></div>
-                <div class="card-stat">💹<br>Neraca Dagang<br><b>4.329,1</b><br><small>Mar 2025</small></div>
+                <div class="card-stat">🙋‍♂️<br>Penduduk<br><b>670.367 jiwa</b><br><small>2024</small></div>
+                <div class="card-stat">📈<br>Pertumbuhan Penduduk<br><b>1,18 %</b><br><small>2024</small></div>
+                <div class="card-stat">➗<br>Rasio Jenis Kelamin<br><b>106,6</b><br><small>2024</small></div>
+                <div class="card-stat">🧮<br>IPM<br><b>70,54</b><br><small>2024</small></div>
+                <div class="card-stat">📉<br>Penduduk Miskin<br><b>10,28 %</b><br><small>2024</small></div>
+                <div class="card-stat">🔍<br>TPT<br><b>3,19 %</b><br><small>2024</small></div>
+                <div class="card-stat">💰<br>PDRB Triwulanan (ADHB)<br><b>5.331,58 miliar rupiah</b><br><small>Triwulan IV 2024</small></div>
+                <div class="card-stat">📈<br>Pertumbuhan Ekonomi Triwulanan<br><b>-3,02 %</b><br><small>Triwulan IV 2024</small></div>
+                <div class="card-stat">💰<br>PDRB Tahunan (ADHB)<br><b>21.197,58 miliar rupiah</b><br><small>2024</small></div>
+                <div class="card-stat">📈<br>Pertumbuhan Ekonomi Tahunan<br><b>4,01 %</b><br><small>2024</small></div>
+                <div class="card-stat">🪙<br>PDRB per Kapita (ADHB)<br><b>31,62 juta rupiah</b><br><small>2024</small></div>
             </div>
         </div>
 
@@ -483,19 +334,23 @@
             <div id="video-slider">
                 <div class="video-card">
                     <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Apa itu Indeks Harga Konsumen?</p>
+                    <p>Bagaimana Data Inflasi Dihasilkan?</p>
                 </div>
                 <div class="video-card">
                     <iframe width="100%" height="280" src="https://www.youtube.com/embed/sAr29p2XMiU" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Cara Membaca Grafik Statistik dengan Benar</p>
+                    <p>Modernisasi Statistik Pertanian dengan Data Satelit & AI</p>
                 </div>
                 <div class="video-card">
                     <iframe width="100%" height="280" src="https://www.youtube.com/embed/iBQWmQBtZ_w" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Apa itu Indeks Harga Konsumen?</p>
+                    <p>[RILIS BPS] Rilis Hasil SNLIK, 2 Mei 2025</p>
                 </div>
                 <div class="video-card">
                     <iframe width="100%" height="280" src="https://www.youtube.com/embed/L86LTnOeXQE" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Cara Membaca Grafik Statistik dengan Benar</p>
+                    <p>Mencatat Indonesia - Official Theme Song Sensus Ekonomi 2026</p>
+                </div>
+                <div class="video-card">
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU?si=IILESnI4fQioyVNb" title="Video" frameborder="0" allowfullscreen></iframe>
+                    <p>Bagaimana Data Inflasi Dihasilkan</p>
                 </div>
             </div>
         </div>

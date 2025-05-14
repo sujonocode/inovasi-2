@@ -124,8 +124,8 @@
                         <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral') ?>">Jadwal Kegiatan</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">Manage Jadwal</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">CERDAS</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">Kelengkapan</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/pembinaan') ?>">Datalaku</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/dokumen') ?>">Kelengkapan</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -133,7 +133,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('desa_cantik') ?>">Jadwal Kegiatan</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('desa_cantik/manage') ?>">Manage Jadwal</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('desa_cantik/manage') ?>">Kelengkapan</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('desa_cantik/dokumen') ?>">Kelengkapan</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

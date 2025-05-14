@@ -32,14 +32,16 @@
             <!-- Kontak -->
             <div class="col-md-4 mb-4">
                 <h6 class="fw-bold text-start">Kontak Kami</h6>
-                <p class="text-light mb-1 text-start"><i class="fas fa-map-marker-alt me-2"></i>Jl. Ir. Hi. Juanda No.10, Tanggamus</p>
+                <p class="text-light mb-1 text-start"><i class="fas fa-map-marker-alt me-2"></i>Jalan Ir. H. Juanda, Kota Agung, 35384, Tanggamus</p>
                 <p class="text-light mb-1 text-start"><i class="fas fa-envelope me-2"></i>bps1802@bps.go.id</p>
-                <p class="text-light mb-1 text-start"><i class="fas fa-phone me-2"></i>(0728) 21116</p>
+                <p class="text-light mb-1 text-start"><i class="fas fa-phone me-2"></i>(0722) 21893</p>
                 <!-- Media Sosial (Opsional) -->
                 <div class="mt-3 text-start">
-                    <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-twitter fa-lg"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="https://tanggamuskab.bps.go.id/id" class="text-light me-3" target="_blank"><i class="fas fa-globe fa-lg"></i></a>
+                    <a href="https://wa.me/6281216111802" class="text-light me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    <a href="https://www.instagram.com/bps.tanggamus/" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="https://vt.tiktok.com/ZSrPN3mpe/" class="text-light me-3"><i class="fab fa-tiktok fa-lg"></i></a>
+                    <a href="https://x.com/bpstanggamus/status/1869221355813753274?t=CRMIqEq20N6jgSjUlwhUTQ&s=19" class="text-light me-3"><i class="fab fa-twitter fa-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -56,22 +58,6 @@
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-
-<!-- Footer -->
-<!-- <footer>
-    <div class="container">
-        <p style="margin: 0px;">&copy; 2025. Made with
-            <i class="fa-solid fa-heart" style="background: linear-gradient(to right, #6a11cb, #2575fc); 
-            font-size: 1.2rem;
-            -webkit-background-clip: text; 
-            -moz-background-clip: text; 
-            -o-background-clip: text;
-            background-clip: text; 
-            color: transparent;"></i>
-            by Tim TI BPS Kabupaten Tanggamus
-        </p>
-    </div>
-</footer> -->
 
 <script>
     // Ensure click toggles dropdowns on all devices
