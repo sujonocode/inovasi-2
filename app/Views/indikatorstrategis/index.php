@@ -92,22 +92,69 @@
         <div class="container-fluid p-2">
             <div class="row g-4">
                 <div class="col-md-4 col-sm-6">
-                    <div class="card shadow-sm p-3">
-                        <h6 class="text-center"></h6>
-                        <canvas id="chart1a" height="180"></canvas>
+                    <div class="card shadow-sm p-3 position-relative">
+                        <h6 class="text-center mb-3 fw-semibold">
+                            📊 PDRB Triwulanan
+                        </h6>
+
+                        <!-- Info Icon (top right corner) -->
+                        <div class="position-absolute top-0 end-0 p-2">
+                            <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
+                                <i class="bi bi-info-circle-fill text-secondary"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Klik untuk data selengkapnya">
+                                </i>
+                            </a>
+                        </div>
+
+                        <div class="d-flex justify-content-center mb-3">
+                            <select id="option9" class="form-select form-select-sm" style="width: 150px;">
+                                <option value="ADHB">ADHB</option>
+                                <option value="ADHK">ADHK</option>
+                            </select>
+                        </div>
+
+                        <canvas id="chart9" height="180"></canvas>
                     </div>
+
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="card shadow-sm p-3">
                         <h6 class="text-center"></h6>
-                        <canvas id="chart1b" height="180"></canvas>
+                        <canvas id="chart10" height="180"></canvas>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <div class="card shadow-sm p-3">
-                        <h6 class="text-center"></h6>
-                        <canvas id="chart1c" height="180"></canvas>
+                    <div class="card shadow-sm p-3 position-relative">
+                        <h6 class="text-center mb-3 fw-semibold">
+                            📊 Distribusi PDRB Triwulanan
+                        </h6>
+
+                        <!-- Info Icon (top right corner) -->
+                        <div class="position-absolute top-0 end-0 p-2">
+                            <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
+                                <i class="bi bi-info-circle-fill text-secondary"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Lainnya (Konsumsi Lembaga Nonprofit yang Melayani Rumah Tangga (PK-LNPRT) + Perubahan Inventori (PI) + Net Ekspor (Ekspor-Impor))
+                                    Klik untuk data selengkapnya">
+                                </i>
+                            </a>
+                        </div>
+
+                        <div class="d-flex justify-content-center mb-3">
+                            <select id="option11" class="form-select form-select-sm" style="width: 150px;">
+                                <option value="TW12024">TW I-2024</option>
+                                <option value="TW22024">TW II-2024</option>
+                                <option value="TW32024">TW III-2024</option>
+                                <option value="TW42024">TW IV-2024</option>
+                            </select>
+                        </div>
+
+                        <canvas id="chart11" height="180"></canvas>
                     </div>
+
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="card shadow-sm p-3">
@@ -241,6 +288,10 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+            new bootstrap.Tooltip(tooltipTriggerEl);
+        });
         <?= $this->include('indikatorstrategis/charts/jumlahPendudukJk.js') ?>
         <?= $this->include('indikatorstrategis/charts/jumlahPendudukAgama.js') ?>
         <?= $this->include('indikatorstrategis/charts/tpt.js') ?>
@@ -251,5 +302,8 @@
         <?= $this->include('indikatorstrategis/charts/chartb.js') ?>
         <?= $this->include('indikatorstrategis/charts/chartc.js') ?>
         <?= $this->include('indikatorstrategis/charts/kepadatanPendudukKec.js') ?>
+
+        <?= $this->include('indikatorstrategis/charts/chart9.js') ?>
+        <?= $this->include('indikatorstrategis/charts/chart11.js') ?>
     });
 </script>

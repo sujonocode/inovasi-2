@@ -17,6 +17,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
+    <!-- Bootstrap Icons (for the info icon) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap JS + Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/33529d3488.js" crossorigin="anonymous"></script>
@@ -114,14 +120,21 @@
                         <a class="nav-link <?= (uri_string() == 'indikator_strategis') ? 'active' : '' ?>" href="<?= base_url('indikator_strategis') ?>">Indikator Strategis</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="<?= base_url('statistik_sektoral') ?>" id="statistik_sektoral" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik Sektoral</a>
+                        <a class="nav-link dropdown-toggle" href="<?= base_url('statistik_sektoral') ?>" id="statistik_sektoral" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pembinaan Statistik Sektoral</a>
                         <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
-                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral') ?>">Pembinaan</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral') ?>">Jadwal Kegiatan</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">Manage Jadwal</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">CERDAS</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">Kelengkapan</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= (uri_string() == 'desa_cantik') ? 'active' : '' ?>" href="<?= base_url('desa_cantik') ?>">Desa Cantik</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="<?= base_url('desa_cantik') ?>" id="desa_cantik" role="button" data-bs-toggle="dropdown" aria-expanded="false">Desa Cantik</a>
+                        <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
+                            <li><a class="dropdown-item" href="<?= base_url('desa_cantik') ?>">Jadwal Kegiatan</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('desa_cantik/manage') ?>">Manage Jadwal</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('desa_cantik/manage') ?>">Kelengkapan</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= (uri_string() == 'halo_pst') ? 'active' : '' ?>" href="<?= base_url('halo_pst') ?>">Halo PST</a>

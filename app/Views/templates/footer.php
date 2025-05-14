@@ -9,7 +9,7 @@
                 <div class="d-flex align-items-center mb-3">
                     <img src="/assets/image/sieduta.png" alt="Logo SIEDUTA" style="height:80px; margin-right: 10px;">
                     <h6 class="fw-bold mb-0" style="font-style: italic; text-align: left;">
-                        SISTEM INFORMASI<br>EDUKASI STATISTIK
+                        SISTEM INFORMASI<br>EDUKASI STATISTIK<br>TERINTEGRASI
                     </h6>
                 </div>
                 <p class="text-light text-start">

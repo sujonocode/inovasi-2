@@ -9,7 +9,7 @@ class Home extends BaseController
         $data['title'] = ucfirst($page);
 
         return view('templates/header', $data)
-            . view('pages/index copy')
+            . view('pages/index')
             . view('templates/footer');
     }
 }

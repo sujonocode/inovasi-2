@@ -1,39 +1,21 @@
-<div class="main-content" style="
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    position: relative;
-    text-align: center;
-">
+<div class="gate-hero-container">
+    <div class="gate-wrapper">
+        <img src="<?= base_url('assets/image/left-gate.svg') ?>" alt="Gerbang Kiri"
+            class="gate gate-left" id="gateLeft">
+        <img src="<?= base_url('assets/image/right-gate.svg') ?>" alt="Gerbang Kanan"
+            class="gate gate-right" id="gateRight">
+    </div>
 
-    <div style="max-width: 700px;">
-        <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: bold;">
+    <div class="main-hero-text" id="heroContent">
+        <h1>
             📊 Selamat Datang di <span style="color: #FFD700;">SIEDUTA</span>
         </h1>
-        <p style="font-size: 1.25rem; line-height: 1.8;">
-            Sistem Informasi Edukasi Statistik <br>Badan Pusat Statistik Kabupaten Tanggamus
-        </p>
-        <a href="#fitur" style="
-            margin-top: 40px;
-            display: inline-block;
-            background-color: #FFD700;
-            color: #1e3c72;
-            padding: 14px 30px;
-            font-weight: bold;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.2s;
-        " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#FFD700'; this.style.transform='scale(1)'">
-            Jelajahi Sekarang
-        </a>
+        <p id="typedSubText"></p><span class="cursor"></span>
+        <br />
+        <a href="#fitur" class="hero-button">Jelajahi Sekarang</a>
     </div>
-    <div style="position: absolute; bottom: 0; width: 100%; overflow: hidden; line-height: 0;">
+
+    <div class="wave-divider">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100px; width: 100%;">
             <path d="M0.00,49.98 C150.00,150.00 349.74,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
                 style="stroke: none; fill: white;"></path>
@@ -41,87 +23,107 @@
     </div>
 </div>
 
-<!-- <div class="gate-container">
-    <div class="gate-wrapper">
-        <img src="<?= base_url('assets/image/left-gate.svg') ?>" alt="Gerbang Kiri"
-            class="gate gate-left" id="gateLeft">
-        <img src="<?= base_url('assets/image/right-gate.svg') ?>" alt="Gerbang Kanan"
-            class="gate gate-right" id="gateRight">
-    </div>
-    <div class="welcome-text" id="mainText">
-        Selamat Datang di SIEDUTA
-    </div>
-    <div class="sub-text">
-        <span id="typedSubText"></span><span class="cursor"></span>
-    </div>
-</div>
-
 <style>
-    .gate-container {
+    body {
+        margin: 0;
+    }
+
+    .gate-hero-container {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #1e3c72, #2a5298);
+        color: white;
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        position: relative;
         flex-direction: column;
-        text-align: center;
+        padding: 80px 20px 100px;
     }
 
     .gate-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         display: flex;
-        position: relative;
+        justify-content: space-between;
+        align-items: stretch;
         z-index: 2;
-        max-width: 100%;
+        pointer-events: none;
     }
 
     .gate {
-        width: 50vw;
-        max-width: 200px;
-        height: auto;
+        width: 25vw;
+        max-width: 160px;
+        height: 100%;
+        object-fit: cover;
         transition: transform 2s ease-in-out;
+        background-color: #1e3c72;
+        pointer-events: none;
     }
 
     .gate-left.open {
-        transform: translateX(-100%);
+        transform: translateX(-80%);
     }
 
     .gate-right.open {
-        transform: translateX(100%);
+        transform: translateX(80%);
     }
 
-    .welcome-text {
-        position: absolute;
-        top: 40%;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #333;
-        z-index: 1;
+    .main-hero-text {
+        z-index: 3;
+        max-width: 700px;
         opacity: 0;
-        transition: opacity 1s ease-in;
-        width: 90%;
-        margin: 0 auto;
-        word-wrap: break-word;
-        white-space: normal;
+        transform: translateY(20px);
+        transition: opacity 1s ease-in, transform 1s ease-in;
     }
 
-    .sub-text {
-        position: absolute;
-        top: 50%;
-        font-size: 1rem;
-        color: #777;
-        z-index: 1;
-        width: 90%;
-        margin: 0 auto;
-        word-wrap: break-word;
-        white-space: normal;
+    .main-hero-text.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .main-hero-text h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .main-hero-text p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        display: inline-block;
+    }
+
+    .hero-button {
+        margin-top: 30px;
+        display: inline-block;
+        background-color: #FFD700;
+        color: #1e3c72;
+        padding: 14px 30px;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .hero-button:hover {
+        background-color: #e6c200;
+        transform: scale(1.05);
     }
 
     .cursor {
         display: inline-block;
         width: 1px;
-        background-color: #333;
+        height: 1.2em;
+        background-color: white;
         animation: blink 0.8s step-end infinite;
         margin-left: 3px;
+        vertical-align: bottom;
     }
 
     @keyframes blink {
@@ -130,37 +132,40 @@
         }
     }
 
+    .wave-divider {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        z-index: 1;
+    }
+
     @media (max-width: 768px) {
         .gate {
-            width: 70vw;
+            width: 35vw;
         }
 
-        .welcome-text {
-            font-size: 1.5rem;
-            top: 35%;
-            word-wrap: break-word;
+        .main-hero-text h1 {
+            font-size: 2rem;
         }
 
-        .sub-text {
-            font-size: 0.9rem;
-            top: 45%;
-            word-wrap: break-word;
+        .main-hero-text p {
+            font-size: 1rem;
         }
     }
 
     @media (max-width: 480px) {
         .gate {
-            width: 80vw;
+            width: 40vw;
         }
 
-        .welcome-text {
-            font-size: 1.2rem;
-            top: 30%;
+        .main-hero-text h1 {
+            font-size: 1.6rem;
         }
 
-        .sub-text {
-            font-size: 0.8rem;
-            top: 40%;
+        .main-hero-text p {
+            font-size: 0.9rem;
         }
     }
 </style>
@@ -185,88 +190,52 @@
         }, 1000);
 
         setTimeout(() => {
-            document.getElementById("mainText").style.opacity = 1;
+            document.getElementById("heroContent").classList.add("show");
         }, 2500);
 
         setTimeout(typeSubLetter, 3000);
     };
-</script> -->
+</script>
+
 
 <!-- Feature Section -->
-<section id="fitur">
-    <h2>🔍 Fitur Unggulan</h2>
-    <div class="fitur-container">
-        <div class="fitur-box">
-            <h3>📈 Indikator Strategis</h3>
-            <p>Grafik interaktif yang memudahkan pengguna memahami tren statistik.</p>
-        </div>
-        <div class="fitur-box">
-            <h3>🏣 Statistik Sektoral</h3>
-            <p>Pembelajaran statistik dasar hingga lanjutan dengan ilustrasi dan studi kasus.</p>
-        </div>
-        <div class="fitur-box">
-            <h3>🏅 Desa Cantik</h3>
-            <p>Uji pemahaman dengan soal-soal latihan dan penilaian otomatis.</p>
-        </div>
-        <div class="fitur-box">
-            <h3>📞 Halo PST</h3>
-            <p>Uji pemahaman dengan soal-soal latihan dan penilaian otomatis.</p>
-        </div>
-    </div>
-</section>
-
-<style>
-    #fitur {
-        background: white;
-        color: #333;
-        padding: 80px 20px;
-        text-align: center;
-    }
-
-    #fitur h2 {
-        font-size: 2.8rem;
-        margin-bottom: 50px;
-        font-weight: bold;
-    }
-
-    .fitur-container {
+<section id="fitur" style="
+    background: white;
+    color: #333;
+    padding: 80px 20px;
+    text-align: center;
+">
+    <h2 style="font-size: 2.8rem; margin-bottom: 50px; font-weight: bold;">
+        🔍 Fitur Unggulan
+    </h2>
+    <div style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 40px;
         max-width: 1100px;
         margin: 0 auto;
-    }
-
-    .fitur-box {
-        flex: 1 1 250px;
-        max-width: 300px;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .fitur-box h3 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .fitur-box p {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        #fitur h2 {
-            font-size: 2.2rem;
-        }
-
-        .fitur-box {
-            max-width: 100%;
-        }
-    }
-</style>
-
+    ">
+        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">📈 Visualisasi Data</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                Grafik interaktif yang memudahkan pengguna memahami tren statistik.
+            </p>
+        </div>
+        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">🎓 Materi Edukatif</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                Pembelajaran statistik dasar hingga lanjutan dengan ilustrasi dan studi kasus.
+            </p>
+        </div>
+        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">🧠 Quiz & Latihan</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                Uji pemahaman dengan soal-soal latihan dan penilaian otomatis.
+            </p>
+        </div>
+    </div>
+</section>
 
 <!-- Carousel Slider -->
 <section style="background: linear-gradient(to right, #0f4c81, #1e7bb8); padding: 60px 0; color: #fff;">
@@ -470,101 +439,86 @@
     startAutoSlide();
 </script>
 
+/////////
 <!-- Section Edukasi Statistik (Carousel Slider) -->
-<section id="edukasi-statistik">
-    <h2>🎥 Edukasi Statistik</h2>
+<section style="background-color: #f8f9fa; padding: 80px 20px; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: bold;">🎥 Edukasi Statistik</h2>
 
-    <div class="carousel-wrapper">
+    <div style="position: relative; width: 100%; max-width: 860px; margin: auto;">
+
         <!-- Left Button -->
-        <button id="prev-video" class="nav-button">&#10094;</button>
+        <button id="prev-video" style="
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        ">&#10094;</button>
 
         <!-- Slider Container -->
-        <div id="video-slider-container">
-            <div id="video-slider">
+        <div id="video-slider-container" style="
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        ">
+            <div id="video-slider" style="
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+                gap: 20px;
+            ">
+                <!-- Video Cards -->
                 <div class="video-card">
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Apa itu Indeks Harga Konsumen?</p>
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Apa itu Indeks Harga Konsumen?</p>
                 </div>
                 <div class="video-card">
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/sAr29p2XMiU" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Cara Membaca Grafik Statistik dengan Benar</p>
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/sAr29p2XMiU" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
                 </div>
                 <div class="video-card">
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/iBQWmQBtZ_w" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Apa itu Indeks Harga Konsumen?</p>
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/iBQWmQBtZ_w" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Apa itu Indeks Harga Konsumen?</p>
                 </div>
                 <div class="video-card">
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/L86LTnOeXQE" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Cara Membaca Grafik Statistik dengan Benar</p>
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/L86LTnOeXQE" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                    <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
                 </div>
             </div>
         </div>
 
         <!-- Right Button -->
-        <button id="next-video" class="nav-button">&#10095;</button>
+        <button id="next-video" style="
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        ">&#10095;</button>
     </div>
 
     <!-- Dots -->
-    <div id="video-dots-container"></div>
+    <div id="video-dots-container" style="text-align: center; margin-top: 20px;"></div>
 </section>
 
 <style>
-    #edukasi-statistik {
-        background-color: #ffffff;
-        /* Putih bersih */
-        padding: 80px 20px;
-        text-align: center;
-    }
-
-    #edukasi-statistik h2 {
-        font-size: 2.8rem;
-        margin-bottom: 50px;
-        font-weight: 600;
-        color: #333;
-    }
-
-    .carousel-wrapper {
-        position: relative;
-        max-width: 860px;
-        margin: auto;
-    }
-
-    .nav-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.3);
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-        z-index: 10;
-    }
-
-    #prev-video {
-        left: -20px;
-    }
-
-    #next-video {
-        right: -20px;
-    }
-
-    #video-slider-container {
-        overflow: hidden;
-        width: 100%;
-    }
-
-    #video-slider {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        gap: 20px;
-    }
-
     .video-card {
-        background: linear-gradient(to right, #0f4c81, #1e7bb8);
+        background: #fff;
         border-radius: 16px;
         padding: 20px;
         width: 100%;
@@ -575,20 +529,6 @@
         text-align: center;
     }
 
-    .video-card p {
-        margin-top: 15px;
-        font-size: 1.1rem;
-        font-weight: normal;
-        color: #fff;
-        text-align: center;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    }
-
-    #video-dots-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-
     .dot {
         height: 10px;
         width: 10px;
@@ -597,7 +537,6 @@
         border-radius: 50%;
         display: inline-block;
         cursor: pointer;
-        transition: background-color 0.3s ease;
     }
 
     .dot.active {
@@ -614,12 +553,6 @@
             max-width: 400px;
         }
     }
-
-    @media (max-width: 600px) {
-        .video-card {
-            width: 100%;
-        }
-    }
 </style>
 
 <script>
@@ -631,12 +564,13 @@
     const videoItems = videoSlider.children.length;
     const visibleVideoCount = 2;
 
-    // Clone first few items for loop effect
+    // Clone first items for looping effect
     for (let i = 0; i < visibleVideoCount; i++) {
         const clone = videoSlider.children[i].cloneNode(true);
         videoSlider.appendChild(clone);
     }
 
+    // Handle dynamic width
     function getVideoCardWidth() {
         const screenWidth = window.innerWidth;
         return screenWidth <= 900 ? 420 : (420 * 2);
@@ -711,10 +645,9 @@
 </script>
 
 
-
-
+/////////
 <!-- Section Edukasi Statistik -->
-<!-- <section style="background-color: #f8f9fa; padding: 80px 20px; text-align: center;">
+<section style="background-color: #f8f9fa; padding: 80px 20px; text-align: center;">
     <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: bold;">🎥 Edukasi Statistik</h2>
     <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: auto;">
         <div style="flex: 1; min-width: 300px; max-width: 500px;">
@@ -726,7 +659,7 @@
             <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
         </div>
     </div>
-</section> -->
+</section>
 
 <!-- Section Kalender Rilis -->
 <!-- <section style="background: white; padding: 80px 20px; text-align: center; color: #333;">
