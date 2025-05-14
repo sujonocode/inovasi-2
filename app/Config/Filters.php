@@ -34,6 +34,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'role'          => \App\Filters\RoleFilter::class,
+        'auth'          => \App\Filters\AuthFilter::class,
     ];
 
     /**
@@ -67,18 +69,25 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, array<string, string>>>|array<string, list<string>>
      */
+    // public array $globals = [
+    //     'before' => [
+    //         // 'honeypot',
+    //         // 'csrf',
+    //         // 'invalidchars',
+    //     ],
+    //     'after' => [
+    //         // 'honeypot',
+    //         // 'secureheaders',
+    //     ],
+    // ];
+
     public array $globals = [
         'before' => [
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'csrf' => ['except' => ['webhook/*']], // Add CSRF filter
+            // 'auth',
         ],
-        'after' => [
-            // 'honeypot',
-            // 'secureheaders',
-        ],
+        'after'  => [],
     ];
-
     /**
      * List of filter aliases that works on a
      * particular HTTP method (GET, POST, etc.).
@@ -92,7 +101,10 @@ class Filters extends BaseFilters
      *
      * @var array<string, list<string>>
      */
-    public array $methods = [];
+    // public array $methods = [];
+    public array $methods = [
+        'POST' => ['csrf'],
+    ];
 
     /**
      * List of filter aliases that should run on any

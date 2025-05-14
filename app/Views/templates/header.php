@@ -139,9 +139,29 @@
                     <li class="nav-item">
                         <a class="nav-link <?= (uri_string() == 'halo_pst') ? 'active' : '' ?>" href="<?= base_url('halo_pst') ?>">Halo PST</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= (uri_string() == 'admin') ? 'active' : '' ?>" href="<?= base_url('admin') ?>">Admin</a>
-                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link < ?= (uri_string() == 'admin') ? 'active' : '' ?>" href="< ?= base_url('admin') ?>">Admin</a>
+                    </li> -->
+
+                    <?php if (session()->has('nama')): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="<?= base_url('profile') ?>" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-circle-user"></i> <?= session()->get('nama') ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="fa-solid fa-user"></i> Profil Saya</a></li>
+
+                                <?php if (session()->get('role') === 'admin'): ?>
+                                    <li><a class="dropdown-item" href="<?= base_url('admin') ?>"><i class="fa-solid fa-users-gear"></i> Admin Dashboard</a></li>
+                                <?php endif; ?>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="<?= base_url('logout') ?>"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

@@ -348,10 +348,6 @@
                     <iframe width="100%" height="280" src="https://www.youtube.com/embed/L86LTnOeXQE" title="Video" frameborder="0" allowfullscreen></iframe>
                     <p>Mencatat Indonesia - Official Theme Song Sensus Ekonomi 2026</p>
                 </div>
-                <div class="video-card">
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU?si=IILESnI4fQioyVNb" title="Video" frameborder="0" allowfullscreen></iframe>
-                    <p>Bagaimana Data Inflasi Dihasilkan</p>
-                </div>
             </div>
         </div>
 
@@ -565,82 +561,166 @@
     setInterval(moveNextVideo, 5000);
 </script>
 
-
-
-
-<!-- Section Edukasi Statistik -->
-<!-- <section style="background-color: #f8f9fa; padding: 80px 20px; text-align: center;">
-    <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: bold;">🎥 Edukasi Statistik</h2>
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: auto;">
-        <div style="flex: 1; min-width: 300px; max-width: 500px;">
-            <iframe width="100%" height="280" src="https://www.youtube.com/embed/_lW4tjwO8nU?si=6IyVses1axgwo6wL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <p style="margin-top: 15px; font-weight: bold;">Apa itu Indeks Harga Konsumen?</p>
-        </div>
-        <div style="flex: 1; min-width: 300px; max-width: 500px;">
-            <iframe width="100%" height="280" src="https://www.youtube.com/embed/sAr29p2XMiU?si=BIx7vepOiwNPuzwJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <p style="margin-top: 15px; font-weight: bold;">Cara Membaca Grafik Statistik dengan Benar</p>
-        </div>
-    </div>
-</section> -->
-
-<!-- Section Kalender Rilis -->
-<!-- <section style="background: white; padding: 80px 20px; text-align: center; color: #333;">
-    <h2 style="font-size: 2.5rem; margin-bottom: 40px; font-weight: bold;">🗓️ Jadwal Rilis Data</h2>
-    <p style="max-width: 700px; margin: auto; margin-bottom: 40px;">Jangan lewatkan rilis resmi data statistik dari BPS. Berikut beberapa jadwal penting yang akan datang:</p>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-        <div style="border-left: 4px solid #2a5298; background: #f1f3f5; padding: 20px; max-width: 400px; text-align: left; border-radius: 8px;">
-            <h4 style="margin-bottom: 10px;">15 Mei 2025</h4>
-            <p>Rilis Data Pertumbuhan Ekonomi Triwulan I-2025</p>
-        </div>
-        <div style="border-left: 4px solid #2a5298; background: #f1f3f5; padding: 20px; max-width: 400px; text-align: left; border-radius: 8px;">
-            <h4 style="margin-bottom: 10px;">1 Juni 2025</h4>
-            <p>Rilis Inflasi Nasional Mei 2025</p>
-        </div>
-    </div>
-</section> -->
-
-
-<script>
-    function generateWhatsAppLink() {
-        // Get the name, gender, and message values from the form
-        const form = document.getElementById('waForm');
-        const nama = document.getElementById('nama').value;
-        const jk = document.getElementById('jk').value;
-        const pesan = document.getElementById('pesan').value;
-
-        // Check if fields are filled
-        if (!nama || !jk || !pesan) {
-            // Show the flash message using Bootstrap modal
-            showFlashMessage('Lengkapi semua isian!');
-            return;
-        }
-
-        // Generate the WhatsApp link with encoded text
-        const message = `Nama            : ${nama}\nJenis Kelamin: ${jk}\n\n${pesan}`;
-        const whatsappLink = `https://wa.me/6282337039320?text=${encodeURIComponent(message)}`;
-
-        // Open the link in a new tab
-        window.open(whatsappLink, '_blank');
-
-        // Clear the form
-        form.reset();
+<style>
+    .course-card {
+        transition: transform 0.3s ease;
+        border-radius: 16px;
+        background-color: #ffffff;
+        border: 1px solid #eee;
     }
 
-    // Function to show flash message in the modal
-    function showFlashMessage(message) {
-        // Set the message text in the modal
-        document.getElementById('flashMessageText').textContent = message;
-
-        // Show the modal
-        var myModal = new bootstrap.Modal(document.getElementById('flashMessageModal'));
-        myModal.show();
+    .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
-    // Check if there's a success message in PHP flashdata
-    <?php if (session()->getFlashdata('success')): ?>
-        showFlashMessage('<?= session()->getFlashdata('success') ?>');
-    <?php endif; ?>
-</script>
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0033661a;
+        /* biru tua transparan */
+        border-radius: 50%;
+    }
+
+    .course-card .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .course-card .btn-warning {
+        background-color: #FFC107;
+        /* emas */
+        color: #000;
+        font-weight: 500;
+        transition: background-color 0.2s;
+    }
+
+    .course-card .btn-warning:hover {
+        background-color: #e6b800;
+        color: #000;
+    }
+
+    .course-card .badge.bg-info {
+        background-color: #003366;
+        /* biru tua */
+        font-size: 0.75rem;
+    }
+
+    .course-card .badge.bg-light {
+        background-color: #f0f8ff;
+        /* biru sangat muda */
+        color: #003366;
+        font-size: 0.75rem;
+    }
+
+    .btn-outline-primary {
+        border-color: #003366;
+        color: #003366;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #003366;
+        color: #fff;
+    }
+
+    #elearning-section h2 {
+        color: #003366;
+    }
+
+    #elearning-section p.text-muted {
+        color: #5c6f7d;
+        font-size: 1rem;
+    }
+</style>
+
+
+<section class="py-5 bg-light" id="elearning-section">
+    <div class="container">
+        <!-- Judul -->
+        <div class="text-center mb-5">
+            <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 40px;">🎓 E-Learning Warkop BPS</h2>
+            <p class="text-muted">Tingkatkan kompetensi melalui pelatihan mandiri yang praktis dan berkualitas</p>
+        </div>
+
+        <!-- Kartu Pelatihan -->
+        <div class="row g-4">
+            <?php
+            $courses = [
+                [
+                    'icon' => 'fa-chart-line', // Representasi statistik
+                    'date' => '24 Feb 2025',
+                    'title' => 'Analisis Data Time Series Model ARIMA dengan Gretl',
+                    'lessons' => '9 lessons',
+                    'desc' => 'Microlearning ini menawarkan pengenalan praktis dan terfokus pada analisis runtut waktu…',
+                    'link' => 'https://lms.bps.go.id/course/view.php?id=3901',
+                ],
+                [
+                    'icon' => 'fa-gears', // Representasi alat/teknis
+                    'date' => '05 Feb 2025',
+                    'title' => 'Ms. Excel for Professional: Data Model',
+                    'lessons' => '11 lessons',
+                    'desc' => 'Kursus ini memperkenalkan konsep dasar dan aplikasi praktis Gretl,…',
+                    'link' => 'https://lms.bps.go.id/course/view.php?id=3883',
+                ],
+                [
+                    'icon' => 'fa-location-dot', // Representasi wilayah/kartografi (SAE)
+                    'date' => '01 Feb 2025',
+                    'title' => 'Small Area Estimation (SAE)',
+                    'lessons' => '5 lessons',
+                    'desc' => 'Pelatihan ini membahas konsep statistik dan metode SAE secara mendalam…',
+                    'link' => 'https://lms.bps.go.id/course/view.php?id=3899',
+                ],
+                [
+                    'icon' => 'fa-comments', // Representasi komunikasi/public speaking
+                    'date' => '07 Feb 2024',
+                    'title' => 'EDA : Exploratory Data Analysis',
+                    'lessons' => '8 lessons',
+                    'desc' => 'Pelajari public speaking yang efektif dalam situasi profesional dan santai…',
+                    'link' => 'https://lms.bps.go.id/course/view.php?id=3439',
+                ],
+            ];
+
+            foreach ($courses as $course) : ?>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm text-center course-card p-3">
+                        <div class="position-relative mb-3">
+                            <div class="icon-box mb-2">
+                                <i class="fas <?= $course['icon'] ?> fa-3x text-primary"></i>
+                            </div>
+                            <span class="badge bg-info text-white position-absolute top-0 start-0 m-2"><?= $course['date'] ?></span>
+                        </div>
+                        <div class="card-body px-2">
+                            <span class="badge bg-light text-primary mb-2">Pelatihan Mandiri</span>
+                            <h6 class="fw-bold"><?= $course['title'] ?></h6>
+                            <p class="text-muted small"><?= $course['desc'] ?></p>
+                        </div>
+                        <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+                            <div><i class="fa fa-book me-1"></i><?= $course['lessons'] ?></div>
+                            <a href=<?= $course['link'] ?> class="btn btn-warning btn-sm rounded-pill px-3">Lihat</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <!-- Tombol Selengkapnya -->
+        <div class="text-center mt-4">
+            <a href="<?= base_url('https://lms.bps.go.id') ?>" class="btn btn-outline-primary d-inline-flex align-items-center px-3 py-2 rounded-pill">
+                <img src="<?= base_url('assets/icons/lmsewarkopbps-square-removebg.png') ?>" alt="Next Icon" style="height: 24px; margin-right: 8px;">
+                Selengkapnya
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+
+
 
 <script>
     // Smooth Scroll Script
