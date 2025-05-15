@@ -48,20 +48,52 @@
                 <?php if (isset($jadwalStatistikSektoral)): ?>
                     <form onsubmit="return validateCheckboxes()" action="<?= base_url('statistik_sektoral/update/' . $jadwalStatistikSektoral['id']) ?>" method="POST">
                         <?= csrf_field() ?>
-                        <div class="row form-group align-items-center flex-column flex-md-row">
+                        <!-- <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="ketua" class="col-md-3 form-label">Ketua Tim:</label>
                             <div class="col-md-9">
                                 <input id="ketua_tim" type="text" name="ketua_tim" class="form-control"
-                                    value="<?= $jadwalStatistikSektoral['ketua_tim'] ?>" required readonly>
+                                    value="< ?= $jadwalStatistikSektoral['ketua_tim'] ?>" required readonly>
                             </div>
                         </div>
                         <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="opd" class="col-md-3 form-label">OPD:</label>
                             <div class="col-md-9">
                                 <input id="opd" type="text" name="opd" class="form-control"
-                                    value="<?= $jadwalStatistikSektoral['opd'] ?>" required readonly>
+                                    value="< ?= $jadwalStatistikSektoral['opd'] ?>" required readonly>
+                            </div>
+                        </div> -->
+
+                        <div class="row mb-3 align-items-center">
+                            <label for="ketua_tim" class="col-md-3 col-form-label fw-bold">Ketua Tim:</label>
+                            <div class="col-md-9">
+                                <select name="ketua_tim" id="ketua_tim" class="form-select" required>
+                                    <option value="" disabled selected>Pilih Ketua Tim...</option>
+                                    <?php foreach ($ketua_tims as $kt): ?>
+                                        <option value="<?= htmlspecialchars($kt['ketua_tim']) ?>"
+                                            <?= ($jadwalStatistikSektoral['ketua_tim'] === $kt['ketua_tim']) ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($kt['ketua_tim']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
+
+
+                        <div class="row mb-3 align-items-center">
+                            <label for="opd" class="col-md-3 col-form-label fw-bold">OPD:</label>
+                            <div class="col-md-9">
+                                <select name="opd" id="opd" class="form-select" required>
+                                    <option value="" disabled selected>Pilih OPD...</option>
+                                    <?php foreach ($opds as $opd): ?>
+                                        <option value="<?= htmlspecialchars($opd['opd']) ?>"
+                                            <?= ($jadwalStatistikSektoral['opd'] === $opd['opd']) ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($opd['opd']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="topik" class="col-md-3 form-label">Topik:</label>
                             <div class="col-md-9">
@@ -242,4 +274,18 @@
     //     const jadwal = < ?= json_encode($jadwalStatistikSektoral); ?>;
     //     console.log("Jadwal:", jadwal);
     // 
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#ketua_tim').select2({
+            placeholder: "Pilih Ketua Tim...",
+            allowClear: true
+        });
+
+        $('#opd').select2({
+            placeholder: "Pilih OPD...",
+            allowClear: true
+        });
+    });
 </script>

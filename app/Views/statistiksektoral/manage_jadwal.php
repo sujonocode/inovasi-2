@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <div class="card">
+    <div class="card" style="border-radius: 6px;">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center flex-wrap">
                 <h1 class="mb-3 mb-md-0">Jadwal Pembinaan Statistik Sektoral</h1>

@@ -117,10 +117,23 @@ class StatistikSektoral extends BaseController
     public function create(string $page = 'Pembinaan Statistik Sektoral | Create')
     {
         $data['title'] = ucfirst($page);
+        $id_tim = session()->get('id_tim');
+
+        $model = new TimSektoral();
+        $row = $model->where('id_tim', $id_tim)->first();
+        if ($row) {
+            $ketua_tim = $row['ketua_tim'];
+            $opd = $row['opd'];
+        } else {
+            $ketua_tim = $row['message: not team member, no ketua_tim'];
+            $opd = 'message: not team member, no opd';
+        }
 
         $kontak = new Kontak();
 
         $data['contacts'] = $kontak->getContacts();
+        $data['ketua_tim'] = $ketua_tim;
+        $data['opd'] = $opd;
 
         return view('templates/header', $data)
             . view('statistiksektoral/create_jadwal', $data)
@@ -132,8 +145,8 @@ class StatistikSektoral extends BaseController
         $model = new JadwalStatistikSektoral();
         $timModel = new TimSektoral();
 
-        // $username = session()->get('username');
-        $username = 'sulistyohadi';
+        $username = session()->get('username');
+        // $username = 'sulistyohadi';
 
         // $pengingat = $this->request->getPost('pengingat[]');
         $pengingat = ["H-1"];
@@ -505,8 +518,8 @@ class StatistikSektoral extends BaseController
 
     public function edit($id, string $page = 'Statistik Sektoral | Edit')
     {
-        $model = new JadwalStatistikSektoral();
-        $jadwalStatistikSektoral = $model->find($id);
+        $jadwalStatistikSektoralModel = new JadwalStatistikSektoral();
+        $jadwalStatistikSektoral = $jadwalStatistikSektoralModel->find($id);
 
         if (!$jadwalStatistikSektoral) {
             session()->setFlashdata('error', 'Jadwal pembinaan tidak ditemukan.');
@@ -533,6 +546,12 @@ class StatistikSektoral extends BaseController
             $kontak = new Kontak();
             $data['contacts'] = $kontak->getContacts();
 
+            $timModel = new TimSektoral();
+            $ketua_tims = $timModel->distinct()->select('ketua_tim')->findAll();
+            $opds = $timModel->distinct()->select('opd')->findAll();
+            $data['ketua_tims'] = $ketua_tims;
+            $data['opds'] = $opds;
+
             return view('templates/header', $data)
                 . view('statistiksektoral/edit_jadwal', $data)
                 . view('templates/footer');
@@ -544,6 +563,12 @@ class StatistikSektoral extends BaseController
 
         $kontak = new Kontak();
         $data['contacts'] = $kontak->getContacts();
+
+        $timModel = new TimSektoral();
+        $ketua_tims = $timModel->distinct()->select('ketua_tim')->findAll();
+        $opds = $timModel->distinct()->select('opd')->findAll();
+        $data['ketua_tims'] = $ketua_tims;
+        $data['opds'] = $opds;
 
         return view('templates/header', $data)
             . view('statistiksektoral/edit_jadwal', $data)

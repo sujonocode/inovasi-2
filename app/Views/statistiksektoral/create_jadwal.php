@@ -9,16 +9,14 @@
                         <label for="ketua" class="col-md-3 form-label">Ketua Tim:</label>
                         <div class="col-md-9">
                             <input id="ketua_tim" type="text" name="ketua_tim" class="form-control"
-                                <?php $user['ketua_tim'] = 'Sulistyo Hadi'; ?>;
-                                placeholder="" value="<?= $user['ketua_tim'] ?>" required readonly>
+                                placeholder="" value="<?= $ketua_tim ?>" required readonly>
                         </div>
                     </div>
                     <div class="row form-group align-items-center flex-column flex-md-row">
                         <label for="opd" class="col-md-3 form-label">OPD:</label>
                         <div class="col-md-9">
                             <input id="opd" type="text" name="opd" class="form-control"
-                                <?php $user['opd'] = 'Dinas Ketahanan Pangan, Tanaman Pangan, dan Hortikultura Kabupaten Tanggamus'; ?>;
-                                placeholder="" value="<?= $user['opd'] ?>" required readonly>
+                                placeholder="" value="<?= $opd ?>" required readonly>
                         </div>
                     </div>
                     <div class="row form-group align-items-center flex-column flex-md-row">

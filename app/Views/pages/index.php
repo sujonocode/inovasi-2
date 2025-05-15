@@ -709,7 +709,7 @@
 
         <!-- Tombol Selengkapnya -->
         <div class="text-center mt-4">
-            <a href="<?= base_url('https://lms.bps.go.id') ?>" class="btn btn-outline-primary d-inline-flex align-items-center px-3 py-2 rounded-pill">
+            <a href="https://lms.bps.go.id" class="btn btn-outline-primary d-inline-flex align-items-center px-3 py-2 rounded-pill">
                 <img src="<?= base_url('assets/icons/lmsewarkopbps-square-removebg.png') ?>" alt="Next Icon" style="height: 24px; margin-right: 8px;">
                 Selengkapnya
             </a>

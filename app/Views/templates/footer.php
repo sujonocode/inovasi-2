@@ -18,14 +18,25 @@
             </div>
 
             <!-- Navigasi Cepat -->
-            <div class="col-md-4 mb-4">
+            <div class="col-md-2 mb-2">
                 <h6 class="fw-bold text-start">Navigasi Cepat</h6>
                 <ul class="list-unstyled text-start">
                     <li><a href="/" class="text-light text-decoration-none">Beranda</a></li>
-                    <li><a href="/dokumen" class="text-light text-decoration-none">Indikator Strategis</a></li>
-                    <li><a href="/humas" class="text-light text-decoration-none">Statistik Sektoral</a></li>
-                    <li><a href="/kontak" class="text-light text-decoration-none">Desa Cantik</a></li>
-                    <li><a href="/kontak" class="text-light text-decoration-none">Halo PST</a></li>
+                    <li><a href="/indikator_strategis" class="text-light text-decoration-none">Indikator Strategis</a></li>
+                    <li><a href="/statistik_sektoral" class="text-light text-decoration-none">Statistik Sektoral</a></li>
+                    <li><a href="/desa_cantik" class="text-light text-decoration-none">Desa Cantik</a></li>
+                    <li><a href="/halo_pst" class="text-light text-decoration-none">Halo PST</a></li>
+                </ul>
+            </div>
+
+            <!-- Navigasi Cepat -->
+            <div class="col-md-2 mb-2">
+                <h6 class="fw-bold text-start">Tautan Terkait</h6>
+                <ul class="list-unstyled text-start">
+                    <li><a href="https://www.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS RI</a></li>
+                    <li><a href="https://tanggamuskab.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS Kab. Tanggamus</a></li>
+                    <li><a href="https://lms.bps.go.id" class="text-light text-decoration-none">E-Learning BPS</a></li>
+                    <li><a href="https://gojags.web.bps.go.id/" class="text-light text-decoration-none">Gojags</a></li>
                 </ul>
             </div>
 
