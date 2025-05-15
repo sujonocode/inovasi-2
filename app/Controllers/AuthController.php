@@ -25,7 +25,8 @@ class AuthController extends Controller
         $data = [
             'username' => $this->request->getPost('username'),
             'nama' => $this->request->getPost('nama'),
-            'id_tim' => $this->request->getPost('id_tim'),
+            'id_tim_sek' => $this->request->getPost('id_tim_sek'),
+            'id_tim_des' => $this->request->getPost('id_tim_des'),
             'email' => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
             'role' => $this->request->getPost('role') ?? 'user',
@@ -68,7 +69,8 @@ class AuthController extends Controller
                 'user_id' => $user['id'],
                 'username' => $user['username'],
                 'nama' => $user['nama'],
-                'id_tim' => $user['id_tim'],
+                'id_tim_sek' => $user['id_tim_sek'],
+                'id_tim_des' => $user['id_tim_des'],
                 'role' => $user['role'],
                 'isLoggedIn' => true,
             ]);

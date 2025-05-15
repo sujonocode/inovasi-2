@@ -63,26 +63,9 @@ class StatistikSektoral extends BaseController
             . view('templates/footer');
     }
 
-    public function pembinaan(string $page = 'Pembinaan Statistik Sektoral | Pembinaan')
+    public function pembinaan(string $page = 'Pembinaan Statistik Sektoral | Datalaku')
     {
-        // $model = new JadwalStatistikSektoral();
-
         $data['title'] = ucfirst($page);
-        // $data['jadwalStatistikSektorals'] = $model->findAll();
-
-        // $contactModel = new Kontak();
-        // $contactList = $contactModel->findAll();
-
-        // $contacts = [];
-        // foreach ($contactList as $contact) {
-        //     $contacts[(string) $contact['nomor']] = $contact['nama'];
-        // }
-
-        // $data['contacts'] = $contacts;
-
-        // return view('templates/header', $data)
-        //     . view('statistiksektoral/manage_jadwal', $data)
-        //     . view('templates/footer');
 
         return view('templates/header', $data)
             . view('statistiksektoral/pembinaan', $data)
@@ -91,23 +74,7 @@ class StatistikSektoral extends BaseController
 
     public function dokumen(string $page = 'Pembinaan Statistik Sektoral | Dokumen')
     {
-        // $model = new JadwalStatistikSektoral();
-
         $data['title'] = ucfirst($page);
-        // $data['jadwalStatistikSektorals'] = $model->findAll();
-
-        // $contactModel = new Kontak();
-        // $contactList = $contactModel->findAll();
-
-        // $contacts = [];
-        // foreach ($contactList as $contact) {
-        //     $contacts[(string) $contact['nomor']] = $contact['nama'];
-        // }
-
-        // $data['contacts'] = $contacts;
-        // return view('templates/header', $data)
-        //     . view('statistiksektoral/manage_jadwal', $data)
-        //     . view('templates/footer');
 
         return view('templates/header', $data)
             . view('statistiksektoral/dokumen', $data)
@@ -120,7 +87,7 @@ class StatistikSektoral extends BaseController
         $id_tim = session()->get('id_tim');
 
         $model = new TimSektoral();
-        $row = $model->where('id_tim', $id_tim)->first();
+        $row = $model->where('id_tim_sek', $id_tim)->first();
         if ($row) {
             $ketua_tim = $row['ketua_tim'];
             $opd = $row['opd'];
@@ -146,14 +113,8 @@ class StatistikSektoral extends BaseController
         $timModel = new TimSektoral();
 
         $username = session()->get('username');
-        // $username = 'sulistyohadi';
 
-        // $pengingat = $this->request->getPost('pengingat[]');
         $pengingat = ["H-1"];
-        // if (!$pengingat) {
-        //     $pengingat = [];
-        // }
-
         $pengingatJson = json_encode($pengingat);
 
         $kontak = $this->request->getPost('kontak[]');
@@ -280,7 +241,7 @@ class StatistikSektoral extends BaseController
                     'countryCode' => '62',
                 ],
                 CURLOPT_HTTPHEADER => [
-                    'Authorization: CczZN35pLJ6yvpDA9GFH',
+                    'Authorization: VT2WkzUQRkBAREK385TA',
                 ],
             ]);
 
@@ -381,7 +342,7 @@ class StatistikSektoral extends BaseController
                 'countryCode' => '62',
             ],
             CURLOPT_HTTPHEADER => [
-                'Authorization: CczZN35pLJ6yvpDA9GFH',
+                'Authorization: VT2WkzUQRkBAREK385TA',
             ],
         ]);
 
@@ -461,7 +422,7 @@ class StatistikSektoral extends BaseController
                 'schedule' => $dateUnix,
                 'countryCode' => '62',
             ],
-            CURLOPT_HTTPHEADER => ['Authorization: CczZN35pLJ6yvpDA9GFH'],
+            CURLOPT_HTTPHEADER => ['Authorization: VT2WkzUQRkBAREK385TA'],
         ]);
 
         curl_exec($curl);
@@ -501,6 +462,7 @@ class StatistikSektoral extends BaseController
         ]);
 
         if ($updateSuccessful) {
+            // Send to Fonnte
             // $this->sendEditNotification($oldData);
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil diupdate');
         } else {
@@ -537,12 +499,9 @@ class StatistikSektoral extends BaseController
             'title' => ucfirst($page),
         ];
 
-        // $currentUsername = session()->get('username');
-        $currentUsername = 'imam.sujono';
+        $currentUsername = session()->get('username');
 
-        // if (session()->get('role') === 'admin') {
-        $role = 'admin';
-        if ($role === 'admin') {
+        if (session()->get('role') === 'admin') {
             $kontak = new Kontak();
             $data['contacts'] = $kontak->getContacts();
 
@@ -585,15 +544,13 @@ class StatistikSektoral extends BaseController
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('error', 'Jadwal pembinaan tidak ditemukan');
         }
 
-        $role = 'admin';
-        $username = 'imam.sujono';
-        // if (session()->get('role') === 'admin') {
-        if ($role === 'admin') {
+        if (session()->get('role') === 'admin') {
             $model->delete($id);
+            // Send to Fonnte
             // $this->sendDeleteNotification($jadwalStatistikSektoral);
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil dihapus');
         } else {
-            if ($username !== $jadwalStatistikSektoral['created_by']) {
+            if (session()->get('username') !== $jadwalStatistikSektoral['created_by']) {
                 return redirect()->back()->with('limited', 'Jadwal pembinaan hanya bisa dihapus oleh orang yang membuatnya atau admin');
             }
         }
@@ -601,6 +558,7 @@ class StatistikSektoral extends BaseController
         $deleteSuccessful = $model->delete($id);
 
         if ($deleteSuccessful) {
+            // Send to Fonnte
             // $this->sendDeleteNotification($jadwalStatistikSektoral);
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Data reminder berhasil dihapus');
         } else {
