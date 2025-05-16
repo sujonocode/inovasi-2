@@ -44,28 +44,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($jadwalStatistikSektorals)): ?>
-                            <?php foreach ($jadwalStatistikSektorals as $jadwalStatistikSektoral): ?>
+                        <?php if (!empty($jadwalDesaCantiks)): ?>
+                            <?php foreach ($jadwalDesaCantiks as $jadwalDesaCantik): ?>
                                 <tr>
-                                    <td><?= $jadwalStatistikSektoral['tanggal'] . " " . date("H:i", strtotime($jadwalStatistikSektoral['waktu_start'])) . " s.d. " . date("H:i", strtotime($jadwalStatistikSektoral['waktu_end'])) . " WIB" ?></td>
-                                    <td><?= $jadwalStatistikSektoral['opd'] ?></td>
-                                    <td><?= $jadwalStatistikSektoral['topik'] ?></td>
-                                    <td><?= $jadwalStatistikSektoral['kontak_ketua_tim'] ?></td>
-                                    <td><?= $jadwalStatistikSektoral['kontak_narahubung'] ?></td>
-                                    <td><?= $jadwalStatistikSektoral['catatan'] ?></td>
-                                    <td><?= $jadwalStatistikSektoral['created_by'] ?></td>
+                                    <td><?= $jadwalDesaCantik['tanggal'] . " " . date("H:i", strtotime($jadwalDesaCantik['waktu_start'])) . " s.d. " . date("H:i", strtotime($jadwalDesaCantik['waktu_end'])) . " WIB" ?></td>
+                                    <td><?= $jadwalDesaCantik['desa'] ?></td>
+                                    <td><?= $jadwalDesaCantik['topik'] ?></td>
+                                    <td><?= $jadwalDesaCantik['kontak_ketua_tim'] ?></td>
+                                    <td><?= $jadwalDesaCantik['kontak_narahubung'] ?></td>
+                                    <td><?= $jadwalDesaCantik['catatan'] ?></td>
+                                    <td><?= $jadwalDesaCantik['created_by'] ?></td>
                                     <?php if ($isAdmin): ?>
                                         <td>
-                                            <?php if ($jadwalStatistikSektoral['status'] === 'Dibatalkan'): ?>
+                                            <?php if ($jadwalDesaCantik['status'] === 'Dibatalkan'): ?>
                                                 <i class="fa-solid fa-flag" style="color: rgb(253, 20, 20);" title="Dibatalkan"></i>
-                                            <?php elseif ($jadwalStatistikSektoral['status'] === 'Belum Terlaksana'): ?>
+                                            <?php elseif ($jadwalDesaCantik['status'] === 'Belum Terlaksana'): ?>
                                                 <i class="fa-solid fa-flag" style="color: rgb(253, 199, 20);" title="Belum Terlaksana"></i>
-                                            <?php elseif ($jadwalStatistikSektoral['status'] === 'Terlaksana'): ?>
+                                            <?php elseif ($jadwalDesaCantik['status'] === 'Terlaksana'): ?>
                                                 <i class="fa-solid fa-flag" style="color: rgb(0, 190, 32);" title="Terlaksana"></i>
                                             <?php endif; ?>
-                                            <!-- <a href="#" onclick="handleLinkClick('< ?= $jadwalStatistikSektoral['url'] ?>'); return false;"><i class="fa-solid fa-eye" title="Lihat"></i></a> -->
-                                            <a href="/desa_cantik/edit/<?= $jadwalStatistikSektoral['id'] ?>"><i class="fa-solid fa-pen-to-square" title="Edit"></i></a>
-                                            <a href="#" onclick="openDeleteModal(<?= $jadwalStatistikSektoral['id'] ?>)"><i class="fa-solid fa-trash" title="Hapus"></i></a>
+                                            <!-- <a href="#" onclick="handleLinkClick('< ?= $jadwalDesaCantik['url'] ?>'); return false;"><i class="fa-solid fa-eye" title="Lihat"></i></a> -->
+                                            <a href="/desa_cantik/edit/<?= $jadwalDesaCantik['id'] ?>"><i class="fa-solid fa-pen-to-square" title="Edit"></i></a>
+                                            <a href="#" onclick="openDeleteModal(<?= $jadwalDesaCantik['id'] ?>)"><i class="fa-solid fa-trash" title="Hapus"></i></a>
                                         </td>
                                     <?php endif; ?>
                                 </tr>
@@ -150,7 +150,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin ingin menghapus data surat ini?
+                Apakah Anda yakin ingin menghapus jadwal pembinaan ini?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -295,6 +295,6 @@
 </script>
 
 <!-- <script>
-    const contacts = < ?= json_encode($jadwalStatistikSektoral); ?>;
+    const contacts = < ?= json_encode($jadwalDesaCantik); ?>;
     console.log("Contacts:", contacts);
 </script> -->

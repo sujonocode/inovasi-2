@@ -8,5 +8,5 @@ class TimDescan extends Model
 {
     protected $table = 'tim_descan';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id_tim_des', 'ketua_tim', 'opd', 'narahubung', 'kontak_ketua_tim', 'kontak_narahubung'];
+    protected $allowedFields = ['id_tim_des', 'ketua_tim', 'desa', 'narahubung', 'kontak_ketua_tim', 'kontak_narahubung'];
 }

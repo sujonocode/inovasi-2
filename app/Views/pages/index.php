@@ -118,7 +118,7 @@
 
 <!-- Carousel Slider -->
 <section style="background: linear-gradient(to right, #0f4c81, #1e7bb8); padding: 60px 0; color: #fff;">
-    <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 40px;">📊 Statistik Terbaru</h2>
+    <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 40px;">📊 Statistik Terbaru Kabupaten Tanggamus</h2>
 
     <!-- Outer Container with buttons outside -->
     <div style="position: relative; width: 960px; margin: auto;">

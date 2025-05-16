@@ -45,21 +45,21 @@
         <div class="col-lg-8">
             <div class="form-section">
                 <h2 class="text-center mb-4">Formulir Edit Jadwal Pembinaan</h2>
-                <?php if (isset($jadwalStatistikSektoral)): ?>
-                    <form onsubmit="return validateCheckboxes()" action="<?= base_url('desa_cantik/update/' . $jadwalStatistikSektoral['id']) ?>" method="POST">
+                <?php if (isset($jadwalDesaCantik)): ?>
+                    <form onsubmit="return validateCheckboxes()" action="<?= base_url('desa_cantik/update/' . $jadwalDesaCantik['id']) ?>" method="POST">
                         <?= csrf_field() ?>
                         <!-- <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="ketua" class="col-md-3 form-label">Ketua Tim:</label>
                             <div class="col-md-9">
                                 <input id="ketua_tim" type="text" name="ketua_tim" class="form-control"
-                                    value="< ?= $jadwalStatistikSektoral['ketua_tim'] ?>" required readonly>
+                                    value="< ?= $jadwalDesaCantik['ketua_tim'] ?>" required readonly>
                             </div>
                         </div>
                         <div class="row form-group align-items-center flex-column flex-md-row">
-                            <label for="opd" class="col-md-3 form-label">OPD:</label>
+                            <label for="desa" class="col-md-3 form-label">OPD:</label>
                             <div class="col-md-9">
-                                <input id="opd" type="text" name="opd" class="form-control"
-                                    value="< ?= $jadwalStatistikSektoral['opd'] ?>" required readonly>
+                                <input id="desa" type="text" name="desa" class="form-control"
+                                    value="< ?= $jadwalDesaCantik['desa'] ?>" required readonly>
                             </div>
                         </div> -->
 
@@ -70,7 +70,7 @@
                                     <option value="" disabled selected>Pilih Ketua Tim...</option>
                                     <?php foreach ($ketua_tims as $kt): ?>
                                         <option value="<?= htmlspecialchars($kt['ketua_tim']) ?>"
-                                            <?= ($jadwalStatistikSektoral['ketua_tim'] === $kt['ketua_tim']) ? 'selected' : '' ?>>
+                                            <?= ($jadwalDesaCantik['ketua_tim'] === $kt['ketua_tim']) ? 'selected' : '' ?>>
                                             <?= htmlspecialchars($kt['ketua_tim']) ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -80,14 +80,14 @@
 
 
                         <div class="row mb-3 align-items-center">
-                            <label for="opd" class="col-md-3 col-form-label fw-bold">OPD:</label>
+                            <label for="desa" class="col-md-3 col-form-label fw-bold">OPD:</label>
                             <div class="col-md-9">
-                                <select name="opd" id="opd" class="form-select" required>
+                                <select name="desa" id="desa" class="form-select" required>
                                     <option value="" disabled selected>Pilih OPD...</option>
-                                    <?php foreach ($opds as $opd): ?>
-                                        <option value="<?= htmlspecialchars($opd['opd']) ?>"
-                                            <?= ($jadwalStatistikSektoral['opd'] === $opd['opd']) ? 'selected' : '' ?>>
-                                            <?= htmlspecialchars($opd['opd']) ?>
+                                    <?php foreach ($desas as $desa): ?>
+                                        <option value="<?= htmlspecialchars($desa['desa']) ?>"
+                                            <?= ($jadwalDesaCantik['desa'] === $desa['desa']) ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($desa['desa']) ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -98,32 +98,32 @@
                             <label for="topik" class="col-md-3 form-label">Topik:</label>
                             <div class="col-md-9">
                                 <input id="topik" type="text" name="topik" class="form-control"
-                                    value="<?= $jadwalStatistikSektoral['topik'] ?>" required>
+                                    value="<?= $jadwalDesaCantik['topik'] ?>" required>
                             </div>
                         </div>
                         <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="tempat" class="col-md-3 form-label">Tempat:</label>
                             <div class="col-md-9">
                                 <input id="tempat" type="text" name="tempat" class="form-control"
-                                    value="<?= $jadwalStatistikSektoral['tempat'] ?>" required>
+                                    value="<?= $jadwalDesaCantik['tempat'] ?>" required>
                             </div>
                         </div>
                         <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="tanggal" class="col-md-3 form-label">Tanggal:</label>
                             <div class="col-md-9">
-                                <input id="tanggal" type="date" name="tanggal" class="form-control" value="<?= $jadwalStatistikSektoral['tanggal'] ?>" required>
+                                <input id="tanggal" type="date" name="tanggal" class="form-control" value="<?= $jadwalDesaCantik['tanggal'] ?>" required>
                             </div>
                         </div>
                         <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="waktu_start" class="col-md-3 form-label">Waktu Mulai:</label>
                             <div class="col-md-9">
-                                <input id="waktu_start" type="time" name="waktu_start" class="form-control" step="1" value="<?= $jadwalStatistikSektoral['waktu_start'] ?>" required>
+                                <input id="waktu_start" type="time" name="waktu_start" class="form-control" step="1" value="<?= $jadwalDesaCantik['waktu_start'] ?>" required>
                             </div>
                         </div>
                         <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="waktu_end" class="col-md-3 form-label">Waktu Selesai:</label>
                             <div class="col-md-9">
-                                <input id="waktu_end" type="time" name="waktu_end" class="form-control" step="1" value="<?= $jadwalStatistikSektoral['waktu_end'] ?>" required>
+                                <input id="waktu_end" type="time" name="waktu_end" class="form-control" step="1" value="<?= $jadwalDesaCantik['waktu_end'] ?>" required>
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center">
@@ -133,7 +133,7 @@
                                 <select name="kontak[]" id="kontak" class="form-select" multiple required>
                                     <?php foreach ($contacts as $contact): ?>
                                         <option value="<?= $contact['nomor'] ?>"
-                                            <?php if (in_array($contact['nomor'], $jadwalStatistikSektoral['kontak'])) echo 'selected'; ?>>
+                                            <?php if (in_array($contact['nomor'], $jadwalDesaCantik['kontak'])) echo 'selected'; ?>>
                                             <?= htmlspecialchars($contact['nama']) ?> (<?= $contact['nomor'] ?>)
                                         </option>
                                     <?php endforeach; ?>
@@ -171,7 +171,7 @@
                         <div class="row form-group align-items-center flex-column flex-md-row">
                             <label for="catatan" class="col-md-3 form-label">Catatan:</label>
                             <div class="col-md-9">
-                                <textarea id="catatan" name="catatan" class="form-control" rows="3" required><?= esc($jadwalStatistikSektoral['catatan']) ?></textarea>
+                                <textarea id="catatan" name="catatan" class="form-control" rows="3" required><?= esc($jadwalDesaCantik['catatan']) ?></textarea>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mt-4">
@@ -200,7 +200,7 @@
 
 <script>
     // Retrieve "Kategori" value from PHP
-    const status = "<?= $jadwalStatistikSektoral['status'] ?>";
+    const status = "<?= $jadwalDesaCantik['status'] ?>";
 
     // Example: Set "Kategori" radio button
     const statusRadio = document.querySelector(`input[name="status"][value="${status}"]`);
@@ -209,7 +209,7 @@
     }
 
     // // Retrieve the "Pengingat" string from PHP
-    // let pengingatString = '< ?= json_encode($jadwalStatistikSektoral['pengingat']) ?>';
+    // let pengingatString = '< ?= json_encode($jadwalDesaCantik['pengingat']) ?>';
 
     // // If the string has extra quotes, remove them
     // if (pengingatString.startsWith('"') && pengingatString.endsWith('"')) {
@@ -263,7 +263,7 @@
         $('#kontak').select2();
 
         // If you need to set the selected values programmatically, you can do so like this:
-        var selectedKontak = <?= json_encode($jadwalStatistikSektoral['kontak']); ?>; // Get the selected contacts as a JavaScript array
+        var selectedKontak = <?= json_encode($jadwalDesaCantik['kontak']); ?>; // Get the selected contacts as a JavaScript array
 
         // Set the selected values dynamically using Select2
         $('#kontak').val(selectedKontak).trigger('change');
@@ -271,7 +271,7 @@
 </script>
 
 // <script>
-    //     const jadwal = < ?= json_encode($jadwalStatistikSektoral); ?>;
+    //     const jadwal = < ?= json_encode($jadwalDesaCantik); ?>;
     //     console.log("Jadwal:", jadwal);
     // 
 </script>
@@ -283,7 +283,7 @@
             allowClear: true
         });
 
-        $('#opd').select2({
+        $('#desa').select2({
             placeholder: "Pilih OPD...",
             allowClear: true
         });

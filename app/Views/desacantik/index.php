@@ -99,23 +99,23 @@
                 // meridiem: false,
                 hour12: false
             },
-            events: <?= json_encode(array_map(function ($jadwalStatistikSektoral) {
+            events: <?= json_encode(array_map(function ($jadwalDesaCantik) {
                         return [
-                            'id' => $jadwalStatistikSektoral['id'],
-                            'title' => $jadwalStatistikSektoral['topik'],
-                            'start' => $jadwalStatistikSektoral['tanggal'] . 'T' . $jadwalStatistikSektoral['waktu_start'],
-                            'end' => $jadwalStatistikSektoral['tanggal'] . 'T' . $jadwalStatistikSektoral['waktu_end'],
+                            'id' => $jadwalDesaCantik['id'],
+                            'title' => $jadwalDesaCantik['topik'],
+                            'start' => $jadwalDesaCantik['tanggal'] . 'T' . $jadwalDesaCantik['waktu_start'],
+                            'end' => $jadwalDesaCantik['tanggal'] . 'T' . $jadwalDesaCantik['waktu_end'],
                             'allDay' => false,
                             'extendedProps' => [
-                                'waktu' => $jadwalStatistikSektoral['waktu_start'] . " s.d. " . $jadwalStatistikSektoral['waktu_end'] . " WIB",
-                                'kontak' => $jadwalStatistikSektoral['topik'],
-                                'pengingat' => $jadwalStatistikSektoral['topik'],
-                                'catatan' => $jadwalStatistikSektoral['catatan'],
-                                'kontak_ketua_tim' => $jadwalStatistikSektoral['kontak_ketua_tim'],
-                                'kontak_narahubung' => $jadwalStatistikSektoral['kontak_narahubung'],
+                                'waktu' => $jadwalDesaCantik['waktu_start'] . " s.d. " . $jadwalDesaCantik['waktu_end'] . " WIB",
+                                'kontak' => $jadwalDesaCantik['topik'],
+                                'pengingat' => $jadwalDesaCantik['topik'],
+                                'catatan' => $jadwalDesaCantik['catatan'],
+                                'kontak_ketua_tim' => $jadwalDesaCantik['kontak_ketua_tim'],
+                                'kontak_narahubung' => $jadwalDesaCantik['kontak_narahubung'],
                             ]
                         ];
-                    }, $jadwalStatistikSektorals)) ?>,
+                    }, $jadwalDesaCantiks)) ?>,
             buttonText: {
                 today: 'Hari Ini',
                 month: 'Bulan',

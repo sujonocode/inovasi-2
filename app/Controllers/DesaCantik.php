@@ -38,7 +38,7 @@ class DesaCantik extends BaseController
         $data['contacts'] = $contacts;
 
         return view('templates/header', $data)
-            . view('desa_cantik/index', $data)
+            . view('desacantik/index', $data)
             . view('templates/footer');
     }
 
@@ -59,7 +59,7 @@ class DesaCantik extends BaseController
 
         $data['contacts'] = $contacts;
         return view('templates/header', $data)
-            . view('desa_cantik/manage_jadwal', $data)
+            . view('desacantik/manage_jadwal', $data)
             . view('templates/footer');
     }
 
@@ -68,33 +68,33 @@ class DesaCantik extends BaseController
         $data['title'] = ucfirst($page);
 
         return view('templates/header', $data)
-            . view('desa_cantik/dokumen', $data)
+            . view('desacantik/dokumen', $data)
             . view('templates/footer');
     }
 
     public function create(string $page = 'Pembinaan Desa Cantik | Create')
     {
         $data['title'] = ucfirst($page);
-        $id_tim = session()->get('id_tim');
+        $id_tim_des = session()->get('id_tim_des');
 
         $model = new TimDescan();
-        $row = $model->where('id_tim_des', $id_tim)->first();
+        $row = $model->where('id_tim_des', $id_tim_des)->first();
         if ($row) {
             $ketua_tim = $row['ketua_tim'];
-            $opd = $row['opd'];
+            $desa = $row['desa'];
         } else {
             $ketua_tim = $row['message: not team member, no ketua_tim'];
-            $opd = 'message: not team member, no opd';
+            $desa = 'message: not team member, no desa';
         }
 
         $kontak = new Kontak();
 
         $data['contacts'] = $kontak->getContacts();
         $data['ketua_tim'] = $ketua_tim;
-        $data['opd'] = $opd;
+        $data['desa'] = $desa;
 
         return view('templates/header', $data)
-            . view('desa_cantik/create_jadwal', $data)
+            . view('desacantik/create_jadwal', $data)
             . view('templates/footer');
     }
 
@@ -111,12 +111,13 @@ class DesaCantik extends BaseController
         $kontak = $this->request->getPost('kontak[]');
         $kontakString = implode(',', $kontak);
 
-        $opd = $this->request->getPost('opd');
-        $timData = $timModel->where('opd', $opd)->first();
+        $desa = 'Srikaton';
+        // $desa = $this->request->getPost('desa');
+        $timData = $timModel->where('desa', $desa)->first();
 
         $data = [
             'ketua_tim' => $this->request->getPost('ketua_tim'),
-            'opd' => $opd,
+            'desa' => $desa,
             'tempat' => $this->request->getPost('tempat'),
             'topik' => $this->request->getPost('topik'),
             'tanggal' => $this->request->getPost('tanggal'),
@@ -164,7 +165,7 @@ class DesaCantik extends BaseController
         $data = [
             'tempat' => $this->request->getPost('tempat'),
             'topik' => $this->request->getPost('topik'),
-            'opd' => $this->request->getPost('opd'),
+            'desa' => $this->request->getPost('desa'),
             'tanggal' => $this->request->getPost('tanggal'),
             'waktu_start' => $this->request->getPost('waktu_start'),
             'waktu_end' => $this->request->getPost('waktu_end'),
@@ -218,7 +219,7 @@ class DesaCantik extends BaseController
                 CURLOPT_POSTFIELDS => [
                     'target' => $kontakString,
                     'message' =>
-                    "📢 Pembinaan Desa Cantik {$data['opd']}\n" .
+                    "📢 Pembinaan Desa Cantik {$data['desa']}\n" .
                         "```" .
                         "--------------------------\n" .
                         "📌 Topik   : {$data['topik']}\n" .
@@ -251,7 +252,7 @@ class DesaCantik extends BaseController
         $newData = [
             'tempat' => $this->request->getPost('tempat'),
             'topik' => $this->request->getPost('topik'),
-            'opd' => $this->request->getPost('opd'),
+            'desa' => $this->request->getPost('desa'),
             'tanggal' => $this->request->getPost('tanggal'),
             'waktu_start' => $this->request->getPost('waktu_start'),
             'waktu_end' => $this->request->getPost('waktu_end'),
@@ -349,7 +350,7 @@ class DesaCantik extends BaseController
         $newData = [
             'tempat' => $this->request->getPost('tempat'),
             'topik' => $this->request->getPost('topik'),
-            'opd' => $this->request->getPost('opd'),
+            'desa' => $this->request->getPost('desa'),
             'tanggal' => $this->request->getPost('tanggal'),
             'waktu_start' => $this->request->getPost('waktu_start'),
             'waktu_end' => $this->request->getPost('waktu_end'),
@@ -433,12 +434,12 @@ class DesaCantik extends BaseController
         $kontak = $this->request->getPost('kontak[]');
         $kontakString = implode(',', $kontak);
 
-        $opd = $this->request->getPost('opd');
-        $timData = $timModel->where('opd', $opd)->first();
+        $desa = $this->request->getPost('desa');
+        $timData = $timModel->where('desa', $desa)->first();
 
         $updateSuccessful = $model->update($id, [
             'ketua_tim' => $this->request->getPost('ketua_tim'),
-            'opd' => $opd,
+            'desa' => $desa,
             'kontak' => $kontakString,
             'pengingat' => $pengingatJson,
             'tempat' => $this->request->getPost('tempat'),
@@ -471,22 +472,22 @@ class DesaCantik extends BaseController
 
     public function edit($id, string $page = 'Desa Cantik | Edit')
     {
-        $jadwalStatistikSektoralModel = new JadwalDesaCantik();
-        $jadwalStatistikSektoral = $jadwalStatistikSektoralModel->find($id);
+        $jadwalDesaCantikModel = new JadwalDesaCantik();
+        $jadwalDesaCantik = $jadwalDesaCantikModel->find($id);
 
-        if (!$jadwalStatistikSektoral) {
+        if (!$jadwalDesaCantik) {
             session()->setFlashdata('error', 'Jadwal pembinaan tidak ditemukan.');
             return redirect()->to(base_url('desa_cantik/manage'));
         }
 
-        if (!empty($jadwalStatistikSektoral['kontak'])) {
-            $jadwalStatistikSektoral['kontak'] = explode(',', $jadwalStatistikSektoral['kontak']);
+        if (!empty($jadwalDesaCantik['kontak'])) {
+            $jadwalDesaCantik['kontak'] = explode(',', $jadwalDesaCantik['kontak']);
         } else {
-            $jadwalStatistikSektoral['kontak'] = [];
+            $jadwalDesaCantik['kontak'] = [];
         }
 
         $data = [
-            'jadwalStatistikSektoral' => $jadwalStatistikSektoral,
+            'jadwalDesaCantik' => $jadwalDesaCantik,
             'title' => ucfirst($page),
         ];
 
@@ -498,15 +499,15 @@ class DesaCantik extends BaseController
 
             $timModel = new TimDescan();
             $ketua_tims = $timModel->distinct()->select('ketua_tim')->findAll();
-            $opds = $timModel->distinct()->select('opd')->findAll();
+            $desas = $timModel->distinct()->select('desa')->findAll();
             $data['ketua_tims'] = $ketua_tims;
-            $data['opds'] = $opds;
+            $data['desas'] = $desas;
 
             return view('templates/header', $data)
-                . view('desa_cantik/edit_jadwal', $data)
+                . view('desacantik/edit_jadwal', $data)
                 . view('templates/footer');
         } else {
-            if ($jadwalStatistikSektoral['created_by'] !== $currentUsername) {
+            if ($jadwalDesaCantik['created_by'] !== $currentUsername) {
                 return redirect()->back()->with('limited', 'Jadwal pembinaan hanya bisa diubah oleh orang yang membuatnya atau admin.');
             }
         }
@@ -516,12 +517,12 @@ class DesaCantik extends BaseController
 
         $timModel = new TimDescan();
         $ketua_tims = $timModel->distinct()->select('ketua_tim')->findAll();
-        $opds = $timModel->distinct()->select('opd')->findAll();
+        $desas = $timModel->distinct()->select('desa')->findAll();
         $data['ketua_tims'] = $ketua_tims;
-        $data['opds'] = $opds;
+        $data['desas'] = $desas;
 
         return view('templates/header', $data)
-            . view('desa_cantik/edit_jadwal', $data)
+            . view('desacantik/edit_jadwal', $data)
             . view('templates/footer');
     }
 
@@ -529,19 +530,19 @@ class DesaCantik extends BaseController
     {
         $model = new JadwalDesaCantik();
 
-        $jadwalStatistikSektoral = $model->find($id);
+        $jadwalDesaCantik = $model->find($id);
 
-        if (!$jadwalStatistikSektoral) {
+        if (!$jadwalDesaCantik) {
             return redirect()->to(base_url('desa_cantik/manage'))->with('error', 'Jadwal pembinaan tidak ditemukan');
         }
 
         if (session()->get('role') === 'admin') {
             $model->delete($id);
             // Send to Fonnte
-            // $this->sendDeleteNotification($jadwalStatistikSektoral);
+            // $this->sendDeleteNotification($jadwalDesaCantik);
             return redirect()->to(base_url('desa_cantik/manage'))->with('success', 'Jadwal pembinaan berhasil dihapus');
         } else {
-            if (session()->get('username') !== $jadwalStatistikSektoral['created_by']) {
+            if (session()->get('username') !== $jadwalDesaCantik['created_by']) {
                 return redirect()->back()->with('limited', 'Jadwal pembinaan hanya bisa dihapus oleh orang yang membuatnya atau admin');
             }
         }
@@ -550,7 +551,7 @@ class DesaCantik extends BaseController
 
         if ($deleteSuccessful) {
             // Send to Fonnte
-            // $this->sendDeleteNotification($jadwalStatistikSektoral);
+            // $this->sendDeleteNotification($jadwalDesaCantik);
             return redirect()->to(base_url('desa_cantik/manage'))->with('success', 'Data reminder berhasil dihapus');
         } else {
             return redirect()->to(base_url('desa_cantik/manage'))->with('error', 'Gagal menghapus data reminder');
@@ -560,7 +561,7 @@ class DesaCantik extends BaseController
     public function exportExcel()
     {
         $db = \Config\Database::connect();
-        $query = $db->query("SELECT * FROM jadwal_statistik_sektoral");
+        $query = $db->query("SELECT * FROM jadwal_desa_cantik");
         $data = $query->getResultArray();
 
         $spreadsheet = new Spreadsheet();
@@ -604,7 +605,7 @@ class DesaCantik extends BaseController
         $jadwalKontens = $model->findAll();
 
         return view('templates/header')
-            . view('desa_cantik/index', ['jadwalStatistikSektprals' => $jadwalKontens])
+            . view('desacantik/index', ['jadwalDesaCantiks' => $jadwalKontens])
             . view('templates/footer');
     }
 

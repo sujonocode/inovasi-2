@@ -84,10 +84,10 @@ class StatistikSektoral extends BaseController
     public function create(string $page = 'Pembinaan Statistik Sektoral | Create')
     {
         $data['title'] = ucfirst($page);
-        $id_tim = session()->get('id_tim');
+        $id_tim_sek = session()->get('id_tim_sek');
 
         $model = new TimSektoral();
-        $row = $model->where('id_tim_sek', $id_tim)->first();
+        $row = $model->where('id_tim_sek', $id_tim_sek)->first();
         if ($row) {
             $ketua_tim = $row['ketua_tim'];
             $opd = $row['opd'];
@@ -613,7 +613,7 @@ class StatistikSektoral extends BaseController
         $jadwalKontens = $model->findAll();
 
         return view('templates/header')
-            . view('statistiksektoral/index', ['jadwalStatistikSektprals' => $jadwalKontens])
+            . view('statistiksektoral/index', ['jadwalStatistikSektorals' => $jadwalKontens])
             . view('templates/footer');
     }
 
