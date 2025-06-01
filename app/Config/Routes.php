@@ -60,3 +60,10 @@ $routes->get('/unauthorized', function () {
 });
 
 $routes->get('/halo_pst', 'HaloPst::index');
+
+$routes->get('/lms', 'Lms::index');
+$routes->get('lms/pretest', 'Lms::pretest');
+$routes->post('lms/submitPretest', 'Lms::submitPretest');
+$routes->get('lms/materi', 'Lms::materi');
+$routes->get('lms/posttest', 'Lms::posttest');
+$routes->post('lms/submitPosttest', 'Lms::submitPosttest');
