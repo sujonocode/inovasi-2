@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="shortcut icon" type="image/png" href="/assista.ico">
+    <link rel="shortcut icon" type="image/png" href="/sieduta.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #1e3c72, #2a5298);
             font-family: 'Poppins', sans-serif;
             /* color: #333; */
             /* font-family: Arial, sans-serif; */
@@ -21,7 +21,7 @@
         }
 
         /* body {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #1e3c72, #2a5298);
             font-family: 'Poppins', sans-serif;
             display: flex;
             align-items: center;
@@ -57,7 +57,7 @@
             font-size: 24px;
             font-weight: bold;
             margin: 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #1e3c72, #2a5298);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -80,7 +80,7 @@
             white-space: normal;
             word-wrap: break-word;
             text-align: left;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #1e3c72, #2a5298);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -112,8 +112,8 @@
         <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
             <div class="header">
                 <div class="logo">
-                    <img src="<?= base_url('/assets/image/assista.png') ?>" alt="ASSISTA Logo">
-                    <h1>ASSISTA</h1>
+                    <img src="<?= base_url('/assets/image/sieduta.png') ?>" alt="SIEDUTA Logo">
+                    <h1>SIEDUTA</h1>
                 </div>
                 <div class="vertical-divider"></div>
                 <div class="made-by">Tim TI BPS Kabupaten Tanggamus</div>

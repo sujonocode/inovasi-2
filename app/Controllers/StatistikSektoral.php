@@ -63,7 +63,7 @@ class StatistikSektoral extends BaseController
             . view('templates/footer');
     }
 
-    public function pembinaan(string $page = 'Pembinaan Statistik Sektoral | Datalaku')
+    public function pembinaan(string $page = 'Pembinaan Statistik Sektoral | Digistat')
     {
         $data['title'] = ucfirst($page);
 
@@ -463,7 +463,7 @@ class StatistikSektoral extends BaseController
 
         if ($updateSuccessful) {
             // Send to Fonnte
-            // $this->sendEditNotification($oldData);
+            $this->sendEditNotification($oldData);
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil diupdate');
         } else {
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('error', 'Gagal mengupdate jadwal pembinaan');
@@ -547,7 +547,7 @@ class StatistikSektoral extends BaseController
         if (session()->get('role') === 'admin') {
             $model->delete($id);
             // Send to Fonnte
-            // $this->sendDeleteNotification($jadwalStatistikSektoral);
+            $this->sendDeleteNotification($jadwalStatistikSektoral);
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil dihapus');
         } else {
             if (session()->get('username') !== $jadwalStatistikSektoral['created_by']) {
@@ -559,7 +559,7 @@ class StatistikSektoral extends BaseController
 
         if ($deleteSuccessful) {
             // Send to Fonnte
-            // $this->sendDeleteNotification($jadwalStatistikSektoral);
+            $this->sendDeleteNotification($jadwalStatistikSektoral);
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('success', 'Data reminder berhasil dihapus');
         } else {
             return redirect()->to(base_url('statistik_sektoral/manage'))->with('error', 'Gagal menghapus data reminder');

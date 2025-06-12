@@ -13,7 +13,8 @@
                     </h6>
                 </div>
                 <p class="text-light text-start">
-                    SIEDUTA, website yang dikembangkan oleh BPS Kabupaten Tanggamus, bertujuan meningkatkan literasi statistik dan memperkuat pembinaan statistik sektoral untuk pembangunan yang lebih terarah
+                    <!-- SIEDUTA, website yang dikembangkan oleh BPS Kabupaten Tanggamus, bertujuan meningkatkan literasi statistik dan memperkuat pembinaan statistik sektoral untuk pembangunan yang lebih terarah -->
+                    SIEDUTA, website yang dikembangkan oleh BPS Kabupaten Tanggamus, bertujuan meningkatkan literasi statistik dan memperkuat pembinaan statistik sektoral untuk pembangunan yang lebih terarah, melalui kerja sama dengan Pemerintah Kabupaten Tanggamus
                 </p>
             </div>
 
@@ -35,7 +36,7 @@
                 <ul class="list-unstyled text-start">
                     <li><a href="https://www.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS RI</a></li>
                     <li><a href="https://tanggamuskab.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS Kab. Tanggamus</a></li>
-                    <li><a href="https://lms.bps.go.id" class="text-light text-decoration-none">E-Learning BPS</a></li>
+                    <li><a href="https://digistat.bps.go.id" class="text-light text-decoration-none">E-Learning BPS</a></li>
                     <li><a href="https://gojags.web.bps.go.id/" class="text-light text-decoration-none">Gojags</a></li>
                 </ul>
             </div>

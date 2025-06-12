@@ -124,7 +124,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral') ?>">Jadwal Kegiatan</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">Manage Jadwal</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/pembinaan') ?>">Datalaku</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/pembinaan') ?>">Digistat</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/dokumen') ?>">Kelengkapan</a></li>
                         </ul>
                     </li>

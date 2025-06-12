@@ -4,12 +4,14 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap">
                 <h1 class="mb-3 mb-md-0">Jadwal Pembinaan Statistik Sektoral</h1>
                 <div class="d-flex gap-2 flex-wrap">
-                    <a href="<?= base_url('statistik_sektoral/create') ?>"
-                        class="btn btn-primary btn-sm flex-fill text-center"
-                        style="min-width: 120px;"
-                        title="Tambah Reminder Baru">
-                        <i class="fa-solid fa-plus me-1"></i> Tambah
-                    </a>
+                    <?php if (session()->get('isLoggedIn')): ?>
+                        <a href="<?= base_url('statistik_sektoral/create') ?>"
+                            class="btn btn-primary btn-sm flex-fill text-center"
+                            style="min-width: 120px;"
+                            title="Tambah Reminder Baru">
+                            <i class="fa-solid fa-plus me-1"></i> Tambah
+                        </a>
+                    <?php endif; ?>
                     <a href="<?= base_url('statistik_sektoral/export_xlsx') ?>"
                         class="btn btn-success btn-sm flex-fill text-center"
                         style="min-width: 120px;"

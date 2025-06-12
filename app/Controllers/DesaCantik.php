@@ -455,7 +455,7 @@ class DesaCantik extends BaseController
 
         if ($updateSuccessful) {
             // Send to Fonnte
-            // $this->sendEditNotification($oldData);
+            $this->sendEditNotification($oldData);
             return redirect()->to(base_url('desa_cantik/manage'))->with('success', 'Jadwal pembinaan berhasil diupdate');
         } else {
             return redirect()->to(base_url('desa_cantik/manage'))->with('error', 'Gagal mengupdate jadwal pembinaan');
@@ -539,7 +539,7 @@ class DesaCantik extends BaseController
         if (session()->get('role') === 'admin') {
             $model->delete($id);
             // Send to Fonnte
-            // $this->sendDeleteNotification($jadwalDesaCantik);
+            $this->sendDeleteNotification($jadwalDesaCantik);
             return redirect()->to(base_url('desa_cantik/manage'))->with('success', 'Jadwal pembinaan berhasil dihapus');
         } else {
             if (session()->get('username') !== $jadwalDesaCantik['created_by']) {
@@ -551,7 +551,7 @@ class DesaCantik extends BaseController
 
         if ($deleteSuccessful) {
             // Send to Fonnte
-            // $this->sendDeleteNotification($jadwalDesaCantik);
+            $this->sendDeleteNotification($jadwalDesaCantik);
             return redirect()->to(base_url('desa_cantik/manage'))->with('success', 'Data reminder berhasil dihapus');
         } else {
             return redirect()->to(base_url('desa_cantik/manage'))->with('error', 'Gagal menghapus data reminder');

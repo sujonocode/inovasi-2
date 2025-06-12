@@ -11,7 +11,7 @@
     position: relative;
     text-align: center;
 ">
-
+    <!-- 
     <div style="max-width: 700px;">
         <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: bold;">
             📊 Selamat Datang di <span style="color: #FFD700;">SIEDUTA</span>
@@ -32,7 +32,45 @@
         " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#FFD700'; this.style.transform='scale(1)'">
             Jelajahi Sekarang
         </a>
+    </div> -->
+    <div style="max-width: 900px; margin: auto; text-align: center;">
+        <!-- Bagian Logo -->
+        <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    ">
+            <img src="/assets/image/logo-bps.png" alt="BPS Kabupaten Tanggamus" style="height: 80px; max-width: 100%; object-fit: contain;">
+            <img src="/assets/image/logo-kabupaten-tanggamus.png" alt="Pemerintah Kabupaten Tanggamus" style="height: 80px; max-width: 100%; object-fit: contain;">
+        </div>
+
+        <!-- Judul dan Deskripsi -->
+        <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: bold;">
+            📊 Selamat Datang di <span style="color: #FFD700;">SIEDUTA</span>
+        </h1>
+        <p style="font-size: 1.25rem; line-height: 1.8;">
+            Sistem Informasi Edukasi Statistik Terintegrasi <br>
+            Badan Pusat Statistik Kabupaten Tanggamus
+        </p>
+        <a href="#fitur" style="
+        margin-top: 40px;
+        display: inline-block;
+        background-color: #FFD700;
+        color: #1e3c72;
+        padding: 14px 30px;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background 0.3s, transform 0.2s;
+    " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'"
+            onmouseout="this.style.backgroundColor='#FFD700'; this.style.transform='scale(1)'">
+            Jelajahi Sekarang
+        </a>
     </div>
+
     <div style="position: absolute; bottom: 0; width: 100%; overflow: hidden; line-height: 0;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100px; width: 100%;">
             <path d="M0.00,49.98 C150.00,150.00 349.74,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"

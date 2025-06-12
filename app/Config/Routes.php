@@ -61,9 +61,37 @@ $routes->get('/unauthorized', function () {
 
 $routes->get('/halo_pst', 'HaloPst::index');
 
-$routes->get('/lms', 'Lms::index');
-$routes->get('lms/pretest', 'Lms::pretest');
-$routes->post('lms/submitPretest', 'Lms::submitPretest');
-$routes->get('lms/materi', 'Lms::materi');
-$routes->get('lms/posttest', 'Lms::posttest');
-$routes->post('lms/submitPosttest', 'Lms::submitPosttest');
+$routes->get('digistat/modul1', 'Digistat::modul1');
+$routes->get('digistat/pretest1', 'Digistat::pretest1');
+$routes->post('digistat/submitPretest1', 'Digistat::submitPretest1');
+$routes->get('digistat/materi1', 'Digistat::materi1');
+$routes->get('digistat/posttest1', 'Digistat::posttest1');
+$routes->post('digistat/submitPosttest1', 'Digistat::submitPosttest1');
+
+$routes->get('digistat/modul2', 'Digistat::modul2');
+$routes->get('digistat/pretest2', 'Digistat::pretest2');
+$routes->post('digistat/submitPretest2', 'Digistat::submitPretest2');
+$routes->get('digistat/materi2', 'Digistat::materi2');
+$routes->get('digistat/posttest2', 'Digistat::posttest2');
+$routes->post('digistat/submitPosttest2', 'Digistat::submitPosttest2');
+
+$routes->get('digistat/modul3', 'Digistat::modul3');
+$routes->get('digistat/pretest3', 'Digistat::pretest3');
+$routes->post('digistat/submitPretest3', 'Digistat::submitPretest3');
+$routes->get('digistat/materi3', 'Digistat::materi3');
+$routes->get('digistat/posttest3', 'Digistat::posttest3');
+$routes->post('digistat/submitPosttest3', 'Digistat::submitPosttest3');
+
+$routes->get('digistat/modul4', 'Digistat::modul4');
+$routes->get('digistat/pretest4', 'Digistat::pretest4');
+$routes->post('digistat/submitPretest4', 'Digistat::submitPretest4');
+$routes->get('digistat/materi4', 'Digistat::materi4');
+$routes->get('digistat/posttest4', 'Digistat::posttest4');
+$routes->post('digistat/submitPosttest4', 'Digistat::submitPosttest4');
+
+$routes->get('digistat/modul5', 'Digistat::modul5');
+$routes->get('digistat/pretest5', 'Digistat::pretest5');
+$routes->post('digistat/submitPretest5', 'Digistat::submitPretest5');
+$routes->get('digistat/materi5', 'Digistat::materi5');
+$routes->get('digistat/posttest5', 'Digistat::posttest5');
+$routes->post('digistat/submitPosttest5', 'Digistat::submitPosttest5');

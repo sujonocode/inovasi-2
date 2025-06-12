@@ -1,4 +1,4 @@
-const ctx = document.getElementById('chart1f').getContext('2d');
+const ctx = document.getElementById('chart1ft').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
