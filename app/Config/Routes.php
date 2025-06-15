@@ -95,3 +95,14 @@ $routes->post('digistat/submitPretest5', 'Digistat::submitPretest5');
 $routes->get('digistat/materi5', 'Digistat::materi5');
 $routes->get('digistat/posttest5', 'Digistat::posttest5');
 $routes->post('digistat/submitPosttest5', 'Digistat::submitPosttest5');
+
+$routes->post('klaim/simpan1', 'Klaim::simpan1');
+$routes->get('klaim/pdf1/(:num)', 'Klaim::pdf1/$1');
+$routes->post('klaim/simpan2', 'Klaim::simpan2');
+$routes->get('klaim/pdf2/(:num)', 'Klaim::pdf2/$1');
+$routes->post('klaim/simpan3', 'Klaim::simpan3');
+$routes->get('klaim/pdf3/(:num)', 'Klaim::pdf3/$1');
+$routes->post('klaim/simpan4', 'Klaim::simpan4');
+$routes->get('klaim/pdf4/(:num)', 'Klaim::pdf4/$1');
+$routes->post('klaim/simpan5', 'Klaim::simpan5');
+$routes->get('klaim/pdf5/(:num)', 'Klaim::pdf5/$1');

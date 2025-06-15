@@ -18,22 +18,10 @@
 <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <!-- <div class="modal-header">
-                <h5 class="modal-title" id="eventModalLabel">Jadwal Pembinaan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div> -->
             <div class="modal-header">
-                <!-- <h5 class="modal-title" id="eventModalLabel">
-                    Jadwal Pembinaan
-                    <a href="#" class="ms-2">
-                        <i class="fa-solid fa-pen-to-square" title="Edit Jadwal Pembinaan"></i>
-                    </a>
-                </h5> -->
                 <h5 class="modal-title" id="eventModalLabel">
                     Jadwal Pembinaan
-                    <?php $role = 'admin'; ?>
-                    <?php if ($role == 'admin'): ?>
-                        <!-- < ?php if (session('role') == 'admin'): ?> -->
+                    <?php if (session('role') == 'admin'): ?>
                         <a href="#" id="editLink" class="ms-2">
                             <i class="fa-solid fa-pen-to-square" title="Edit Jadwal Pembinaan"></i>
                         </a>
@@ -43,26 +31,15 @@
             </div>
             <div class="modal-body">
                 <h5 id="modalEventTitle" class="fw-bold"></h5>
+                <p>Pekon &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="modalEventVillage"></span></p>
                 <p>Tanggal &nbsp;&nbsp;: <span id="modalEventDate"></span></p>
                 <p>Waktu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="modalEventTime"></span></p>
+                <p>Tempat &nbsp;&nbsp;&nbsp;: <span id="modalEventPlace"></span></p>
                 <p>Catatan &nbsp;&nbsp;: <span id="modalEventNotes"></span></p>
-                <!-- </div>
-            <div class="modal-footer"> -->
-                <!-- <div class="container">
-                    <div class="row g-2">
-                        <div class="col-12 col-md-6">
-                            <a href="#" id="kontak_ketua_tim" class="btn btn-primary w-100">Ketua Tim</a>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <a href="#" id="kontak_narahubung" class="btn btn-danger w-100">Narahubung Desa</a>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="container">
                     <div class="row g-2">
                         <div class="col-12 col-md-6">
                             <a href="#" id="kontak_ketua_tim" class="btn w-100" style="background-color: #128C7E; color: #ffffff;">
-                                <!-- <a href="#" id="kontak_ketua_tim" class="btn w-100" style="background-color: #25D366; color: #ffffff;"> -->
                                 <i class="fab fa-whatsapp me-2"></i>Ketua Tim
                             </a>
                         </div>
@@ -107,9 +84,11 @@
                             'end' => $jadwalDesaCantik['tanggal'] . 'T' . $jadwalDesaCantik['waktu_end'],
                             'allDay' => false,
                             'extendedProps' => [
+                                'desa' => $jadwalDesaCantik['desa'],
                                 'waktu' => $jadwalDesaCantik['waktu_start'] . " s.d. " . $jadwalDesaCantik['waktu_end'] . " WIB",
-                                'kontak' => $jadwalDesaCantik['topik'],
-                                'pengingat' => $jadwalDesaCantik['topik'],
+                                'kontak' => $jadwalDesaCantik['kontak'],
+                                'pengingat' => $jadwalDesaCantik['pengingat'],
+                                'tempat' => $jadwalDesaCantik['tempat'],
                                 'catatan' => $jadwalDesaCantik['catatan'],
                                 'kontak_ketua_tim' => $jadwalDesaCantik['kontak_ketua_tim'],
                                 'kontak_narahubung' => $jadwalDesaCantik['kontak_narahubung'],
@@ -184,6 +163,8 @@
                 // document.getElementById('modalEventTime').textContent = info.event.extendedProps.waktu.split(":").slice(0, 2).join(":") + " WIB" || 'N/A';
                 // document.getElementById('modalEventReminder').textContent = info.event.extendedProps.pengingat.replace(/[\[\]"]/g, '').split(",").join(", ") || 'N/A';
                 document.getElementById('modalEventNotes').textContent = info.event.extendedProps.catatan || 'N/A';
+                document.getElementById('modalEventPlace').textContent = info.event.extendedProps.tempat || 'N/A';
+                document.getElementById('modalEventVillage').textContent = info.event.extendedProps.desa || 'N/A';
 
                 // Show the event details modal
                 var myModal = new bootstrap.Modal(eventModal);

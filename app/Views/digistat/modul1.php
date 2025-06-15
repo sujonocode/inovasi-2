@@ -111,6 +111,20 @@
         background-color: #e6c200;
         color: #1e3c72;
     }
+
+    .modal-content {
+        background-color: #ffffff;
+        color: #212529;
+    }
+
+    .modal-header .modal-title {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .modal-header .btn-close {
+        filter: none;
+    }
 </style>
 
 <section class="sdi-section container mt-5 mb-5">
@@ -118,7 +132,6 @@
     <p class="sdi-description">
         Prinsip SDI adalah landasan dalam tata kelola data pemerintah agar lebih <strong>terpadu, akurat, dan mudah dibagikan</strong>. Dengan prinsip ini, kita bisa menghasilkan kebijakan publik yang berbasis data dan berdampak nyata bagi masyarakat.
     </p>
-
     <div class="flow-container">
         <a href="<?= base_url('digistat/pretest1') ?>" class="flow-step">
             <div class="flow-badge">1</div>
@@ -139,18 +152,63 @@
         <div class="arrow-line d-none d-md-flex">
             <i class="bi bi-arrow-right"></i>
         </div>
-
         <a href="<?= base_url('digistat/posttest1') ?>" class="flow-step">
             <div class="flow-badge">3</div>
             <div class="flow-label">Posttest</div>
             <p class="flow-desc">Evaluasi kembali pemahaman Anda setelah mempelajari materi.</p>
         </a>
     </div>
-
     <div class="text-center mt-5">
-        <a href="<?= base_url('statistik_sektoral/pembinaan') ?>" class="btn btn-custom px-4 py-2">← Kembali ke Menu Digistat</a>
+        <!-- Tombol pemicu modal -->
+        <button type="button" class="btn btn-custom px-4 py-2" data-bs-toggle="modal" data-bs-target="#klaimModal">
+            Klaim Surat Keterangan
+        </button>
+    </div>
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="klaimModal" tabindex="-1" aria-labelledby="klaimModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="<?= base_url('klaim/simpan1') ?>" method="post" target="_blank">
+                    <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="klaimModalLabel">Formulir Klaim Surat Keterangan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Nama Lengkap + Gelar</label>
+                            <input type="text" name="nama_lengkap" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Instansi</label>
+                            <input type="text" name="instansi" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Token Pretest</label>
+                            <input type="text" name="token_pretest" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Token Posttest</label>
+                            <input type="text" name="token_posttest" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Rating Aplikasi</label>
+                            <select name="rating" class="form-select" required>
+                                <option value="5">★★★★★</option>
+                                <option value="4">★★★★☆</option>
+                                <option value="3">★★★☆☆</option>
+                                <option value="2">★★☆☆☆</option>
+                                <option value="1">★☆☆☆☆</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Klaim Keterangan</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
-
-<!-- Optional: Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">

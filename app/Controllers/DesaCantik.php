@@ -134,7 +134,7 @@ class DesaCantik extends BaseController
 
         if ($model->save($data)) {
             // Send to Fonnte
-            // $this->sendNotification();
+            $this->sendNotification();
             return redirect()->to(base_url('/desa_cantik/manage'))->with('success', 'Jadwal pembinaan berhasil dibuat');
         }
 

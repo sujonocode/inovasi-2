@@ -142,7 +142,7 @@ class StatistikSektoral extends BaseController
 
         if ($model->save($data)) {
             // Send to Fonnte
-            // $this->sendNotification();
+            $this->sendNotification();
             return redirect()->to(base_url('/statistik_sektoral/manage'))->with('success', 'Jadwal pembinaan berhasil dibuat');
         }
 

@@ -123,7 +123,7 @@
                         <a class="nav-link dropdown-toggle" href="<?= base_url('statistik_sektoral') ?>" id="statistik_sektoral" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pembinaan Statistik Sektoral</a>
                         <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral') ?>">Jadwal Kegiatan</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">Manage Jadwal</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/manage') ?>">Atur Jadwal</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/pembinaan') ?>">Digistat</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('statistik_sektoral/dokumen') ?>">Kelengkapan</a></li>
                         </ul>
@@ -132,7 +132,7 @@
                         <a class="nav-link dropdown-toggle" href="<?= base_url('desa_cantik') ?>" id="desa_cantik" role="button" data-bs-toggle="dropdown" aria-expanded="false">Desa Cantik</a>
                         <ul class="dropdown-menu" aria-labelledby="dokumenDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('desa_cantik') ?>">Jadwal Kegiatan</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('desa_cantik/manage') ?>">Manage Jadwal</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('desa_cantik/manage') ?>">Atur Jadwal</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('desa_cantik/dokumen') ?>">Kelengkapan</a></li>
                         </ul>
                     </li>

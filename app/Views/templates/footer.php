@@ -35,8 +35,10 @@
                 <h6 class="fw-bold text-start">Tautan Terkait</h6>
                 <ul class="list-unstyled text-start">
                     <li><a href="https://www.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS RI</a></li>
+                    <li><a href="https://lampung.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS Prov. Lampung</a></li>
                     <li><a href="https://tanggamuskab.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS Kab. Tanggamus</a></li>
-                    <li><a href="https://digistat.bps.go.id" class="text-light text-decoration-none">E-Learning BPS</a></li>
+                    <li><a href="https://data.tanggamus.go.id/" class="text-light text-decoration-none">Satu Data Tanggamus</a></li>
+                    <li><a href="https://lms.bps.go.id" class="text-light text-decoration-none">E-Learning BPS</a></li>
                     <li><a href="https://gojags.web.bps.go.id/" class="text-light text-decoration-none">Gojags</a></li>
                 </ul>
             </div>

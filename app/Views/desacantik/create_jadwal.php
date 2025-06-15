@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="row form-group align-items-center flex-column flex-md-row">
-                        <label for="desa" class="col-md-3 form-label">Desa/Kel.:</label>
+                        <label for="desa" class="col-md-3 form-label">Pekon/Desa/Kel.:</label>
                         <div class="col-md-9">
                             <input id="desa" type="text" name="desa" class="form-control"
                                 placeholder="" value="<?= $desa ?>" required readonly>
