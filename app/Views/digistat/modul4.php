@@ -111,6 +111,20 @@
         background-color: #e6c200;
         color: #1e3c72;
     }
+
+    .modal-content {
+        background-color: #ffffff;
+        color: #212529;
+    }
+
+    .modal-header .modal-title {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .modal-header .btn-close {
+        filter: none;
+    }
 </style>
 
 <section class="sdi-section container mt-5 mb-5">
@@ -148,7 +162,56 @@
     </div>
 
     <div class="text-center mt-5">
-        <a href="<?= base_url('statistik_sektoral/pembinaan') ?>" class="btn btn-custom px-4 py-2">← Kembali ke Menu Digistat</a>
+        <!-- Tombol pemicu modal -->
+        <button type="button" class="btn btn-custom px-4 py-2" data-bs-toggle="modal" data-bs-target="#klaimModal">
+            Klaim Surat Keterangan
+        </button>
+    </div>
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="klaimModal" tabindex="-1" aria-labelledby="klaimModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="<?= base_url('klaim/simpan4') ?>" method="post" target="_blank">
+                    <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="klaimModalLabel">Formulir Klaim Surat Keterangan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Instansi</label>
+                            <input type="text" name="instansi" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Token Pretest</label>
+                            <input type="text" name="token_pretest" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Token Posttest</label>
+                            <input type="text" name="token_posttest" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Rating Aplikasi</label>
+                            <select name="rating" class="form-select" required>
+                                <option value="5">★★★★★</option>
+                                <option value="4">★★★★☆</option>
+                                <option value="3">★★★☆☆</option>
+                                <option value="2">★★☆☆☆</option>
+                                <option value="1">★☆☆☆☆</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Klaim Keterangan</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 

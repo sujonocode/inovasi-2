@@ -57,7 +57,7 @@
         <!-- Session ID -->
         <div class="mt-3">
             <div class="session-box">
-                <strong>ID Sesi:</strong>
+                <strong>Token Hasil:</strong>
                 <span id="sessionId"><?= esc($session_id) ?></span>
                 <button class="btn btn-sm btn-gold ms-2" onclick="copySessionId()">Salin</button>
             </div>
@@ -75,7 +75,7 @@
 </div>
 
 <!-- Toast -->
-<div id="toast" class="toast-notif">ID sesi berhasil disalin!</div>
+<div id="toast" class="toast-notif">token hasil berhasil disalin!</div>
 
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -134,5 +134,20 @@
     });
 </script>
 
+<script>
+    function copySessionId() {
+        const sessionId = document.getElementById("sessionId").innerText;
+        navigator.clipboard.writeText(sessionId).then(function() {
+            // Tampilkan toast
+            const toast = document.getElementById("toast");
+            toast.style.display = "block";
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 2000);
+        }).catch(function(error) {
+            alert("Gagal menyalin token hasil: " + error);
+        });
+    }
+</script>
 
 <?= $this->endSection() ?>

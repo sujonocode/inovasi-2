@@ -76,7 +76,7 @@ class Digistat extends BaseController
         $data['title'] = ucfirst($page);
 
         return view('templates/header', $data)
-            . view('digistat/materi2')
+            . view('digistat/materi1')
             . view('templates/footer');
     }
 

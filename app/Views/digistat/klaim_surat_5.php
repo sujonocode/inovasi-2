@@ -167,6 +167,7 @@
         <tr>
             <td>Nilai Posttest</td>
             <td>: <?= number_format($data['nilai_posttest'] * 100, 2, ',', '') ?></td>
+
         </tr>
         <!-- <tr>
             <td>Rating Aplikasi</td>
@@ -175,7 +176,7 @@
     </table>
 
     <div class="isi">
-        Telah mengikuti dan menyelesaikan seluruh rangkaian pembelajaran statistik <strong>(Modul 1 - Prinsip SDI)</strong> melalui aplikasi pembelajaran BPS Kabupaten Tanggamus <strong>(Digistat)</strong>, yang terdiri dari:
+        Telah mengikuti dan menyelesaikan seluruh rangkaian pembelajaran statistik <strong>(Modul 5 - Sistem Statistik Nasional)</strong> melalui aplikasi pembelajaran BPS Kabupaten Tanggamus <strong>(Digistat)</strong>, yang terdiri dari:
         <ol>
             <li>Pretest</li>
             <li>Materi Pembelajaran</li>

@@ -176,7 +176,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label>Nama Lengkap + Gelar</label>
+                            <label>Nama Lengkap</label>
                             <input type="text" name="nama_lengkap" class="form-control" required>
                         </div>
                         <div class="mb-3">
