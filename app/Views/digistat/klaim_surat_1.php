@@ -7,34 +7,51 @@
     <style>
         body {
             font-family: "Times New Roman", serif;
-            margin: 50px;
+            margin: 10px 50px 40px 50px;
             position: relative;
         }
 
         .kop {
-            text-align: center;
-            border-bottom: 3px solid black;
-            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .kop img {
-            float: left;
-            width: 80px;
-            height: auto;
+        .kop table {
+            width: 100%;
         }
 
-        .kop h2 {
-            margin: 0;
-            font-size: 18pt;
+        .kop td {
+            vertical-align: top;
         }
 
-        .kop p {
-            margin: 0;
-            font-size: 10pt;
+        .logo {
+            width: 110px;
+        }
+
+        .logo img {
+            width: 90px;
+        }
+
+        .identitas {
+            text-align: left;
+        }
+
+        .identitas .judul {
+            font-size: 14pt;
+            font-weight: bold;
+            font-style: italic;
             line-height: 1.2;
+            margin-bottom: 4px;
         }
 
-        .judul {
+        .identitas .alamat {
+            font-size: 10pt;
+            line-height: 1.3;
+        }
+
+        .judul-surat {
             text-align: center;
             font-size: 16pt;
             margin-top: 20px;
@@ -96,7 +113,6 @@
             padding: 2px 8px;
         }
     </style>
-
 </head>
 
 <body>
@@ -120,23 +136,33 @@
         $pecah = explode('-', date('Y-m-d', strtotime($tanggal)));
         return $pecah[2] . ' ' . $bulan[(int)$pecah[1]] . ' ' . $pecah[0];
     }
-
     ?>
+
     <div class="watermark">
-        <!-- <img src="< ?= base_url('/assets/image/sieduta.png') ?>" alt="SIEDUTA Logo"> -->
-        <!-- <img src="< ?= FCPATH . '/assets/image/sieduta.png' ?>" alt="SIEDUTA Logo"> -->
+        <img src="https://raw.githubusercontent.com/sujonocode/assets/refs/heads/main/sieduta.png" alt="SIEDUTA Logo">
     </div>
 
     <div class="kop">
-        <!-- <img src="< ?= base_url('assets/image/logo-bps.png') ?>" alt="Logo BPS"> -->
-        <h2>BADAN PUSAT STATISTIK<br>KABUPATEN TANGGAMUS</h2>
-        <p>Jl. Raya Kota Agung No. XX, Kabupaten Tanggamus, Lampung</p>
-        <p>Website: tanggamus.bps.go.id | Email: bps1806@bps.go.id</p>
+        <table>
+            <tr>
+                <td class="logo">
+                    <img src="https://raw.githubusercontent.com/sujonocode/assets/refs/heads/main/logo-bps.png" alt="Logo BPS">
+                </td>
+                <td class="identitas">
+                    <div class="judul">
+                        <strong><em>BADAN PUSAT STATISTIK<br>KABUPATEN TANGGAMUS</em></strong>
+                    </div>
+                    <div class="alamat">
+                        Jalan Ir. H. Juanda Kota Agung, Tanggamus 35384 Telp (0722) 21893<br>
+                        Website: https://tanggamuskab.bps.go.id Email: bps1802@bps.go.id
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <div class="judul">SURAT KETERANGAN</div>
+    <div class="judul-surat">SURAT KETERANGAN</div>
     <div class="nomor">Nomor: B-412/<?= str_pad($data['nomor'], 4, '0', STR_PAD_LEFT) ?>/18020/DL.500/<?= date('Y') ?></div>
-
 
     <div class="isi">
         Yang bertanda tangan di bawah ini menerangkan bahwa:
@@ -157,25 +183,21 @@
         </tr>
         <tr>
             <td>Nilai Pretest</td>
-            <td>: <?= number_format($data['nilai_pretest'] * 100, 2, ',', '') ?></td>
+            <td>: <?= number_format($data['nilai_pretest'] * 20, 2, ',', '') ?></td>
         </tr>
         <tr>
             <td>Token Posttest</td>
             <td>: <?= $data['token_posttest'] ?></td>
-
         </tr>
         <tr>
             <td>Nilai Posttest</td>
-            <td>: <?= number_format($data['nilai_posttest'] * 100, 2, ',', '') ?></td>
+            <td>: <?= number_format($data['nilai_posttest'] * 20, 2, ',', '') ?></td>
         </tr>
-        <!-- <tr>
-            <td>Rating Aplikasi</td>
-            <td>: < ?= $data['rating'] ?> ⭐</td>
-        </tr> -->
     </table>
 
     <div class="isi">
-        Telah mengikuti dan menyelesaikan seluruh rangkaian pembelajaran statistik <strong>(Modul 1 - Prinsip SDI)</strong> melalui aplikasi pembelajaran BPS Kabupaten Tanggamus <strong>(Digistat)</strong>, yang terdiri dari:
+        Telah mengikuti dan menyelesaikan seluruh rangkaian pembelajaran statistik <strong>(Modul 1 - Prinsip SDI)</strong>
+        melalui aplikasi pembelajaran BPS Kabupaten Tanggamus <strong>(Digistat)</strong>, yang terdiri dari:
         <ol>
             <li>Pretest</li>
             <li>Materi Pembelajaran</li>
@@ -184,11 +206,16 @@
         Demikian surat keterangan ini dibuat agar dapat digunakan sebagaimana mestinya.
     </div>
 
-    <div class="ttd">
+    <div class="ttd" style="margin-top: 30px; width: 100%; text-align: right; line-height: 1.3;">
         Tanggamus, <?= tanggalIndo($data['waktu_klaim']) ?><br>
         Kepala Badan Pusat Statistik<br>
-        Kabupaten Tanggamus<br><br><br><br>
-        <div class="nama">Niken Hariyanti</div>
+        Kabupaten Tanggamus<br>
+
+        <img src="https://raw.githubusercontent.com/sujonocode/assets/refs/heads/main/ttd-niken-hariyanti-v1.png"
+            alt="Tanda Tangan"
+            style="width: 250px; height: auto; margin: 0; padding: 0;"><br>
+
+        <div style="margin-top: 5px; font-weight: bold; text-decoration: underline;">Niken Hariyanti</div>
     </div>
 
 </body>

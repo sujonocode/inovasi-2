@@ -8,6 +8,7 @@ use App\Models\KlaimModul3;
 use App\Models\KlaimModul4;
 use App\Models\KlaimModul5;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Klaim extends BaseController
 {
@@ -58,7 +59,11 @@ class Klaim extends BaseController
         $html = view('digistat/klaim_surat_1', ['data' => $data]);
 
         // generate PDF
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
@@ -112,7 +117,11 @@ class Klaim extends BaseController
         $html = view('digistat/klaim_surat_2', ['data' => $data]);
 
         // generate PDF
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
@@ -166,7 +175,11 @@ class Klaim extends BaseController
         $html = view('digistat/klaim_surat_3', ['data' => $data]);
 
         // generate PDF
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
@@ -220,7 +233,11 @@ class Klaim extends BaseController
         $html = view('digistat/klaim_surat_4', ['data' => $data]);
 
         // generate PDF
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
@@ -274,7 +291,11 @@ class Klaim extends BaseController
         $html = view('digistat/klaim_surat_5', ['data' => $data]);
 
         // generate PDF
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();

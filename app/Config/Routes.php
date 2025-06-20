@@ -106,3 +106,5 @@ $routes->post('klaim/simpan4', 'Klaim::simpan4');
 $routes->get('klaim/pdf4/(:num)', 'Klaim::pdf4/$1');
 $routes->post('klaim/simpan5', 'Klaim::simpan5');
 $routes->get('klaim/pdf5/(:num)', 'Klaim::pdf5/$1');
+
+$routes->get('pdf', 'PdfController::generate');

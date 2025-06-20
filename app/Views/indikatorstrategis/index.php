@@ -502,7 +502,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Jumlah Penduduk Berdasarkan Jenis Kelamin (2024)
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -519,7 +519,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Jumlah Penduduk Berdasarkan Agama (2024)
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -536,7 +536,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Tingkat Pengangguran Terbuka
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -553,7 +553,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Tingkat Partisipasi Angkatan Kerja
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -570,7 +570,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Harapan Lama Sekolah
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -587,7 +587,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Angkatan Kerja Berdasarkan Jenis Kelamin (2024)
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -612,7 +612,32 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            PDRB Tahunan
+                        </h6>
+                        <div class="position-absolute top-0 end-0 p-2">
+                            <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
+                                <i class="bi bi-info-circle-fill text-secondary"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Klik untuk data selengkapnya">
+                                </i>
+                            </a>
+                        </div>
+
+                        <div class="d-flex justify-content-center mb-3">
+                            <select id="option2am1" class="form-select form-select-sm" style="width: 150px;">
+                                <option value="ADHB">ADHB</option>
+                                <option value="ADHK">ADHK</option>
+                            </select>
+                        </div>
+
+                        <canvas id="chart2am1" height="180"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="card shadow-sm p-3 position-relative">
+                        <h6 class="text-center mb-3 fw-semibold">
+                            PDRB Triwulanan
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -637,7 +662,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Distribusi PDRB Triwulanan (ADHB) Berdasarkan Pengeluaran
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -648,13 +673,22 @@
                                 </i>
                             </a>
                         </div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <select id="option2b" class="form-select form-select-sm" style="width: 150px;">
+                                <option value="TW12024">TW I-2024</option>
+                                <option value="TW22024">TW II-2024</option>
+                                <option value="TW32024">TW III-2024</option>
+                                <option value="TW42024">TW IV-2024</option>
+                                <option value="TW12025" selected>TW I-2025</option>
+                            </select>
+                        </div>
                         <canvas id="chart2b" height="180"></canvas>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Distribusi PDRB Triwulanan
+                            Laju Pertumbuhan PDRB Tahunan
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -666,23 +700,13 @@
                                 </i>
                             </a>
                         </div>
-
-                        <div class="d-flex justify-content-center mb-3">
-                            <select id="option11" class="form-select form-select-sm" style="width: 150px;">
-                                <option value="TW12024">TW I-2024</option>
-                                <option value="TW22024">TW II-2024</option>
-                                <option value="TW32024">TW III-2024</option>
-                                <option value="TW42024">TW IV-2024</option>
-                            </select>
-                        </div>
-
                         <canvas id="chart2c" height="180"></canvas>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Laju Pertumbuhan (q-to-q) PDRB Triwulanan
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -699,7 +723,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Laju Pertumbuhan (y-on-y) PDRB Triwulanan
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -713,17 +737,19 @@
                         <canvas id="chart2e" height="180"></canvas>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Laju Pertumbuhan (c-to-c) PDRB Triwulanan
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
                                 <i class="bi bi-info-circle-fill text-secondary"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="left"
-                                    title="klik untuk data selengkapnya">
+                                    title="Lainnya (Konsumsi Lembaga Nonprofit yang Melayani Rumah Tangga (PK-LNPRT) + Perubahan Inventori (PI) + Net Ekspor (Ekspor-Impor))
+                                    Klik untuk data selengkapnya">
                                 </i>
                             </a>
                         </div>
@@ -741,7 +767,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Pembangunan Manusia
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -758,7 +784,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Jumlah Desa/Kelurahan Menurut Letak Geografis (2024)
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -775,7 +801,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Jumlah Desa/Kelurahan Menurut Topografi (2024)
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -789,7 +815,7 @@
                         <canvas id="chart3c" height="180"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6">
+                <!-- <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
                             Title Here
@@ -839,7 +865,7 @@
                         </div>
                         <canvas id="chart3f" height="180"></canvas>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -912,6 +938,7 @@
         // < ?= $this->include('indikatorstrategis/charts/chart1i.js') ?>
         // < ?= $this->include('indikatorstrategis/charts/chart1j.js') ?>
 
+        <?= $this->include('indikatorstrategis/charts/chart2am1.js') ?>
         <?= $this->include('indikatorstrategis/charts/chart2a.js') ?>
         <?= $this->include('indikatorstrategis/charts/chart2b.js') ?>
         <?= $this->include('indikatorstrategis/charts/chart2c.js') ?>

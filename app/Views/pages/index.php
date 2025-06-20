@@ -11,28 +11,6 @@
     position: relative;
     text-align: center;
 ">
-    <!-- 
-    <div style="max-width: 700px;">
-        <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: bold;">
-            📊 Selamat Datang di <span style="color: #FFD700;">SIEDUTA</span>
-        </h1>
-        <p style="font-size: 1.25rem; line-height: 1.8;">
-            Sistem Informasi Edukasi Statistik Terintegrasi <br>Badan Pusat Statistik Kabupaten Tanggamus
-        </p>
-        <a href="#fitur" style="
-            margin-top: 40px;
-            display: inline-block;
-            background-color: #FFD700;
-            color: #1e3c72;
-            padding: 14px 30px;
-            font-weight: bold;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.2s;
-        " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#FFD700'; this.style.transform='scale(1)'">
-            Jelajahi Sekarang
-        </a>
-    </div> -->
     <div style="max-width: 900px; margin: auto; text-align: center;">
         <!-- Bagian Logo -->
         <div style="
@@ -56,19 +34,22 @@
             Badan Pusat Statistik Kabupaten Tanggamus
         </p>
         <a href="#fitur" style="
-        margin-top: 40px;
-        display: inline-block;
-        background-color: #FFD700;
-        color: #1e3c72;
-        padding: 14px 30px;
-        font-weight: bold;
-        border-radius: 10px;
-        text-decoration: none;
-        transition: background 0.3s, transform 0.2s;
-    " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'"
+            margin-top: 40px;
+            display: inline-block;
+            background-color: #FFD700;
+            color: #1e3c72;
+            padding: 14px 30px;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            position: relative;
+            z-index: 10;
+            " onmouseover="this.style.backgroundColor='#e6c200'; this.style.transform='scale(1.05)'"
             onmouseout="this.style.backgroundColor='#FFD700'; this.style.transform='scale(1)'">
             Jelajahi Sekarang
         </a>
+
     </div>
 
     <div style="position: absolute; bottom: 0; width: 100%; overflow: hidden; line-height: 0;">
@@ -196,8 +177,8 @@
                 <div class="card-stat">🧮<br>IPM<br><b>70,54</b><br><small>2024</small></div>
                 <div class="card-stat">📉<br>Penduduk Miskin<br><b>10,28 %</b><br><small>2024</small></div>
                 <div class="card-stat">🔍<br>TPT<br><b>3,19 %</b><br><small>2024</small></div>
-                <div class="card-stat">💰<br>PDRB Triwulanan (ADHB)<br><b>5.331,58 miliar rupiah</b><br><small>Triwulan IV 2024</small></div>
-                <div class="card-stat">📈<br>Pertumbuhan Ekonomi Triwulanan<br><b>-3,02 %</b><br><small>Triwulan IV 2024</small></div>
+                <div class="card-stat">💰<br>PDRB Triwulanan (ADHB)<br><b>5.274,84 miliar rupiah</b><br><small>Triwulan I 2025</small></div>
+                <div class="card-stat">📈<br>Pertumbuhan Ekonomi Triwulanan<br><b>-1,56 %</b><br><small>Triwulan I 2025</small></div>
                 <div class="card-stat">💰<br>PDRB Tahunan (ADHB)<br><b>21.197,58 miliar rupiah</b><br><small>2024</small></div>
                 <div class="card-stat">📈<br>Pertumbuhan Ekonomi Tahunan<br><b>4,01 %</b><br><small>2024</small></div>
                 <div class="card-stat">🪙<br>PDRB per Kapita (ADHB)<br><b>31,62 juta rupiah</b><br><small>2024</small></div>
