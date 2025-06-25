@@ -55,8 +55,7 @@
             text-align: center;
             font-size: 16pt;
             margin-top: 20px;
-            margin-bottom: 15px;
-            text-decoration: underline;
+            margin-bottom: 5px;
             font-weight: bold;
         }
 
@@ -183,7 +182,7 @@
         </tr>
         <tr>
             <td>Nilai Pretest</td>
-            <td>: <?= number_format($data['nilai_pretest'] * 20, 2, ',', '') ?></td>
+            <td>: <?= number_format($data['nilai_pretest'] * 10, 2, ',', '') ?></td>
         </tr>
         <tr>
             <td>Token Posttest</td>
@@ -191,7 +190,7 @@
         </tr>
         <tr>
             <td>Nilai Posttest</td>
-            <td>: <?= number_format($data['nilai_posttest'] * 20, 2, ',', '') ?></td>
+            <td>: <?= number_format($data['nilai_posttest'] * 10, 2, ',', '') ?></td>
         </tr>
     </table>
 
@@ -213,9 +212,9 @@
 
         <img src="https://raw.githubusercontent.com/sujonocode/assets/refs/heads/main/ttd-niken-hariyanti-v1.png"
             alt="Tanda Tangan"
-            style="width: 250px; height: auto; margin: 0; padding: 0;"><br>
+            style="width: 200px; height: auto; margin: 0; padding: 0;"><br>
 
-        <div style="margin-top: 5px; font-weight: bold; text-decoration: underline;">Niken Hariyanti</div>
+        <div style="margin-top: 5px; font-weight: bold;">Niken Hariyanti</div>
     </div>
 
 </body>

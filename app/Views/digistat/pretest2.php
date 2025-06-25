@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <form method="post" action="<?= base_url($type === 'Pre Test' ? 'digistat/submitPretest1' : 'digistat/submitPosttest1') ?>" id="quizForm">
+    <form method="post" action="<?= base_url($type === 'Pre Test' ? 'digistat/submitPretest2' : 'digistat/submitPosttest2') ?>" id="quizForm">
         <?= csrf_field() ?>
 
         <div id="quiz-container">

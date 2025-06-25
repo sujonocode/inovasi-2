@@ -18,7 +18,7 @@ class QuestionModel3 extends Model
         'correct_answer'
     ];
 
-    public function getQuestions($type, $limit = 5)
+    public function getQuestions($type, $limit = 10)
     {
         return $this->where('type', $type)
             ->orderBy('id', 'RANDOM')

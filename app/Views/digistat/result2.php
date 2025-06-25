@@ -52,7 +52,7 @@
             <canvas id="scoreChart" style="max-width: 300px; margin: auto;"></canvas>
         </div>
 
-        <p class="fs-5">Skor Anda: <strong><?= esc($score) ?>/5</strong> (<?= esc($score * 20) ?>%)</p>
+        <p class="fs-5">Skor Anda: <strong><?= esc($score) ?>/10</strong> (<?= esc($score * 10) ?>%)</p>
 
         <!-- Session ID -->
         <div class="mt-3">
@@ -66,9 +66,9 @@
         <!-- Navigasi -->
         <div class="mt-4">
             <?php if ($type == 'Pre Test'): ?>
-                <a href="<?= base_url('digistat/materi3') ?>" class="btn btn-lg btn-gold">Lanjut ke Materi</a>
+                <a href="<?= base_url('digistat/materi2') ?>" class="btn btn-lg btn-gold">Lanjut ke Materi</a>
             <?php else: ?>
-                <a href="<?= base_url('digistat/modul3') ?>" class="btn btn-lg btn-gold">Kembali ke Halaman Awal</a>
+                <a href="<?= base_url('digistat/modul2') ?>" class="btn btn-lg btn-gold">Kembali ke Halaman Awal</a>
             <?php endif ?>
         </div>
     </div>
@@ -80,7 +80,7 @@
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const score = <?= $score * 20 ?>;
+    const score = <?= $score * 10 ?>;
     const ctx = document.getElementById('scoreChart').getContext('2d');
 
     new Chart(ctx, {

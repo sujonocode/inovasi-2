@@ -43,7 +43,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Pembangunan Manusia
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -60,7 +60,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Angka Harapan Hidup
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -77,7 +77,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Dimensi Pendidikan (Rata-Rata HLS dan RLS)
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -94,7 +94,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Pembangunan Gender
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -111,7 +111,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Laju Pertumbuhan Ekonomi
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -128,7 +128,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Tingkat Pengangguran Terbuka
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -145,7 +145,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Angka Kemiskinan
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -162,7 +162,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Gini
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -179,7 +179,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Nilai Tukar Petani
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -196,7 +196,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Ketahanan Pangan
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -213,7 +213,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Persentase Pertumbuhan Pendukung Sektor Pariwisata Dalam PDRB
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -230,7 +230,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Pembangunan Infrastruktur Daerah
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -247,7 +247,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Layanan Infrastruktur Dasar Wilayah
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -264,7 +264,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Rasio Elektrifikas
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -281,7 +281,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Reformasi Birokrasi
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -298,7 +298,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Tingkat Akuntabilitas Kinerja
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -315,7 +315,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Pengelolaan Keuangan Daerah
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -332,7 +332,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Kepuasan Masyarakat
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -349,7 +349,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Daya Saing Daerah
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -366,7 +366,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Desa Membangun
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -383,7 +383,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Persentase Pekon Mandiri
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -400,7 +400,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Angka Kriminalitas Terhadap Jumlah Penduduk
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -417,7 +417,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Kualitas Lingkungan Hidup
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -434,7 +434,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Penurunan Emisi Gas Rumah Kaca
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -451,7 +451,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Title Here
+                            Indeks Risiko Bencana
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">

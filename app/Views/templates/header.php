@@ -152,9 +152,8 @@
                                 <li><a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="fa-solid fa-user"></i> Profil Saya</a></li>
 
                                 <?php if (session()->get('role') === 'admin'): ?>
-                                    <li><a class="dropdown-item" href="<?= base_url('admin') ?>"><i class="fa-solid fa-users-gear"></i> Admin Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url('admin_dashboard') ?>"><i class="fa-solid fa-users-gear"></i> Admin Dashboard</a></li>
                                 <?php endif; ?>
-
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
