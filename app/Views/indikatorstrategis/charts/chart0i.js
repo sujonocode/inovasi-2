@@ -1,16 +1,41 @@
 new Chart(document.getElementById('chart0i'), {
     type: 'line',
     data: {
-        labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+        labels: [
+            'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'Mei 2024', 'Jun 2024',
+            'Jul 2024', 'Agt 2024', 'Sep 2024', 'Okt 2024', 'Nov 2024', 'Des 2024',
+            'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'Mei 2025'
+        ],
         datasets: [{
-            label: 'TPT',
-            data: [3.91, 4.82, 4.76, 6.08, 3.24, 4.88, 4.60, 5.72, 5.08, 2.21, 2.96, 2.96, 2.93, 3.70, 3.35],
+            label: 'Nilai Tukar Petani (NTP)',
+            data: [
+                119.35, 122.02, 120.37, 119.32, 121.79, 126.56,
+                128.94, 127.62, 129.58, 128.47, 126.64, 129.01,
+                132.07, 134.59, 133.17, 127.90, 130.64
+            ],
             borderColor: '#42a5f5',
-            fill: false,
-            tension: 0.4
+            backgroundColor: 'transparent',
+            tension: 0.4,
+            fill: false
         }]
     },
     options: {
-        responsive: true
+        responsive: true,
+        plugins: {
+            title: {
+                display: false,
+                text: 'Nilai Tukar Petani (NTP) 2024–2025'
+            },
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        }
     }
 });
+
+// Nilai Tukar Petani

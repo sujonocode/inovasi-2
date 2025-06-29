@@ -264,7 +264,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="card shadow-sm p-3 position-relative">
                         <h6 class="text-center mb-3 fw-semibold">
-                            Rasio Elektrifikas
+                            Rasio Elektrifikasi
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
