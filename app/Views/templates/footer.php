@@ -1,6 +1,6 @@
 </div>
 </body>
-<footer class="bg-dark text-light pt-5 pb-4">
+<footer class="text-light pt-5 pb-4">
     <div class="container">
         <div class="row">
 

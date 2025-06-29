@@ -75,7 +75,7 @@
 </div>
 
 <!-- Toast -->
-<div id="toast" class="toast-notif">token hasil berhasil disalin!</div>
+<div id="toast" class="toast-notif">Token hasil berhasil disalin!</div>
 
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

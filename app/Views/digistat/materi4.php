@@ -47,7 +47,7 @@
         <div class="iframe-wrapper mb-4">
             <iframe src="<?= base_url('uploads/materi4.pdf') ?>" width="100%" frameborder="0"></iframe>
         </div>
-        <a href="<?= base_url('digistat/posttest1') ?>" class="btn btn-gold px-4 py-2">Lanjut ke Post Test</a>
+        <a href="<?= base_url('digistat/posttest4') ?>" class="btn btn-gold px-4 py-2">Lanjut ke Post Test</a>
     </div>
 </div>
 

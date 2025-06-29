@@ -128,9 +128,9 @@
 </style>
 
 <section class="sdi-section container mt-5 mb-5">
-    <h2 class="text-center">Prinsip Satu Data Indonesia (SDI)</h2>
+    <h2 class="text-center">Kualitas Data</h2>
     <p class="sdi-description">
-        Prinsip SDI adalah landasan dalam tata kelola data pemerintah agar lebih <strong>terpadu, akurat, dan mudah dibagikan</strong>. Dengan prinsip ini, kita bisa menghasilkan kebijakan publik yang berbasis data dan berdampak nyata bagi masyarakat.
+        Kualitas data menjamin keandalan informasi statistik yang dihasilkan. Data yang akurat, konsisten, dan mutakhir menjadi dasar bagi pengambilan keputusan yang tepat. Dengan menjaga kualitas, kita mendorong lahirnya kebijakan publik yang lebih responsif dan berdampak bagi masyarakat.
     </p>
 
     <div class="flow-container">
@@ -147,7 +147,7 @@
         <a href="<?= base_url('digistat/materi2') ?>" class="flow-step">
             <div class="flow-badge">2</div>
             <div class="flow-label">Materi</div>
-            <p class="flow-desc">Pelajari prinsip-prinsip SDI secara interaktif dan mudah dipahami.</p>
+            <p class="flow-desc">Pelajari kualitas data secara interaktif dan mudah dipahami.</p>
         </a>
 
         <div class="arrow-line d-none d-md-flex">

@@ -55,8 +55,7 @@
             text-align: center;
             font-size: 16pt;
             margin-top: 20px;
-            margin-bottom: 15px;
-            text-decoration: underline;
+            margin-bottom: 5px;
             font-weight: bold;
         }
 
@@ -178,19 +177,19 @@
             <td>: <?= $data['instansi'] ?></td>
         </tr>
         <tr>
-            <td>Token Pretest</td>
+            <td>Token <i>Pretest</i></td>
             <td>: <?= $data['token_pretest'] ?></td>
         </tr>
         <tr>
-            <td>Nilai Pretest</td>
+            <td>Nilai <i>Pretest</i></td>
             <td>: <?= number_format($data['nilai_pretest'] * 10, 2, ',', '') ?></td>
         </tr>
         <tr>
-            <td>Token Posttest</td>
+            <td>Token <i>Posttest</i></td>
             <td>: <?= $data['token_posttest'] ?></td>
         </tr>
         <tr>
-            <td>Nilai Posttest</td>
+            <td>Nilai <i>Posttest</i></td>
             <td>: <?= number_format($data['nilai_posttest'] * 10, 2, ',', '') ?></td>
         </tr>
     </table>
@@ -199,9 +198,9 @@
         Telah mengikuti dan menyelesaikan seluruh rangkaian pembelajaran statistik <strong>(Modul 3 - Proses Bisnis Statistik)</strong>
         melalui aplikasi pembelajaran BPS Kabupaten Tanggamus <strong>(Digistat)</strong>, yang terdiri dari:
         <ol>
-            <li>Pretest</li>
+            <li><i>Pretest</i></li>
             <li>Materi Pembelajaran</li>
-            <li>Posttest</li>
+            <li><i>Posttest</i></li>
         </ol>
         Demikian surat keterangan ini dibuat agar dapat digunakan sebagaimana mestinya.
     </div>
@@ -213,9 +212,9 @@
 
         <img src="https://raw.githubusercontent.com/sujonocode/assets/refs/heads/main/ttd-niken-hariyanti-v1.png"
             alt="Tanda Tangan"
-            style="width: 250px; height: auto; margin: 0; padding: 0;"><br>
+            style="width: 200px; height: auto; margin: 0; padding: 0;"><br>
 
-        <div style="margin-top: 5px; font-weight: bold; text-decoration: underline;">Niken Hariyanti</div>
+        <div style="margin-top: 5px; font-weight: bold;">Niken Hariyanti</div>
     </div>
 
 </body>

@@ -177,19 +177,19 @@
             <td>: <?= $data['instansi'] ?></td>
         </tr>
         <tr>
-            <td>Token Pretest</td>
+            <td>Token <i>Pretest</i></td>
             <td>: <?= $data['token_pretest'] ?></td>
         </tr>
         <tr>
-            <td>Nilai Pretest</td>
+            <td>Nilai <i>Pretest</i></td>
             <td>: <?= number_format($data['nilai_pretest'] * 10, 2, ',', '') ?></td>
         </tr>
         <tr>
-            <td>Token Posttest</td>
+            <td>Token <i>Posttest</i></td>
             <td>: <?= $data['token_posttest'] ?></td>
         </tr>
         <tr>
-            <td>Nilai Posttest</td>
+            <td>Nilai <i>Posttest</i></td>
             <td>: <?= number_format($data['nilai_posttest'] * 10, 2, ',', '') ?></td>
         </tr>
     </table>
@@ -198,9 +198,9 @@
         Telah mengikuti dan menyelesaikan seluruh rangkaian pembelajaran statistik <strong>(Modul 1 - Prinsip SDI)</strong>
         melalui aplikasi pembelajaran BPS Kabupaten Tanggamus <strong>(Digistat)</strong>, yang terdiri dari:
         <ol>
-            <li>Pretest</li>
+            <li><i>Pretest</i></li>
             <li>Materi Pembelajaran</li>
-            <li>Posttest</li>
+            <li><i>Posttest</i></li>
         </ol>
         Demikian surat keterangan ini dibuat agar dapat digunakan sebagaimana mestinya.
     </div>

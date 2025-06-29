@@ -2,6 +2,10 @@
 <?= $this->section('content') ?>
 
 <style>
+    :root {
+        --bs-dark-rgb: 0, 43, 106;
+    }
+
     .btn-gold {
         background-color: #FFD700;
         color: #1e3c72;
@@ -47,7 +51,7 @@
         <div class="iframe-wrapper mb-4">
             <iframe src="<?= base_url('uploads/materi5.pdf') ?>" width="100%" frameborder="0"></iframe>
         </div>
-        <a href="<?= base_url('digistat/posttest1') ?>" class="btn btn-gold px-4 py-2">Lanjut ke Post Test</a>
+        <a href="<?= base_url('digistat/posttest5') ?>" class="btn btn-gold px-4 py-2">Lanjut ke Post Test</a>
     </div>
 </div>
 
