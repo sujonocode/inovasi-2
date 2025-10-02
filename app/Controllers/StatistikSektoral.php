@@ -10,6 +10,16 @@ use App\Models\TimSektoral;
 use DateTime;
 use DateTimeZone;
 use IntlDateFormatter;
+use App\Models\KlaimModul1;
+use App\Models\KlaimModul2;
+use App\Models\KlaimModul3;
+use App\Models\KlaimModul4;
+use App\Models\KlaimModul5;
+use App\Models\QuizModel1;
+use App\Models\QuizModel2;
+use App\Models\QuizModel3;
+use App\Models\QuizModel4;
+use App\Models\QuizModel5;
 
 class StatistikSektoral extends BaseController
 {
@@ -623,6 +633,111 @@ class StatistikSektoral extends BaseController
 
         return view('templates/header', $data)
             . view('pages/maintenance', $data)
+            . view('templates/footer');
+    }
+
+    public function dashboard(string $page = 'Statistik Sektoral | Dashboard')
+    {
+        // data
+        $klaimModel1 = new KlaimModul1();
+        $klaimModel2 = new KlaimModul2();
+        $klaimModel3 = new KlaimModul3();
+        $klaimModel4 = new KlaimModul4();
+        $klaimModel5 = new KlaimModul5();
+
+        $klaim1 = $klaimModel1->getJumlahKlaimPerInstansi();
+        $klaim2 = $klaimModel2->getJumlahKlaimPerInstansi();
+        $klaim3 = $klaimModel3->getJumlahKlaimPerInstansi();
+        $klaim4 = $klaimModel4->getJumlahKlaimPerInstansi();
+        $klaim5 = $klaimModel5->getJumlahKlaimPerInstansi();
+
+        $gabungan = array_merge($klaim1, $klaim2, $klaim3, $klaim4, $klaim5);
+
+        // Jika ingin mengelompokkan per instansi (totalnya dijumlahkan)
+        $hasil = [];
+        foreach ($gabungan as $row) {
+            $instansi = $row['instansi'] ?: 'Tidak Diketahui'; // handle kosong
+            if (!isset($hasil[$instansi])) {
+                $hasil[$instansi] = 0;
+            }
+            $hasil[$instansi] += $row['total'];
+        }
+
+        // Bentuk array final sesuai urutan instansi
+        $instansiList = array_keys($hasil);
+        $jumlahList   = array_values($hasil);
+
+
+        $quiz1 = (new QuizModel1())->getAverageScoreByType();
+        $quiz2 = (new QuizModel2())->getAverageScoreByType();
+        $quiz3 = (new QuizModel3())->getAverageScoreByType();
+        $quiz4 = (new QuizModel4())->getAverageScoreByType();
+        $quiz5 = (new QuizModel5())->getAverageScoreByType();
+        // Helper function untuk konversi
+        function convertAndFormat($rows)
+        {
+            $result = ['pre' => 0, 'post' => 0];
+            foreach ($rows as $row) {
+                $type = $row['type'];
+                $result[$type] = round(($row['avg_score'] / 5) * 100, 2);
+            }
+            return $result;
+        }
+
+        // Konversi per modul
+        $modul1 = convertAndFormat($quiz1);
+        $modul2 = convertAndFormat($quiz2);
+        $modul3 = convertAndFormat($quiz3);
+        $modul4 = convertAndFormat($quiz4);
+        $modul5 = convertAndFormat($quiz5);
+
+        // Hitung rata-rata semua modul
+        $allPre  = ($modul1['pre'] + $modul2['pre'] + $modul3['pre'] + $modul4['pre'] + $modul5['pre']) / 5;
+        $allPost = ($modul1['post'] + $modul2['post'] + $modul3['post'] + $modul4['post'] + $modul5['post']) / 5;
+
+
+        $data = [
+            'title' => ucfirst($page),
+            'instansi' => $instansiList,
+            'jumlah'   => $jumlahList,
+            'raw'      => $gabungan, // kalau mau lihat detail per modul
+
+            'klaim2' => $klaimModel2->getJumlahKlaimPerInstansi(),
+            'klaim3' => $klaimModel3->getJumlahKlaimPerInstansi(),
+            'klaim4' => $klaimModel4->getJumlahKlaimPerInstansi(),
+            'klaim5' => $klaimModel5->getJumlahKlaimPerInstansi(),
+
+            'modul1'  => $modul1,
+            'modul2'  => $modul2,
+            'modul3'  => $modul3,
+            'modul4'  => $modul4,
+            'modul5'  => $modul5,
+            'overall' => [
+                'pre'  => round($allPre, 2),
+                'post' => round($allPost, 2),
+            ],
+
+            'pretest' => [60, 65, 70, 55, 62],  // nilai rata-rata pretest modul 1-5
+            'posttest' => [75, 80, 85, 70, 78], // nilai rata-rata posttest modul 1-5
+            'opd' => [
+                'Dinas Perikanan' => 45,
+                'Dinas Sosial' => 30,
+                'Dinas Pendidikan' => 60,
+                'Dinas Kesehatan' => 50,
+            ],
+            'pengguna_per_modul' => [
+                'Modul 1' => ['pre' => 50, 'post' => 48],
+                'Modul 2' => ['pre' => 45, 'post' => 44],
+                'Modul 3' => ['pre' => 60, 'post' => 58],
+                'Modul 4' => ['pre' => 40, 'post' => 39],
+                'Modul 5' => ['pre' => 55, 'post' => 52],
+            ],
+            'rating_app' => 4.2,
+            'rating_modul' => 4.0,
+        ];
+
+        return view('templates/header', $data)
+            . view('statistiksektoral/dashboard', $data)
             . view('templates/footer');
     }
 }

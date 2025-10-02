@@ -5,12 +5,6 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-//
-// use App\Controllers\Home;
-// use App\Controllers\IndikatorStrategis;
-// use App\Controllers\StatistikSektoral;
-// use App\Controllers\DesaCantik;
-// use App\Controllers\HaloPst;
 
 $routes->get('/', 'Home::index');
 
@@ -26,6 +20,7 @@ $routes->get('/statistik_sektoral/delete/(:num)', 'StatistikSektoral::delete/$1'
 $routes->get('/statistik_sektoral/export_xlsx', 'StatistikSektoral::exportExcel');
 $routes->get('/statistik_sektoral/pembinaan', 'StatistikSektoral::pembinaan');
 $routes->get('/statistik_sektoral/dokumen', 'StatistikSektoral::dokumen');
+$routes->get('/statistik_sektoral/dashboard', 'StatistikSektoral::dashboard');
 
 $routes->get('/desa_cantik', 'DesaCantik::index');
 $routes->get('/desa_cantik/manage', 'DesaCantik::manage');
@@ -35,7 +30,9 @@ $routes->get('/desa_cantik/edit/(:num)', 'DesaCantik::edit/$1');
 $routes->post('/desa_cantik/update/(:num)', 'DesaCantik::update/$1');
 $routes->get('/desa_cantik/delete/(:num)', 'DesaCantik::delete/$1');
 $routes->get('/desa_cantik/export_xlsx', 'DesaCantik::exportExcel');
+$routes->get('/desa_cantik/pembinaan', 'DesaCantik::pembinaan');
 $routes->get('/desa_cantik/dokumen', 'DesaCantik::dokumen');
+$routes->get('/desa_cantik/dashboard', 'DesaCantik::dashboard');
 
 $routes->group('', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('/admin_dashboard', 'Admin::index');
@@ -95,6 +92,55 @@ $routes->post('digistat/submitPretest5', 'Digistat::submitPretest5');
 $routes->get('digistat/materi5', 'Digistat::materi5');
 $routes->get('digistat/posttest5', 'Digistat::posttest5');
 $routes->post('digistat/submitPosttest5', 'Digistat::submitPosttest5');
+
+$routes->post('klaim/simpan1', 'Klaim::simpan1');
+$routes->get('klaim/pdf1/(:num)', 'Klaim::pdf1/$1');
+$routes->post('klaim/simpan2', 'Klaim::simpan2');
+$routes->get('klaim/pdf2/(:num)', 'Klaim::pdf2/$1');
+$routes->post('klaim/simpan3', 'Klaim::simpan3');
+$routes->get('klaim/pdf3/(:num)', 'Klaim::pdf3/$1');
+$routes->post('klaim/simpan4', 'Klaim::simpan4');
+$routes->get('klaim/pdf4/(:num)', 'Klaim::pdf4/$1');
+$routes->post('klaim/simpan5', 'Klaim::simpan5');
+$routes->get('klaim/pdf5/(:num)', 'Klaim::pdf5/$1');
+
+$routes->get('pdf', 'PdfController::generate');
+
+// Digistat Desa Cantik
+$routes->get('digistatdescan/modul1', 'DigistatDescan::modul1');
+$routes->get('digistatdescan/pretest1', 'DigistatDescan::pretest1');
+$routes->post('digistatdescan/submitPretest1', 'DigistatDescan::submitPretest1');
+$routes->get('digistatdescan/materi1', 'DigistatDescan::materi1');
+$routes->get('digistatdescan/posttest1', 'DigistatDescan::posttest1');
+$routes->post('digistatdescan/submitPosttest1', 'DigistatDescan::submitPosttest1');
+
+$routes->get('digistatdescan/modul2', 'DigistatDescan::modul2');
+$routes->get('digistatdescan/pretest2', 'DigistatDescan::pretest2');
+$routes->post('digistatdescan/submitPretest2', 'DigistatDescan::submitPretest2');
+$routes->get('digistatdescan/materi2', 'DigistatDescan::materi2');
+$routes->get('digistatdescan/posttest2', 'DigistatDescan::posttest2');
+$routes->post('digistatdescan/submitPosttest2', 'DigistatDescan::submitPosttest2');
+
+$routes->get('digistatdescan/modul3', 'DigistatDescan::modul3');
+$routes->get('digistatdescan/pretest3', 'DigistatDescan::pretest3');
+$routes->post('digistatdescan/submitPretest3', 'DigistatDescan::submitPretest3');
+$routes->get('digistatdescan/materi3', 'DigistatDescan::materi3');
+$routes->get('digistatdescan/posttest3', 'DigistatDescan::posttest3');
+$routes->post('digistatdescan/submitPosttest3', 'DigistatDescan::submitPosttest3');
+
+$routes->get('digistatdescan/modul4', 'DigistatDescan::modul4');
+$routes->get('digistatdescan/pretest4', 'DigistatDescan::pretest4');
+$routes->post('digistatdescan/submitPretest4', 'DigistatDescan::submitPretest4');
+$routes->get('digistatdescan/materi4', 'DigistatDescan::materi4');
+$routes->get('digistatdescan/posttest4', 'DigistatDescan::posttest4');
+$routes->post('digistatdescan/submitPosttest4', 'DigistatDescan::submitPosttest4');
+
+$routes->get('digistatdescan/modul5', 'DigistatDescan::modul5');
+$routes->get('digistatdescan/pretest5', 'DigistatDescan::pretest5');
+$routes->post('digistatdescan/submitPretest5', 'DigistatDescan::submitPretest5');
+$routes->get('digistatdescan/materi5', 'DigistatDescan::materi5');
+$routes->get('digistatdescan/posttest5', 'DigistatDescan::posttest5');
+$routes->post('digistatdescan/submitPosttest5', 'DigistatDescan::submitPosttest5');
 
 $routes->post('klaim/simpan1', 'Klaim::simpan1');
 $routes->get('klaim/pdf1/(:num)', 'Klaim::pdf1/$1');

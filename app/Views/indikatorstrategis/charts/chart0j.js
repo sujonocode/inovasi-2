@@ -13,5 +13,4 @@ new Chart(document.getElementById('chart0j'), {
     options: {
         responsive: true
     }
-});
-// Indeks Ketahanan Pangan	
+});	

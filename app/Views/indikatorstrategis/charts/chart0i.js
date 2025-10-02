@@ -37,5 +37,3 @@ new Chart(document.getElementById('chart0i'), {
         }
     }
 });
-
-// Nilai Tukar Petani

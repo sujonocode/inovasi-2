@@ -66,9 +66,32 @@
         <!-- Navigasi -->
         <div class="mt-4">
             <?php if ($type == 'Pre Test'): ?>
-                <a href="<?= base_url('digistat/materi1') ?>" class="btn btn-lg btn-gold">Lanjut ke Materi</a>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 mb-2">
+                        <a href="<?= base_url('digistat/materi1') ?>"
+                            class="btn btn-lg btn-gold w-100"
+                            style="height:70px; display:flex; align-items:center; justify-content:center; text-align:center; white-space:normal;">
+                            Lanjut ke Materi
+                        </a>
+                    </div>
+                </div>
             <?php else: ?>
-                <a href="<?= base_url('digistat/modul1') ?>" class="btn btn-lg btn-gold">Kembali ke Halaman Awal</a>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 mb-2">
+                        <a href="<?= base_url('digistat/modul1') ?>"
+                            class="btn btn-lg btn-gold w-100"
+                            style="height:70px; display:flex; align-items:center; justify-content:center; text-align:center; white-space:normal;">
+                            Kembali ke Halaman Awal
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 mb-2">
+                        <a href="<?= base_url('digistat/modul2') ?>"
+                            class="btn btn-lg btn-gold w-100"
+                            style="height:70px; display:flex; align-items:center; justify-content:center; text-align:center; white-space:normal;">
+                            Lanjut ke Modul 2
+                        </a>
+                    </div>
+                </div>
             <?php endif ?>
         </div>
     </div>

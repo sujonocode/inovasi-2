@@ -128,7 +128,7 @@
 </style>
 
 <section class="sdi-section container mt-5 mb-5">
-    <h2 class="text-center">Prinsip Satu Data Indonesia (SDI)</h2>
+    <h2 class="text-center">Modul 1. Prinsip Satu Data Indonesia (SDI)</h2>
     <p class="sdi-description">
         Prinsip SDI adalah landasan dalam tata kelola data pemerintah agar lebih <strong>terpadu, akurat, dan mudah dibagikan</strong>. Dengan prinsip ini, kita bisa menghasilkan kebijakan publik yang berbasis data dan berdampak nyata bagi masyarakat.
     </p>
@@ -168,7 +168,7 @@
     <div class="modal fade" id="klaimModal" tabindex="-1" aria-labelledby="klaimModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="<?= base_url('klaim/simpan1') ?>" method="post" target="_blank">
+                <form id="claimForm" action="<?= base_url('klaim/simpan1') ?>" method="post" target="_blank">
                     <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                     <div class="modal-header">
                         <h5 class="modal-title" id="klaimModalLabel">Formulir Klaim Surat Keterangan</h5>
@@ -179,10 +179,81 @@
                             <label>Nama Lengkap</label>
                             <input type="text" name="nama_lengkap" class="form-control" required>
                         </div>
+
                         <div class="mb-3">
-                            <label>Instansi</label>
-                            <input type="text" name="instansi" class="form-control" required>
+                            <label for="instansi_select">Instansi</label>
+
+                            <!-- select tanpa name supaya tidak ikut submit -->
+                            <select id="instansi_select" class="form-control" required>
+                                <option value="">-- Pilih Instansi --</option>
+                                <option value="Dinas Kesehatan Kabupaten Tanggamus">Dinas Kesehatan Kabupaten Tanggamus</option>
+                                <option value="Dinas Koperasi, UKM Perindustrian dan Perdagangan Kabupaten Tanggamus">Dinas Koperasi, UKM Perindustrian dan Perdagangan Kabupaten Tanggamus</option>
+                                <option value="Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Tanggamus">Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Tanggamus</option>
+                                <option value="Dinas Komunikasi dan Informatika Kabupaten Tanggamus">Dinas Komunikasi dan Informatika Kabupaten Tanggamus</option>
+                                <option value="Dinas Pendidikan dan Kebudayaan Kabupaten Tanggamus">Dinas Pendidikan dan Kebudayaan Kabupaten Tanggamus</option>
+                                <option value="Dinas Sosial Kabupaten Tanggamus">Dinas Sosial Kabupaten Tanggamus</option>
+                                <option value="Dinas Pariwisata dan Kebudayaan Kabupaten Tanggamus">Dinas Pariwisata dan Kebudayaan Kabupaten Tanggamus</option>
+                                <option value="Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Tanggamus">Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Tanggamus</option>
+                                <option value="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Kabupaten Tanggamus">Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Kabupaten Tanggamus</option>
+                                <option value="Dinas Kependudukan dan Pencatatan Sipil Kabupaten Tanggamus">Dinas Kependudukan dan Pencatatan Sipil Kabupaten Tanggamus</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+
+                            <!-- hidden input yang benar-benar dikirim ke server -->
+                            <input type="hidden" name="instansi" id="instansi_hidden" value="">
                         </div>
+
+                        <div class="mb-3" id="instansi-lainnya" style="display:none;">
+                            <input type="text" id="instansi_lainnya" class="form-control" placeholder="Tuliskan asal instansi Anda!">
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const form = document.getElementById('claimForm');
+                                const select = document.getElementById('instansi_select');
+                                const lainnyaDiv = document.getElementById('instansi-lainnya');
+                                const lainnyaInput = document.getElementById('instansi_lainnya');
+                                const hidden = document.getElementById('instansi_hidden');
+
+                                // update hidden setiap kali pilihan berubah
+                                select.addEventListener('change', function() {
+                                    if (this.value === 'Lainnya') {
+                                        lainnyaDiv.style.display = 'block';
+                                        lainnyaInput.setAttribute('required', 'required');
+                                        hidden.value = lainnyaInput.value.trim(); // sementara
+                                    } else {
+                                        lainnyaDiv.style.display = 'none';
+                                        lainnyaInput.removeAttribute('required');
+                                        hidden.value = this.value; // value pilihan biasa
+                                    }
+                                });
+
+                                // update hidden ketika user mengetik isian "lainnya"
+                                lainnyaInput.addEventListener('input', function() {
+                                    if (select.value === 'Lainnya') {
+                                        hidden.value = this.value.trim();
+                                    }
+                                });
+
+                                // final check sebelum submit
+                                form.addEventListener('submit', function(e) {
+                                    if (select.value === 'Lainnya') {
+                                        const v = lainnyaInput.value.trim();
+                                        if (!v) {
+                                            e.preventDefault();
+                                            alert('Silakan tuliskan asal instansi pada kolom "Lainnya".');
+                                            lainnyaInput.focus();
+                                            return false;
+                                        }
+                                        hidden.value = v;
+                                    } else {
+                                        // jika user belum pilih (""), hidden jadi kosong -> server harus handle required
+                                        hidden.value = select.value;
+                                    }
+                                });
+                            });
+                        </script>
+
                         <div class="mb-3">
                             <label>Token Pretest</label>
                             <input type="text" name="token_pretest" class="form-control" required>

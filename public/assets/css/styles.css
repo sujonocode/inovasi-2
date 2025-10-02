@@ -529,7 +529,14 @@ footer a:hover {
                         height: calc(100% + 12px); /* adjust this value if needed */
                     }
                 }
-                                .card canvas {
-                                    height: 180px !important;
-                                    max-height: 180px;
-                                }
+
+                /* .card canvas {
+                    height: 180px !important;
+                    max-height: 180px;
+                } */
+                 
+                .card canvas {
+                    width: 100% !important;
+                    height: 100% !important;
+                    max-height: none;
+                }

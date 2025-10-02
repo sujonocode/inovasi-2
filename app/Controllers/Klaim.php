@@ -7,6 +7,9 @@ use App\Models\KlaimModul2;
 use App\Models\KlaimModul3;
 use App\Models\KlaimModul4;
 use App\Models\KlaimModul5;
+use App\Models\DescanKlaimModul1;
+use App\Models\DescanKlaimModul2;
+use App\Models\DescanKlaimModul3;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -289,6 +292,181 @@ class Klaim extends BaseController
 
         // render HTML dari view
         $html = view('digistat/klaim_surat_5', ['data' => $data]);
+
+        // generate PDF
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+    }
+
+    // Descan
+    public function descansimpan1()
+    {
+        $model = new DescanKlaimModul1();
+
+        $data = [
+            'nama_lengkap'     => $this->request->getPost('nama_lengkap'),
+            'instansi'         => $this->request->getPost('instansi'),
+            'token_pretest'    => $this->request->getPost('token_pretest'),
+            'token_posttest'   => $this->request->getPost('token_posttest'),
+            'rating'           => $this->request->getPost('rating'),
+            'waktu_klaim'      => date('Y-m-d H:i:s'),
+        ];
+
+        $id = $model->insert($data);
+
+        return redirect()->to(base_url('descanklaim/pdf1/' . $id));
+    }
+
+    public function descanpdf1($id)
+    {
+        $model = new DescanKlaimModul1();
+        $data = $model->find($id);
+
+        if (!$data) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Token tidak ditemukan.");
+        }
+
+        // ambil nilai pretest dan posttest dari token
+        $db = \Config\Database::connect();
+        $data['nilai_pretest'] = $db->table('descan_quiz_results_1')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('score');
+
+        $data['nilai_posttest'] = $db->table('descan_quiz_results_1')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('score');
+
+        $data['nomor'] = $id;
+
+        // render HTML dari view
+        $html = view('digistatdescan/klaim_surat_1', ['data' => $data]);
+
+        // generate PDF
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+    }
+    // 2
+    public function descansimpan2()
+    {
+        $model = new DescanKlaimModul2();
+
+        $data = [
+            'nama_lengkap'     => $this->request->getPost('nama_lengkap'),
+            'instansi'         => $this->request->getPost('instansi'),
+            'token_pretest'    => $this->request->getPost('token_pretest'),
+            'token_posttest'   => $this->request->getPost('token_posttest'),
+            'rating'           => $this->request->getPost('rating'),
+            'waktu_klaim'      => date('Y-m-d H:i:s'),
+        ];
+
+        $id = $model->insert($data);
+
+        return redirect()->to(base_url('descanklaim/pdf2/' . $id));
+    }
+
+    public function descanpdf2($id)
+    {
+        $model = new DescanKlaimModul2();
+        $data = $model->find($id);
+
+        if (!$data) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Token tidak ditemukan.");
+        }
+
+        // ambil nilai pretest dan posttest dari token
+        $db = \Config\Database::connect();
+        $data['nilai_pretest'] = $db->table('descan_quiz_results_2')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('score');
+
+        $data['nilai_posttest'] = $db->table('deacan_quiz_results_2')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('score');
+
+        $data['nomor'] = $id;
+
+        // render HTML dari view
+        $html = view('descandigistat/klaim_surat_2', ['data' => $data]);
+
+        // generate PDF
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+
+        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+    }
+    //3
+    public function descansimpan3()
+    {
+        $model = new DescanKlaimModul3();
+
+        $data = [
+            'nama_lengkap'     => $this->request->getPost('nama_lengkap'),
+            'instansi'         => $this->request->getPost('instansi'),
+            'token_pretest'    => $this->request->getPost('token_pretest'),
+            'token_posttest'   => $this->request->getPost('token_posttest'),
+            'rating'           => $this->request->getPost('rating'),
+            'waktu_klaim'      => date('Y-m-d H:i:s'),
+        ];
+
+        $id = $model->insert($data);
+
+        return redirect()->to(base_url('descanklaim/pdf3/' . $id));
+    }
+
+    public function descanpdf3($id)
+    {
+        $model = new KlaimModul3();
+        $data = $model->find($id);
+
+        if (!$data) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Token tidak ditemukan.");
+        }
+
+        // ambil nilai pretest dan posttest dari token
+        $db = \Config\Database::connect();
+        $data['nilai_pretest'] = $db->table('descan_quiz_results_3')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('score');
+
+        $data['nilai_posttest'] = $db->table('descan_quiz_results_3')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('score');
+
+        $data['nomor'] = $id;
+
+        // render HTML dari view
+        $html = view('digistatdescan/klaim_surat_3', ['data' => $data]);
 
         // generate PDF
         $options = new Options();

@@ -63,6 +63,15 @@ class DesaCantik extends BaseController
             . view('templates/footer');
     }
 
+    public function pembinaan(string $page = 'Pembinaan Desa Cantik | Digistat')
+    {
+        $data['title'] = ucfirst($page);
+
+        return view('templates/header', $data)
+            . view('desacantik/pembinaan', $data)
+            . view('templates/footer');
+    }
+
     public function dokumen(string $page = 'Pembinaan Desa Cantik | Dokumen')
     {
         $data['title'] = ucfirst($page);

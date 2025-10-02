@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class DescanQuizModel2 extends Model
+{
+    protected $table = 'descan_quiz_results_2';
+    protected $allowedFields = ['session_id', 'type', 'score'];
+}
