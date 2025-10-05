@@ -142,15 +142,11 @@ $routes->get('digistatdescan/materi5', 'DigistatDescan::materi5');
 $routes->get('digistatdescan/posttest5', 'DigistatDescan::posttest5');
 $routes->post('digistatdescan/submitPosttest5', 'DigistatDescan::submitPosttest5');
 
-$routes->post('klaim/simpan1', 'Klaim::simpan1');
-$routes->get('klaim/pdf1/(:num)', 'Klaim::pdf1/$1');
-$routes->post('klaim/simpan2', 'Klaim::simpan2');
-$routes->get('klaim/pdf2/(:num)', 'Klaim::pdf2/$1');
-$routes->post('klaim/simpan3', 'Klaim::simpan3');
-$routes->get('klaim/pdf3/(:num)', 'Klaim::pdf3/$1');
-$routes->post('klaim/simpan4', 'Klaim::simpan4');
-$routes->get('klaim/pdf4/(:num)', 'Klaim::pdf4/$1');
-$routes->post('klaim/simpan5', 'Klaim::simpan5');
-$routes->get('klaim/pdf5/(:num)', 'Klaim::pdf5/$1');
+$routes->post('descanklaim/simpan1', 'Klaim::descansimpan1');
+$routes->get('descanklaim/pdf1/(:num)', 'Klaim::descanpdf1/$1');
+$routes->post('descanklaim/simpan2', 'Klaim::descansimpan2');
+$routes->get('descanklaim/pdf2/(:num)', 'Klaim::descanpdf2/$1');
+$routes->post('descanklaim/simpan3', 'Klaim::descansimpan3');
+$routes->get('descanklaim/pdf3/(:num)', 'Klaim::descanpdf3/$1');
 
-$routes->get('pdf', 'PdfController::generate');
+// $routes->get('pdf', 'PdfController::generate');

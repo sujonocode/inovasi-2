@@ -40,6 +40,7 @@ new Chart(document.getElementById('chart0c'), {
             ctx.fillStyle = '#4CAF50';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
+            ctx.fillText('+10%', width / 2, height / 2);
             ctx.fillText(teks, width / 2, height / 2);
         }
     }]

@@ -56,21 +56,91 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('quiz_results_1')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('quiz_results_1')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('digistat/klaim_surat_1', ['data' => $data]);
+        // uncomment this //
+        // // render HTML dari view
+        // $html = view('digistat/klaim_surat_1', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // ... //
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Prinsip SDI'; // default
+        if (strpos($data['token_pretest'], 'quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Kualitas Data';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Bisnis Statistik';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_4') !== false) {
+            $modul = 'Modul 4 - Kelembagaan';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_5') !== false) {
+            $modul = 'Modul 5 - Sistem Statistik Nasional';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
     // 2
     public function simpan2()
@@ -114,21 +184,89 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('quiz_results_2')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('quiz_results_2')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('digistat/klaim_surat_2', ['data' => $data]);
+        // // render HTML dari view
+        // $html = view('digistat/klaim_surat_2', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Prinsip SDI'; // default
+        if (strpos($data['token_pretest'], 'quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Kualitas Data';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Bisnis Statistik';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_4') !== false) {
+            $modul = 'Modul 4 - Kelembagaan';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_5') !== false) {
+            $modul = 'Modul 5 - Sistem Statistik Nasional';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
     //3
     public function simpan3()
@@ -172,21 +310,89 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('quiz_results_3')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('quiz_results_3')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('digistat/klaim_surat_3', ['data' => $data]);
+        // // render HTML dari view
+        // $html = view('digistat/klaim_surat_3', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Prinsip SDI'; // default
+        if (strpos($data['token_pretest'], 'quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Kualitas Data';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Bisnis Statistik';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_4') !== false) {
+            $modul = 'Modul 4 - Kelembagaan';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_5') !== false) {
+            $modul = 'Modul 5 - Sistem Statistik Nasional';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
     //4
     public function simpan4()
@@ -230,21 +436,89 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('quiz_results_4')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('quiz_results_4')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('digistat/klaim_surat_4', ['data' => $data]);
+        // // render HTML dari view
+        // $html = view('digistat/klaim_surat_4', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Prinsip SDI'; // default
+        if (strpos($data['token_pretest'], 'quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Kualitas Data';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Bisnis Statistik';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_4') !== false) {
+            $modul = 'Modul 4 - Kelembagaan';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_5') !== false) {
+            $modul = 'Modul 5 - Sistem Statistik Nasional';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
     //5
     public function simpan5()
@@ -288,21 +562,89 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('quiz_results_5')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('quiz_results_5')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('digistat/klaim_surat_5', ['data' => $data]);
+        // // render HTML dari view
+        // $html = view('digistat/klaim_surat_5', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Prinsip SDI'; // default
+        if (strpos($data['token_pretest'], 'quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Kualitas Data';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Bisnis Statistik';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_4') !== false) {
+            $modul = 'Modul 4 - Kelembagaan';
+        } elseif (strpos($data['token_pretest'], 'quiz_results_5') !== false) {
+            $modul = 'Modul 5 - Sistem Statistik Nasional';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
 
     // Descan
@@ -347,21 +689,85 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('descan_quiz_results_1')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('descan_quiz_results_1')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('digistatdescan/klaim_surat_1', ['data' => $data]);
+        // // render HTML dari view
+        // $html = view('digistatdescan/klaim_surat_1', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Program Desa Cantik'; // default
+        if (strpos($data['token_pretest'], 'descan_quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Penyelenggarann Kegiatan Statistik';
+        } elseif (strpos($data['token_pretest'], 'descan_quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Menghasilkan Data';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
     // 2
     public function descansimpan2()
@@ -405,21 +811,85 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('descan_quiz_results_2')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('descan_quiz_results_2')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('descandigistat/klaim_surat_2', ['data' => $data]);
+        // // render HTML dari view
+        // $html = view('descandigistat/klaim_surat_2', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Program Desa Cantik'; // default
+        if (strpos($data['token_pretest'], 'descan_quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Penyelenggarann Kegiatan Statistik';
+        } elseif (strpos($data['token_pretest'], 'descan_quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Menghasilkan Data';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
     //3
     public function descansimpan3()
@@ -463,20 +933,84 @@ class Klaim extends BaseController
             ->get()
             ->getRow('score');
 
+        $data['tanggal_pretest'] = $db->table('descan_quiz_results_3')
+            ->where('session_id', $data['token_pretest'])
+            ->where('type', 'pre')
+            ->get()
+            ->getRow('created_at');
+
+        $data['tanggal_posttest'] = $db->table('descan_quiz_results_3')
+            ->where('session_id', $data['token_posttest'])
+            ->where('type', 'post')
+            ->get()
+            ->getRow('created_at');
+
         $data['nomor'] = $id;
 
-        // render HTML dari view
-        $html = view('digistatdescan/klaim_surat_3', ['data' => $data]);
+        // // render HTML dari view
+        // $html = view('digistatdescan/klaim_surat_3', ['data' => $data]);
 
-        // generate PDF
-        $options = new Options();
-        $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
+        // // generate PDF
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true); // Jika kamu tetap ingin akses URL HTTP
 
-        $dompdf = new Dompdf($options);
-        // $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+        // $dompdf = new Dompdf($options);
+        // // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->render();
+        // $dompdf->stream('surat_keterangan_' . $id . '.pdf', ['Attachment' => false]);
+
+        // ambil tanggal saja dari created_at
+        $tanggal_pretest = date('d F Y', strtotime($data['tanggal_pretest']));
+        $tanggal_posttest = date('d F Y', strtotime($data['tanggal_posttest']));
+
+        // konversi nama bulan ke bahasa Indonesia
+        $bulan_indonesia = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember',
+        ];
+        $tanggal_pretest_id = strtr($tanggal_pretest, $bulan_indonesia);
+        $tanggal_posttest_id = strtr($tanggal_posttest, $bulan_indonesia);
+
+        // tentukan modul berdasarkan tabel
+        $modul = 'Modul 1 - Program Desa Cantik'; // default
+        if (strpos($data['token_pretest'], 'descan_quiz_results_2') !== false) {
+            $modul = 'Modul 2 - Penyelenggarann Kegiatan Statistik';
+        } elseif (strpos($data['token_pretest'], 'descan_quiz_results_3') !== false) {
+            $modul = 'Modul 3 - Proses Menghasilkan Data';
+        }
+
+        // siapkan pesan WhatsApp
+        $pesan = "```\n"
+            . "--- Klaim Surat Keterangan Digistat ---\n\n"
+            . "Nomor             : {$data['nomor']}\n"
+            . "Nama              : {$data['nama_lengkap']}\n"
+            . "Instansi          : {$data['instansi']}\n"
+            . "Token Pretest     : {$data['token_pretest']}\n"
+            . "Nilai Pretest     : {$data['nilai_pretest']}\n"
+            . "Token Posttest    : {$data['token_posttest']}\n"
+            . "Nilai Posttest    : {$data['nilai_posttest']}\n"
+            . "Modul             : {$modul}\n"
+            . "Tanggal Pretest   : {$tanggal_pretest_id}\n"
+            . "Tanggal Posttest  : {$tanggal_posttest_id}\n"
+            . "```";
+
+        // URL WhatsApp
+        $nomor_wa = '6281216111802';
+        $wa_url = "https://wa.me/{$nomor_wa}?text=" . urlencode($pesan);
+
+        // redirect ke WA
+        return redirect()->to($wa_url);
     }
 }

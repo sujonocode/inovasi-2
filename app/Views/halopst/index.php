@@ -1,13 +1,4 @@
 <!-- Hero Section -->
-<!-- <section class="hero">
-    <div class="container">
-        <h1>BPS Kabupaten Tanggamus</h1>
-        <p>Lembaga independen, terpercaya, dan berperan aktif dalam mendukung perumusan kebijakan berbasis data</p>
-        <a href="#features" class="btn btn-primary btn-lg">Jelajahi Fitur</a>
-    </div>
-</section> -->
-
-<!-- Hero Section -->
 <section class="hero bg-primary text-white py-5" style="background: linear-gradient(to right, #0056b3, #003974);">
     <div class="container">
         <div class="row align-items-center">
@@ -24,22 +15,6 @@
         </div>
     </div>
 </section>
-
-
-<!-- <section class="hero bg-primary text-white py-5" style="background: linear-gradient(to right, #0056b3, #003974);">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-7 text-center text-md-start mb-4 mb-md-0">
-                <h1 class="display-5 fw-bold">Satu Data Menuju Pembangunan Tanggamus</h1>
-                <p class="lead mt-3">BPS Kabupaten Tanggamus hadir dengan data terpercaya dan edukatif, mendukung kebijakan publik yang tepat sasaran dan transparan.</p>
-                <a href="#features" class="btn btn-light btn-lg rounded-pill mt-4 px-4 shadow-sm">Jelajahi SIEDUTA</a>
-            </div>
-            <div class="col-md-5 text-center">
-                <img src="/assets/icons/perpustakaan.png" alt="Statistik Tanggamus" class="img-fluid" style="max-height: 300px;">
-            </div>
-        </div>
-    </div>
-</section> -->
 
 <section id="features" class="features py-5">
     <div class="container">

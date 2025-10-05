@@ -189,16 +189,18 @@
                             <!-- select tanpa name supaya tidak ikut submit -->
                             <select id="instansi_select" class="form-control" required>
                                 <option value="">-- Pilih Instansi --</option>
-                                <option value="Dinas Kesehatan Kabupaten Tanggamus">Dinas Kesehatan Kabupaten Tanggamus</option>
-                                <option value="Dinas Koperasi, UKM Perindustrian dan Perdagangan Kabupaten Tanggamus">Dinas Koperasi, UKM Perindustrian dan Perdagangan Kabupaten Tanggamus</option>
                                 <option value="Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Tanggamus">Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Tanggamus</option>
+                                <option value="Dinas Kependudukan dan Pencatatan Sipil Kabupaten Tanggamus">Dinas Kependudukan dan Pencatatan Sipil Kabupaten Tanggamus</option>
+                                <option value="Dinas Kesehatan Kabupaten Tanggamus">Dinas Kesehatan Kabupaten Tanggamus</option>
+                                <option value="Dinas Ketahanan Pangan, Tanaman Pangan, dan Hortikultura Kabupaten Tanggamus">Dinas Ketahanan Pangan, Tanaman Pangan, dan Hortikultura Kabupaten Tanggamus</option>
                                 <option value="Dinas Komunikasi dan Informatika Kabupaten Tanggamus">Dinas Komunikasi dan Informatika Kabupaten Tanggamus</option>
-                                <option value="Dinas Pendidikan dan Kebudayaan Kabupaten Tanggamus">Dinas Pendidikan dan Kebudayaan Kabupaten Tanggamus</option>
-                                <option value="Dinas Sosial Kabupaten Tanggamus">Dinas Sosial Kabupaten Tanggamus</option>
+                                <option value="Dinas Koperasi, UKM Perindustrian dan Perdagangan Kabupaten Tanggamus">Dinas Koperasi, UKM Perindustrian dan Perdagangan Kabupaten Tanggamus</option>
                                 <option value="Dinas Pariwisata dan Kebudayaan Kabupaten Tanggamus">Dinas Pariwisata dan Kebudayaan Kabupaten Tanggamus</option>
                                 <option value="Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Tanggamus">Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Tanggamus</option>
                                 <option value="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Kabupaten Tanggamus">Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Kabupaten Tanggamus</option>
-                                <option value="Dinas Kependudukan dan Pencatatan Sipil Kabupaten Tanggamus">Dinas Kependudukan dan Pencatatan Sipil Kabupaten Tanggamus</option>
+                                <option value="Dinas Pendidikan dan Kebudayaan Kabupaten Tanggamus">Dinas Pendidikan dan Kebudayaan Kabupaten Tanggamus</option>
+                                <option value="Dinas Perikanan Kabupaten Tanggamus">Dinas Perikanan Kabupaten Tanggamus</option>
+                                <option value="Dinas Sosial Kabupaten Tanggamus">Dinas Sosial Kabupaten Tanggamus</option>
                                 <option value="Lainnya">Lainnya</option>
                             </select>
 

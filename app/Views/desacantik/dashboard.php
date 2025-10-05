@@ -1,6 +1,6 @@
 \<div class="container my-5">
     <!-- Judul Utama -->
-    <h3 class="text-center mb-4 fw-bold">📊 Dashboard Digistat - Pembinaan Statistik Sektoral</h3>
+    <h3 class="text-center mb-4 fw-bold">📊 Dashboard Digistat - Desa Cantik - Cinta Statistik</h3>
     <div class="dashboard-section active-section">
         <div class="container-fluid p-2">
             <div class="row g-4">
@@ -8,7 +8,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="card shadow-lg p-4 position-relative rounded-4 border-0">
                         <h6 class="text-center mb-3 fw-semibold">
-                            🏛️ Jumlah Pengerjaan Modul Digistat Per OPD
+                            🏛️ Jumlah Pengerjaan Modul Digistat Per Desa
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -71,7 +71,7 @@
                     <div class="card shadow-lg p-3 position-relative rounded-4 border-0 w-100 h-100">
                         <h6 class="text-center mb-4 fw-semibold">
                             ⭐ Rating SIEDUTA - Digistat <br>
-                            <small class="fw-normal text-muted">(Pembinaan Statistik Sektoral)</small>
+                            <small class="fw-normal text-muted">(Desa Cantik - Cinta Statistik)</small>
                         </h6>
                         <div class="position-absolute top-0 end-0 p-2">
                             <a href="https://tanggamuskab.bps.go.id/id/query-builder" target="_blank">
@@ -182,32 +182,24 @@
                             $modul1['pre'],
                             $modul2['pre'],
                             $modul3['pre'],
-                            $modul4['pre'],
-                            $modul5['pre']
                         ]) ?>;
 
         const postData = <?= json_encode([
                                 $modul1['post'],
                                 $modul2['post'],
                                 $modul3['post'],
-                                $modul4['post'],
-                                $modul5['post']
                             ]) ?>;
 
         const countPreData = <?= json_encode([
                                     $modul1['count_pre'],
                                     $modul2['count_pre'],
                                     $modul3['count_pre'],
-                                    $modul4['count_pre'],
-                                    $modul5['count_pre']
                                 ]) ?>;
 
         const countPostData = <?= json_encode([
                                     $modul1['count_post'],
                                     $modul2['count_post'],
                                     $modul3['count_post'],
-                                    $modul4['count_post'],
-                                    $modul5['count_post']
                                 ]) ?>;
 
         // Hitung rata-rata per elemen

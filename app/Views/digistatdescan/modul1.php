@@ -133,7 +133,7 @@
         Program Desa Cinta Statistik (CANTIK) BPS bertujuan meningkatkan pemahaman masyarakat desa terhadap data statistik, sehingga mampu memanfaatkannya dalam perencanaan, pengambilan keputusan, serta pembangunan berbasis data yang lebih berkualitas.
     </p>
     <div class="flow-container">
-        <a href="<?= base_url('digistatdescandescan/pretest1') ?>" class="flow-step">
+        <a href="<?= base_url('digistatdescan/pretest1') ?>" class="flow-step">
             <div class="flow-badge">1</div>
             <div class="flow-label">Pretest</div>
             <p class="flow-desc">Uji awal untuk mengukur pemahaman Anda sebelum belajar.</p>
@@ -143,7 +143,7 @@
             <i class="bi bi-arrow-right"></i>
         </div>
 
-        <a href="<?= base_url('digistatdescandescan/materi1') ?>" class="flow-step">
+        <a href="<?= base_url('digistatdescan/materi1') ?>" class="flow-step">
             <div class="flow-badge">2</div>
             <div class="flow-label">Materi</div>
             <p class="flow-desc">Pelajari program Desa Cantik secara interaktif dan mudah dipahami.</p>
@@ -152,7 +152,7 @@
         <div class="arrow-line d-none d-md-flex">
             <i class="bi bi-arrow-right"></i>
         </div>
-        <a href="<?= base_url('digistatdescandescan/posttest1') ?>" class="flow-step">
+        <a href="<?= base_url('digistatdescan/posttest1') ?>" class="flow-step">
             <div class="flow-badge">3</div>
             <div class="flow-label">Posttest</div>
             <p class="flow-desc">Evaluasi kembali pemahaman Anda setelah mempelajari materi.</p>

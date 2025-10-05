@@ -10,6 +10,12 @@ use App\Models\TimDescan;
 use DateTime;
 use DateTimeZone;
 use IntlDateFormatter;
+use App\Models\DescanKlaimModul1;
+use App\Models\DescanKlaimModul2;
+use App\Models\DescanKlaimModul3;
+use App\Models\DescanQuizModel1;
+use App\Models\DescanQuizModel2;
+use App\Models\DescanQuizModel3;
 
 class DesaCantik extends BaseController
 {
@@ -624,6 +630,87 @@ class DesaCantik extends BaseController
 
         return view('templates/header', $data)
             . view('pages/maintenance', $data)
+            . view('templates/footer');
+    }
+
+    public function dashboard(string $page = 'Statistik Sektoral | Dashboard')
+    {
+        // data
+        $klaimModel1 = new DescanKlaimModul1();
+        $klaimModel2 = new DescanKlaimModul2();
+        $klaimModel3 = new DescanKlaimModul3();
+
+        $klaim1 = $klaimModel1->getJumlahKlaimPerInstansi();
+        $klaim2 = $klaimModel2->getJumlahKlaimPerInstansi();
+        $klaim3 = $klaimModel3->getJumlahKlaimPerInstansi();
+
+        $gabungan = array_merge($klaim1, $klaim2, $klaim3);
+
+        // Jika ingin mengelompokkan per instansi (totalnya dijumlahkan)
+        $hasil = [];
+        foreach ($gabungan as $row) {
+            $instansi = $row['instansi'] ?: 'Tidak Diketahui'; // handle kosong
+            if (!isset($hasil[$instansi])) {
+                $hasil[$instansi] = 0;
+            }
+            $hasil[$instansi] += $row['total'];
+        }
+
+        // Bentuk array final sesuai urutan instansi
+        $instansiList = array_keys($hasil);
+        $jumlahList   = array_values($hasil);
+
+        $quiz1 = (new DescanQuizModel1())->getAverageScoreByType();
+        $quiz2 = (new DescanQuizModel2())->getAverageScoreByType();
+        $quiz3 = (new DescanQuizModel3())->getAverageScoreByType();
+
+        // Helper function untuk konversi
+        function convertAndFormat($rows)
+        {
+            $result = ['pre' => 0, 'post' => 0, 'count_pre' => 0, 'count_post' => 0];
+            foreach ($rows as $row) {
+                $type = $row['type']; // 'pre' atau 'post'
+                $result[$type] = $row['avg_score'] * $row['count']; // total skor
+                $result['count_' . $type] = $row['count']; // jumlah peserta
+            }
+            return $result;
+        }
+
+        // Konversi per modul
+        $modul1 = convertAndFormat($quiz1);
+        $modul2 = convertAndFormat($quiz2);
+        $modul3 = convertAndFormat($quiz3);
+
+        // Hitung total skor dan total peserta
+        $totalPre  = $modul1['pre'] + $modul2['pre'] + $modul3['pre'];
+        $totalPost = $modul1['post'] + $modul2['post'] + $modul3['post'];
+
+        $totalCountPre  = $modul1['count_pre'] + $modul2['count_pre'] + $modul3['count_pre'];
+        $totalCountPost = $modul1['count_post'] + $modul2['count_post'] + $modul3['count_post'];
+
+        // Hitung rata-rata keseluruhan
+        $allPre  = $totalCountPre  ? round(($totalPre / $totalCountPre), 2) : 0;
+        $allPost = $totalCountPost ? round(($totalPost / $totalCountPost), 2) : 0;
+
+        $data = [
+            'title' => ucfirst($page),
+            'instansi' => $instansiList,
+            'jumlah'   => $jumlahList,
+            'raw'      => $gabungan, // kalau mau lihat detail per modul
+
+            'modul1'  => $modul1,
+            'modul2'  => $modul2,
+            'modul3'  => $modul3,
+            'overall' => [
+                'pre'  => round($allPre, 2),
+                'post' => round($allPost, 2),
+            ],
+            'rating_app' => 4.2,
+            'rating_modul' => 4.0,
+        ];
+
+        return view('templates/header', $data)
+            . view('desacantik/dashboard', $data)
             . view('templates/footer');
     }
 }

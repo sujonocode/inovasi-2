@@ -59,7 +59,7 @@ class DigistatDescan extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions1');
@@ -108,7 +108,7 @@ class DigistatDescan extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');
@@ -157,7 +157,7 @@ class DigistatDescan extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions2');
@@ -206,7 +206,7 @@ class DigistatDescan extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');
@@ -255,7 +255,7 @@ class DigistatDescan extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions3');
@@ -304,7 +304,7 @@ class DigistatDescan extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');

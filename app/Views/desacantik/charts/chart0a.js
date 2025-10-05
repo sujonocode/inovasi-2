@@ -10,6 +10,20 @@ function generateSingleGradient(count, baseHue = 210) {
     return colors;
 }
 
+// const dataValues = [12, 10, 9, 8, 6, 8, 9, 9];
+// const labels = [
+//     'Dinas Perikanan Kab. Tanggamus',
+//     'Dinas Sosial',
+//     'Dinas Pendidikan dan Kebudayaan Kab. Tanggamus',
+//     'Dinas Kesehatan',
+//     'Dinas Pertanian',
+//     'Dinas Pendidikan dan Kebudayaan Kab. Tanggamus',
+//     'Dinas Kesehatan',
+//     'Dinas Pertanian',
+// ];
+
+
+
 // Gabungkan jadi array objek supaya mudah diurutkan
 let combined = labels.map((label, i) => ({
     label: label,

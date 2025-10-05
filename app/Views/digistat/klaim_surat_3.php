@@ -182,7 +182,7 @@
         </tr>
         <tr>
             <td>Nilai <i>Pretest</i></td>
-            <td>: <?= number_format($data['nilai_pretest'] * 10, 2, ',', '') ?></td>
+            <td>: <?= number_format($data['nilai_pretest'], 2, ',', '') ?></td>
         </tr>
         <tr>
             <td>Token <i>Posttest</i></td>
@@ -190,7 +190,7 @@
         </tr>
         <tr>
             <td>Nilai <i>Posttest</i></td>
-            <td>: <?= number_format($data['nilai_posttest'] * 10, 2, ',', '') ?></td>
+            <td>: <?= number_format($data['nilai_posttest'], 2, ',', '') ?></td>
         </tr>
     </table>
 

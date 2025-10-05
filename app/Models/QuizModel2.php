@@ -10,7 +10,7 @@ class QuizModel2 extends Model
     protected $allowedFields = ['session_id', 'type', 'score'];
     public function getAverageScoreByType()
     {
-        return $this->select("type, AVG(score) as avg_score") // *20 jadi 0–100
+        return $this->select("type, AVG(score) as avg_score, COUNT(*) as count")
             ->groupBy('type')
             ->findAll();
     }

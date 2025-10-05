@@ -63,7 +63,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions1');
@@ -112,7 +112,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');
@@ -161,7 +161,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions2');
@@ -210,7 +210,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');
@@ -259,7 +259,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions3');
@@ -308,7 +308,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');
@@ -357,7 +357,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions4');
@@ -406,7 +406,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');
@@ -455,7 +455,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'pre',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('pretest_questions5');
@@ -504,7 +504,7 @@ class Digistat extends BaseController
         $model->save([
             'session_id' => session_id(),
             'type' => 'post',
-            'score' => $score,
+            'score' => $score * 10,
         ]);
 
         session()->remove('posttest_questions');
