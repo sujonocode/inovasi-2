@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0y'), {
         responsive: true
     }
 });
-// Indeks Risiko Bencana

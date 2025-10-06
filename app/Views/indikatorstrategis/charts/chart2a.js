@@ -1,5 +1,3 @@
-// PDRB Triwulanan menurut Pengeluaran
-// Option: ADHB, ADHK
 const labels9 = ['I-2022', 'II-2022', 'III-2022', 'IV-2022', 'I-2023', 'II-2023', 'III-2023', 'IV-2023', 'I-2024', 'II-2024', 'III-2024', 'IV-2024', 'I-2025', 'II-2025'];
 
 const dataValues9 = {

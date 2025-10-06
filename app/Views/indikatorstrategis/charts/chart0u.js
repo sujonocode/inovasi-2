@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0u'), {
         responsive: true
     }
 });
-// Persentase Pekon Mandiri

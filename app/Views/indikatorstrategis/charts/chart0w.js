@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0w'), {
         responsive: true
     }
 });
-// Indeks Kualitas Lingkungan Hidup

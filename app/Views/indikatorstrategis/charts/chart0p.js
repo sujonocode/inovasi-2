@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0p'), {
         responsive: true
     }
 });
-// Tingkat Akuntabilitas Kinerja

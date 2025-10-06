@@ -1,4 +1,3 @@
-// Distribusi PDRB Triwulanan menurut Pengeluaran ADHB pie, tahun
 const labels11 = ['kkKonsumsi Akhir Rumah Tangga', 'Konsumsi Akhir Pemerintah', 'Pembentukan Modal Tetap Bruto', 'Lainnya'];
 
 const dataValues2b = {

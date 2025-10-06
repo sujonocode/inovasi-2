@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0s'), {
         responsive: true
     }
 });
-// Indeks Daya Saing Daerah

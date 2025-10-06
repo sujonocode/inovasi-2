@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0o'), {
         responsive: true
     }
 });
-// Indeks Reformasi Birokrasi

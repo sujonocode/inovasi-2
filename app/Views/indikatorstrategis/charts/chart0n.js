@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0n'), {
         responsive: true
     }
 });
-// Rasio Elektrifikasi

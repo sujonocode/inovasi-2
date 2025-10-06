@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0v'), {
         responsive: true
     }
 });
-// Angka Kriminalitas Terhadap Jumlah Penduduk

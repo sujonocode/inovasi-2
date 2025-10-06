@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0x'), {
         responsive: true
     }
 });
-// Penurunan Emisi Gas Rumah Kaca

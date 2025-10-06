@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0q'), {
         responsive: true
     }
 });
-// Indeks Pengelolaan Keuangan Daerah
