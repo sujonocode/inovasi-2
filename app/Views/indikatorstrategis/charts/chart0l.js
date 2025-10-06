@@ -14,4 +14,3 @@ new Chart(document.getElementById('chart0l'), {
         responsive: true
     }
 });
-// Indeks Pembangunan Infrastruktur Daerah
