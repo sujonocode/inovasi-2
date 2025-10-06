@@ -6,8 +6,8 @@
                 <div class="card-header text-white text-center" style="background-color: rgba(78, 121, 167, 1);">
                     <i class="fa-solid fa-users"></i> Total Akun (Admin + User)
                 </div>
-                <div class="card-body text-center">
-                    <h5 id="card-1" class="card-title display-6 fw-bold"></h5>
+                <div class="card-body text-center p-3">
+                    <h5 id="card-1" class="card-title fw-bold" style="color: rgba(78, 121, 167, 1); font-size: 3rem;"></h5>
                 </div>
             </div>
         </div>
@@ -16,8 +16,8 @@
                 <div class="card-header text-white text-center" style="background-color: rgba(78, 121, 167, 1);">
                     <i class="fa-solid fa-user-gear"></i> Total Admin
                 </div>
-                <div class="card-body text-center">
-                    <h5 id="card-2" class="card-title display-6 fw-bold"></h5>
+                <div class="card-body text-center p-3">
+                    <h5 id="card-2" class="card-title fw-bold" style="color: rgba(78, 121, 167, 1); font-size: 3rem;"></h5>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
                 <div class="card-header text-white text-center" style="background-color: rgba(78, 121, 167, 1);">
                     <i class="fa-solid fa-user"></i> Total User
                 </div>
-                <div class="card-body text-center">
-                    <h5 id="card-3" class="card-title display-6 fw-bold"></h5>
+                <div class="card-body text-center p-3">
+                    <h5 id="card-3" class="card-title fw-bold" style="color: rgba(78, 121, 167, 1); font-size: 3rem;"></h5>
                 </div>
             </div>
         </div>

@@ -679,7 +679,8 @@
                                 <option value="TW22024">TW II-2024</option>
                                 <option value="TW32024">TW III-2024</option>
                                 <option value="TW42024">TW IV-2024</option>
-                                <option value="TW12025" selected>TW I-2025</option>
+                                <option value="TW12025">TW I-2025</option>
+                                <option value="TW22025" selected>TW II-2025</option>
                             </select>
                         </div>
                         <canvas id="chart2b" height="180"></canvas>

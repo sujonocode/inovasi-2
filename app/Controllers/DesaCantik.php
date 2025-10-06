@@ -126,8 +126,7 @@ class DesaCantik extends BaseController
         $kontak = $this->request->getPost('kontak[]');
         $kontakString = implode(',', $kontak);
 
-        $desa = 'Srikaton';
-        // $desa = $this->request->getPost('desa');
+        $desa = $this->request->getPost('desa');
         $timData = $timModel->where('desa', $desa)->first();
 
         $data = [
