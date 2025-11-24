@@ -31,7 +31,7 @@
                         <div class="card-back text-center card-blue-back text-white">
                             <h4 class="mb-3">Ayo Tanya Ladista!</h4>
                             <p class="card-text">Dapatkan bantuan cepat melalui WhatsApp</p>
-                            <a href="https://wa.me/6281216111802" class="btn btn-outline-light">Chat Sekarang</a>
+                            <a href="https://wa.me/6281216111802" target="_blank" class="btn btn-outline-light">Chat Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         <div class="card-back text-center card-green-back text-white">
                             <h4 class="mb-3">Konsultasi Langsung</h4>
                             <p class="card-text">Kami siap bantu menjawab kebutuhan data Anda</p>
-                            <a href="https://wa.me/6281216111802" class="btn btn-outline-light">Hubungi Kami</a>
+                            <a href="https://wa.me/6281216111802" target="_blank" class="btn btn-outline-light">Hubungi Kami</a>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                         <div class="card-back text-center card-orange-back text-white">
                             <h4 class="mb-3">Publikasi Lengkap</h4>
                             <p class="card-text">Akses publikasi terbaru dari BPS Kabupaten Tanggamus</p>
-                            <a href="https://tanggamuskab.bps.go.id/id/publication" class="btn btn-outline-light">Lihat Publikasi</a>
+                            <a href="https://tanggamuskab.bps.go.id/id/publication" target="_blank" class="btn btn-outline-light">Lihat Publikasi</a>
                         </div>
                     </div>
                 </div>

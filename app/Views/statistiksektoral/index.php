@@ -39,12 +39,12 @@
                 <div class="container">
                     <div class="row g-2">
                         <div class="col-12 col-md-6">
-                            <a href="#" id="kontak_ketua_tim" class="btn w-100" style="background-color: #128C7E; color: #ffffff;">
+                            <a href="#" id="kontak_ketua_tim" target="_blank" class="btn w-100" style="background-color: #128C7E; color: #ffffff;">
                                 <i class="fab fa-whatsapp me-2"></i>Ketua Tim
                             </a>
                         </div>
                         <div class="col-12 col-md-6">
-                            <a href="#" id="kontak_narahubung" class="btn w-100" style="background-color: #128C7E; color: #ffffff;">
+                            <a href="#" id="kontak_narahubung" target="_blank" class="btn w-100" style="background-color: #128C7E; color: #ffffff;">
                                 <i class="fab fa-whatsapp me-2"></i>Narahubung OPD
                             </a>
                         </div>

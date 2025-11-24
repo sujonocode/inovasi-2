@@ -34,12 +34,12 @@
             <div class="col-md-2 mb-2">
                 <h6 class="fw-bold text-start">Tautan Terkait</h6>
                 <ul class="list-unstyled text-start">
-                    <li><a href="https://www.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS RI</a></li>
-                    <li><a href="https://lampung.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS Prov. Lampung</a></li>
-                    <li><a href="https://tanggamuskab.bps.go.id/id/statistics-table?subject=519" class="text-light text-decoration-none">BPS Kab. Tanggamus</a></li>
-                    <li><a href="https://data.tanggamus.go.id/" class="text-light text-decoration-none">Satu Data Tanggamus</a></li>
-                    <li><a href="https://lms.bps.go.id" class="text-light text-decoration-none">E-Learning BPS</a></li>
-                    <li><a href="https://gojags.web.bps.go.id/" class="text-light text-decoration-none">Gojags</a></li>
+                    <li><a href="https://www.bps.go.id/id/statistics-table?subject=519" target="_blank" class="text-light text-decoration-none">BPS RI</a></li>
+                    <li><a href="https://lampung.bps.go.id/id/statistics-table?subject=519" target="_blank" class="text-light text-decoration-none">BPS Prov. Lampung</a></li>
+                    <li><a href="https://tanggamuskab.bps.go.id/id/statistics-table?subject=519" target="_blank" class="text-light text-decoration-none">BPS Kab. Tanggamus</a></li>
+                    <li><a href="https://data.tanggamus.go.id/" target="_blank" class="text-light text-decoration-none">Satu Data Tanggamus</a></li>
+                    <li><a href="https://lms.bps.go.id" target="_blank" class="text-light text-decoration-none">E-Learning BPS</a></li>
+                    <li><a href="https://gojags.web.bps.go.id/" target="_blank" class="text-light text-decoration-none">Gojags</a></li>
                 </ul>
             </div>
 
@@ -52,10 +52,10 @@
                 <!-- Media Sosial (Opsional) -->
                 <div class="mt-3 text-start">
                     <a href="https://tanggamuskab.bps.go.id/id" class="text-light me-3" target="_blank"><i class="fas fa-globe fa-lg"></i></a>
-                    <a href="https://wa.me/6281216111802" class="text-light me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
-                    <a href="https://www.instagram.com/bps.tanggamus/" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="https://vt.tiktok.com/ZSrPN3mpe/" class="text-light me-3"><i class="fab fa-tiktok fa-lg"></i></a>
-                    <a href="https://x.com/bpstanggamus/status/1869221355813753274?t=CRMIqEq20N6jgSjUlwhUTQ&s=19" class="text-light me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="https://wa.me/6281216111802" target="_blank" class="text-light me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    <a href="https://www.instagram.com/bps.tanggamus/" target="_blank" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="https://vt.tiktok.com/ZSrPN3mpe/" target="_blank" class="text-light me-3"><i class="fab fa-tiktok fa-lg"></i></a>
+                    <a href="https://x.com/bpstanggamus/status/1869221355813753274?t=CRMIqEq20N6jgSjUlwhUTQ&s=19" target="_blank" class="text-light me-3"><i class="fab fa-twitter fa-lg"></i></a>
                 </div>
             </div>
         </div>

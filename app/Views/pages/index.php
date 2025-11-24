@@ -719,7 +719,7 @@
                         </div>
                         <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
                             <div><i class="fa fa-book me-1"></i><?= $course['lessons'] ?></div>
-                            <a href=<?= $course['link'] ?> class="btn btn-warning btn-sm rounded-pill px-3">Lihat</a>
+                            <a href=<?= $course['link'] ?> target="_blank" class="btn btn-warning btn-sm rounded-pill px-3">Lihat</a>
                         </div>
                     </div>
                 </div>
