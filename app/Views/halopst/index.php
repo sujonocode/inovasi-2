@@ -81,7 +81,7 @@
         <h2 class="section-title text-center mb-5">Layanan Lainnya</h2>
         <div class="row g-4 justify-content-center">
             <div class="col-lg-3 col-md-3">
-                <a href="/dokumen" class="text-decoration-none text-dark">
+                <a href="https://tanggamuskab.bps.go.id/id/publication" target="_blank" class="text-decoration-none text-dark">
                     <div class="icon-box text-center bg-light border h-100 d-flex flex-column justify-content-center align-items-center">
                         <img src="/assets/icons/perpustakaan.png" alt="Perpustakaan Digital" style="height:60px;">
                         <h4 class="mt-3 fw-bold">Perpustakaan Digital</h4>
@@ -90,7 +90,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-3">
-                <a href="/humas" class="text-decoration-none text-dark">
+                <a href="https://silastik.bps.go.id/v3/index.php/site/login/" target="_blank" class="text-decoration-none text-dark">
                     <div class="icon-box text-center bg-light border h-100 d-flex flex-column justify-content-center align-items-center">
                         <img src="/assets/icons/silastik.png" alt="SILASTIK" style="height:60px;">
                         <h4 class="mt-3 fw-bold">SILASTIK</h4>
@@ -99,7 +99,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-3">
-                <a href="/humas" class="text-decoration-none text-dark">
+                <a href="https://romantik.web.bps.go.id/" target="_blank" class="text-decoration-none text-dark">
                     <div class="icon-box text-center bg-light border h-100 d-flex flex-column justify-content-center align-items-center">
                         <img src="/assets/icons/romantik.png" alt="ROMANTIK" style="height:60px;">
                         <h4 class="mt-3 fw-bold">ROMANTIK</h4>
@@ -108,7 +108,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-3">
-                <a href="/humas" class="text-decoration-none text-dark">
+                <a href="https://webapi.bps.go.id/developer/" target="_blank" class="text-decoration-none text-dark">
                     <div class="icon-box text-center bg-light border h-100 d-flex flex-column justify-content-center align-items-center">
                         <img src="/assets/icons/webapi.png" alt="WebAPI BPS" style="height:60px;">
                         <h4 class="mt-3 fw-bold">WebAPI BPS</h4>
